@@ -1,0 +1,71 @@
+TITLE: PONG
+
+1ST
+  RISKS
+  	I may fail on my classes.
+  	Other developers may feel intimidated by clojure(script).
+  	Client and Server may need different root folders.
+  	Client code may be too slow with om.next and aframe.
+  	Lack of clojure(script) physics libraries for simulation.
+  REQUIREMENTS
+  	Should be fun.
+  	Should be easy to change.
+  	Should be developed with live feedback.
+  	Should be a group effort, open to opinions.
+	  Should recreate the game on the branch brute-play-pong.
+  COMPONENTS
+	  Position, Rotation, Scale, Velocity, Geometry.
+	  Paddle.
+	  Ball.
+	  Score.
+
+    2ND
+      COMPONENTS
+        Material.
+        Geometry.
+        Transform.
+          Position, Rotation, Scale.
+        Control.
+          Float-Around.
+          Follow-Near.
+          Follow-Keys.
+      ENTITIES
+        Player-Paddle, PC-Paddle, Ball.
+
+3RD
+  ;Introducing hierarchy to components. (only-the-type inhenritance)
+  ;The most specific is implemented. Parent types refer to all children.
+  ;Ex: (def system (atom {:components/by-type {
+                            ::Geometry {'...}
+                            ::Position {'...}
+                            ::Rotation {'...}
+                            ::Scale {'...}}}))
+  ;    (components-by-type @system ::Transform) -> {::Position {'...}
+                                                    ::Rotation {'...}
+                                                    ::Scale {'...}}
+  ;this probably means a fork on brute, but it should be easy. it also means (isa? ::Position ::Transform) -> true
+  ;obs ::Transform translates to :current-ns/Transform, which will be :server.components/Transform (I probably want use make-hirearchy instead)
+  ;(def components (-> (make-hierarchy)
+                       (derive :Position :Transform)
+                       (derive :Rotation :Transform)
+                       (derive :Scale :Transform)
+                       (derive :Float-Around :Control)
+                       (derive :Follow-Near :Control)))
+  ;components are just types!! or more directly, a hierarchy of types. They work well with isa? and suchs, like defmulti and ancestors
+  ;following this idea, under the hierarchy of types, which is essentially a tree, only the leaves would actually work as keys on the data 
+  COMPONENTS
+    Material.
+    Geometry.
+    Transform. ;(map #(derive % ::Transform) [::Position ::Rotation ::Scale])
+      Position, Rotation, Scale. ;An entity can have those Transforms at the same time (descendants ::Transform)
+    Control. ;(map #(derive % ::Control) [::Float-Around ::Follow-Near ::Follow-Keys])
+      Float-Around. ;An entity can only have one of those Transforms at a time
+      Follow-Near.  ;Another components can be made of a combination of those Controls
+      Follow-Keys.  ;But still, they will be another components. Something like Float-Around-Near
+  ENTITIES
+    Player-Paddle, PC-Paddle, Ball.
+
+4TH
+  ;Server normalized data as component/by-type, because it's easier for systems and parallelism.
+  ;Client normalized data as entity/by-id, because it's easier for uis and works well with om/ident.
+  ;Effectively what that means is that Server parser should read (send) component/by-type (brute shape) as entity/by-id.

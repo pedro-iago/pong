@@ -1,0 +1,4 @@
+(in-ns 'namespace-name)
+(reset! app-state
+  (om/from-history reconciler
+    #uuid "e0a07c41-413a-430c-8c91-976a155241c3"))

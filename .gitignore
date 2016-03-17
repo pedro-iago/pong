@@ -1,3 +1,20 @@
+# Node modules
+node_modules
+
+# Target folder
+target
+
+# Debug logs
+npm-debug.log
+figwheel_server.log
+
+# Resources folder
+resources/public/js
+dev-resources
+
+# Installation folder
+install
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
