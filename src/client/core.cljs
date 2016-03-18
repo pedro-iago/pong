@@ -10,7 +10,7 @@
 (def init-data {:counts [{:id 0 :value 0}
                          {:id 1 :value 0}
                          {:id 2 :value 2}]})
-(def app-state (atom (om/tree->db many-counters/ui init-data true)))
+(defonce app-state (atom (om/tree->db many-counters/ui init-data true)))
 
 (def reconciler
   (om/reconciler

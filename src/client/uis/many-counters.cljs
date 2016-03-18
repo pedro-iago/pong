@@ -12,10 +12,14 @@
   Object
   (render [this]
     (let [{:keys [counts]} (om/props this)]
-      (dom/div #js{:z-index 100}
-        (counter/fc (counts 0))
-        (counter/fc (counts 1))
-        (counter/fc (counts 2))
-        (dom/div #js{:x-index 100 :y-index 100 :z-index -100}
-          (a-vr/scene nil (sphere/fc {:react-key 0})))))))
+      (dom/div nil
+        (dom/div #js{:transform "translateZ(100)" :position "absolute" :z-index 1000}
+          (counter/fc (counts 0))
+          (counter/fc (counts 1))
+          (counter/fc (counts 2)))
+        (dom/div #js{:transform "translateZ(-100)"}
+          (a-vr/scene nil
+            (sphere/fc {:react-key 0})
+            (sphere/fc {:react-key 1})
+            (sphere/fc {:react-key 2})))))))
 (def fc (om/factory ui))

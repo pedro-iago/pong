@@ -14,7 +14,7 @@
       (assoc %1 %2
         (str/join "; "
           (map (fn [[k v]] (str/join ": " [(name k) v])) %3)))
-      (vector? %3)
+      (or (seq? %3) (vector? %3))
       (assoc %1 %2 (str/join " " %3))
       :else (assoc %1 %2 %3))
     {} props))
