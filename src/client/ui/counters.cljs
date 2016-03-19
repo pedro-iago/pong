@@ -1,8 +1,8 @@
-(ns client.uis.counter
+(ns client.ui.counters
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]))
 
-(defui ui
+(defui Counter
   static om/Ident
   (ident [this props]
     [:count/by-id (:id props)])
@@ -18,4 +18,4 @@
           #js {:onClick
                (fn [e] (om/transact! this `[(~'increment! {:id ~id})]))}
           "Click me!")))))
-(def fc (om/factory ui))
+(def counter (om/factory Counter))

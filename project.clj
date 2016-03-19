@@ -5,6 +5,6 @@
         :dependencies [[aframe "0.2.0-rc1"]]}
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "1.7.170"]
-                 [org.omcljs/om "1.0.0-alpha22"]
+                 [org.omcljs/om "1.0.0-alpha24"]
                  [sablono "0.6.2"]
                  [figwheel-sidecar "0.5.0-SNAPSHOT" :scope "test"]])
