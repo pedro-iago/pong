@@ -1,3 +1,10 @@
+# Idea stuff
+.idea
+om-tutorial.iml
+.floo
+.flooignore
+
+
 # Target folder
 target
 

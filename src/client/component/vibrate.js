@@ -1,4 +1,4 @@
-//sample code
+//sample code, turn this into clojurescript later
 require('aframe').registerComponent('vibrate', {
   schema: {
     dur: {

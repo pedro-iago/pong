@@ -1,10 +1,10 @@
-(require '[figwheel-sidecar.repl :as r]
-         '[figwheel-sidecar.repl-api :as ra])
+(require
+ '[figwheel-sidecar.repl-api :as ra])
 
 (ra/start-figwheel!
-  {:figwheel-options {}
-   :build-ids ["dev"]
-   :all-builds
+  {:figwheel-options {} ;; <-- figwheel server config goes here
+   :build-ids ["dev"]   ;; <-- a vector of build ids to start autobuilding
+   :all-builds          ;; <-- supply your build configs here
    [{:id "dev"
      :figwheel true
      :source-paths ["src"]
@@ -14,4 +14,14 @@
                 :output-dir "resources/public/js"
                 :verbose true}}]})
 
+;; Please note that when you stop the Figwheel Server http-kit throws
+;; a java.util.concurrent.RejectedExecutionException, this is expected
+
 (ra/cljs-repl)
+
+(defn stop []
+  (ra/stop-figwheel!))
+
+;; lein run -m clojure.main --init script/figwheel.clj -r
+;; :cljs/quit
+;; (stop)

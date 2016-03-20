@@ -6,21 +6,27 @@
   (let [st @state]
     {:value (om/db->tree query (get st key) st)}))
 
-(defmulti read om/dispatch)
-(defmethod read :counts [env key params] 
+(defmulti readq (fn [_ key _] key))
+(defmethod readq :counts [env key params]
   (db->tree env key params))
-(defmethod read :radius [env key params]
+(defmethod readq :radius [env key params]
   (db->tree env key params))
-(defmethod read :default
+(defmethod readq :default
   [{:keys [state] :as env} key _]
   (let [st @state]
     (if-let [value (get st key)]
       {:value value}
       {:value :not-found})))
 
-(defmulti mutate om/dispatch)
+(defmulti mutate (fn [_ key _] key))
 (defmethod mutate 'increment!
   [{:keys [state] :as env} _ {:keys [id] :as params}]
   {:value {:keys [:counts :radius]}
    :action #(swap! state update-in [:count/by-id id :value] inc)})
+(defmethod mutate 'decrement!
+  [{:keys [state] :as env} _ {:keys [id] :as params}]
+  {:value {:keys [:counts :radius]}
+   :action #(swap! state update-in [:count/by-id id :value] dec)})
 (defmethod mutate :default [] {:value :not-found})
+
+(def parser (om/parser {:read readq :mutate mutate}))

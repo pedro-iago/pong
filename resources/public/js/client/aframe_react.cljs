@@ -9,7 +9,7 @@
 (defn serialize [props]
   (reduce-kv
     #(cond
-      (fn? %3) (assoc %1 %2 "function")
+      (fn? %3) %1
       (map? %3)
       (assoc %1 %2
         (str/join "; "
