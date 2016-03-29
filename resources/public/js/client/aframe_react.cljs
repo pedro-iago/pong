@@ -1,23 +1,22 @@
 (ns client.aframe-react
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
-            [sablono.core :as html :refer-macros [html]]
             [clojure.string :as str]))
-(enable-console-print!)
 
 ;serializes clojure maps into aframe style
 (defn serialize [props]
-  (reduce-kv
-    #(cond
-      (fn? %3) %1
-      (map? %3)
-      (assoc %1 %2
-        (str/join "; "
-          (map (fn [[k v]] (str/join ": " [(name k) v])) %3)))
-      (or (seq? %3) (vector? %3))
-      (assoc %1 %2 (str/join " " %3))
-      :else (assoc %1 %2 %3))
-    {} props))
+  (clj->js
+    (reduce-kv
+      #(cond
+        (fn? %3) %1
+        (map? %3)
+        (assoc %1 %2
+          (str/join "; "
+            (map (fn [[k v]] (str/join ": " [(name k) v])) %3)))
+        (or (seq? %3) (vector? %3))
+        (assoc %1 %2 (str/join " " %3))
+        :else (assoc %1 %2 %3))
+      {} props)))
 
 (defui Animation
   Object
@@ -28,7 +27,8 @@
       (.addEventListener el "animationend" on-animation-end)
       (.addEventListener el "animationstart" on-animation-start)))
   (render [this]
-    (html [:a-animation (serialize (om/props this)) nil])))
+    (.createElement js/React "a-animation"
+      (serialize (om/props this)) nil)))
 (def animation (om/factory Animation))
 
 (defui Entity
@@ -38,17 +38,14 @@
           {:keys [on-click on-loaded on-mouse-enter on-mouse-leave]
            :or {:on-click #() :on-loaded #() :on-mouse-enter #() :on-mouse-leave #()}}
           (om/props this)]
-      (if (= "cam" (:react-key (om/props this))) ;;DEBUG
-        (.log js/console
-          (clj->js (serialize (om/props this)))
-          (aget (html [:a-entity (serialize (om/props this))]) "props")))
       (.addEventListener el "click" on-click)
       (.addEventListener el "loaded" on-loaded)
       (.addEventListener el "mouseenter" on-mouse-enter)
       (.addEventListener el "mouseleave" on-mouse-leave)))
   (render [this]
-    (html [:a-entity (serialize (om/props this)) (om/children this)])))
-(def entity (om/factory Entity)) ;should have keyfn as uuid
+    (.createElement js/React "a-entity"
+      (serialize (om/props this)) (om/children this))))
+(def entity (om/factory Entity)) ;should have uuid as keyfn, put om/next query too
 
 (defui Scene
   Object
@@ -63,5 +60,6 @@
         (.setTimeout js/window
           (.addBehavior #js{:el el :tick on-tick})))))
   (render [this]
-    (html [:a-scene (serialize (om/props this)) (om/children this)])))
+    (.createElement js/React "a-scene"
+      (serialize (om/props this)) (om/children this))))
 (def scene (om/factory Scene))
