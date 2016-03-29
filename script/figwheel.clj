@@ -7,7 +7,7 @@
    :all-builds          ;; <-- supply your build configs here
    [{:id "dev"
      :figwheel true
-     :source-paths ["src"]
+     :source-paths ["src" "script"]
      :compiler {:main 'client.core
                 :asset-path "js"
                 :output-to "resources/public/js/main.js"

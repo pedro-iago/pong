@@ -24,7 +24,7 @@
   (componentDidMount [this]
     (let [el (dom/node this)
           {:keys [on-animation-end on-animation-start]
-           :or {on-animation-end #() on-animation-start #()}} (om/props this)]
+           :or {:on-animation-end #() :on-animation-start #()}} (om/props this)]
       (.addEventListener el "animationend" on-animation-end)
       (.addEventListener el "animationstart" on-animation-start)))
   (render [this]
@@ -36,22 +36,26 @@
   (componentDidMount [this]
     (let [el (dom/node this)
           {:keys [on-click on-loaded on-mouse-enter on-mouse-leave]
-           :or {on-click #() on-loaded #() on-mouse-enter #() on-mouse-leave #()}}
+           :or {:on-click #() :on-loaded #() :on-mouse-enter #() :on-mouse-leave #()}}
           (om/props this)]
+      (if (= "cam" (:react-key (om/props this))) ;;DEBUG
+        (.log js/console
+          (clj->js (serialize (om/props this)))
+          (aget (html [:a-entity (serialize (om/props this))]) "props")))
       (.addEventListener el "click" on-click)
       (.addEventListener el "loaded" on-loaded)
       (.addEventListener el "mouseenter" on-mouse-enter)
       (.addEventListener el "mouseleave" on-mouse-leave)))
   (render [this]
-    (html (into [:a-entity (serialize (om/props this))] (om/children this)))))
-(def entity (om/factory Entity))
+    (html [:a-entity (serialize (om/props this)) (om/children this)])))
+(def entity (om/factory Entity)) ;should have keyfn as uuid
 
 (defui Scene
   Object
   (componentDidMount [this]
     (let [el (dom/node this)
           {:keys [on-enter-vr on-exit-vr on-loaded on-tick]
-           :or {on-enter-vr #() on-exit-vr #() on-loaded #()}} (om/props this)]
+           :or {:on-enter-vr #() :on-exit-vr #() :on-loaded #()}} (om/props this)]
       (.addEventListener el "enter-vr" on-enter-vr)
       (.addEventListener el "exit-vr" on-exit-vr)
       (.addEventListener el "loaded" on-loaded)
@@ -59,5 +63,5 @@
         (.setTimeout js/window
           (.addBehavior #js{:el el :tick on-tick})))))
   (render [this]
-    (html (into [:a-scene (serialize (om/props this))] (om/children this)))))
+    (html [:a-scene (serialize (om/props this)) (om/children this)])))
 (def scene (om/factory Scene))
