@@ -85,9 +85,9 @@
 (defn- input-field*
   "Creates a new <input> element."
   [type name value]
-  [:input {:type type
-           :name (make-name name)
-           :id (make-id name)
+  [:input {:type  type
+           :name  (make-name name)
+           :id    (make-id name)
            :value value}])
 
 (gen-input-fields)
@@ -99,10 +99,10 @@
   ([name] (check-box name nil))
   ([name checked?] (check-box name checked? "true"))
   ([name checked? value]
-   [:input {:type "checkbox"
-            :name (make-name name)
-            :id   (make-id name)
-            :value value
+   [:input {:type    "checkbox"
+            :name    (make-name name)
+            :id      (make-id name)
+            :value   value
             :checked checked?}]))
 
 (defelem radio-button
@@ -110,10 +110,10 @@
   ([group] (radio-button group nil))
   ([group checked?] (radio-button group checked? "true"))
   ([group checked? value]
-   [:input {:type "radio"
-            :name (make-name group)
-            :id   (make-id (str (as-str group) "-" (as-str value)))
-            :value value
+   [:input {:type    "radio"
+            :name    (make-name group)
+            :id      (make-id (str (as-str group) "-" (as-str value)))
+            :value   value
             :checked checked?}]))
 
 (defn- hash-key [x]
@@ -147,7 +147,7 @@
   ([name options selected]
    [:select
     {:name (make-name name)
-     :id (make-id name)}
+     :id   (make-id name)}
     (select-options options selected)]))
 
 (defelem text-area
@@ -155,8 +155,8 @@
   ([name] (text-area name nil))
   ([name value]
    [:textarea
-    {:name (make-name name)
-     :id (make-id name)
+    {:name  (make-name name)
+     :id    (make-id name)
      :value value}]))
 
 (defelem label

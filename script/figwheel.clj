@@ -7,11 +7,14 @@
    :all-builds          ;; <-- supply your build configs here
    [{:id "dev"
      :figwheel true
-     :source-paths ["src" "script"]
-     :compiler {:main 'client.core
+     :source-paths ["src/cljs"]
+     :compiler {:main 'pong.core
                 :asset-path "js"
                 :output-to "resources/public/js/main.js"
                 :output-dir "resources/public/js"
+                :parallel-build true
+                :compiler-stats true
+                :pretty-print true
                 :verbose true}}]})
 
 ;; Please note that when you stop the Figwheel Server http-kit throws

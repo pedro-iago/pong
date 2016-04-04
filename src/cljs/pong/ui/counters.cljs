@@ -1,4 +1,4 @@
-(ns client.ui.counters
+(ns pong.ui.counters
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]))
 

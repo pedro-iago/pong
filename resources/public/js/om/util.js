@@ -1,10 +1,13 @@
-// Compiled by ClojureScript 1.7.170 {}
+// Compiled by ClojureScript 1.7.228 {}
 goog.provide('om.util');
 goog.require('cljs.core');
 om.util.force_children = (function om$util$force_children(x){
-var G__18299 = x;
-var G__18299__$1 = ((cljs.core.seq_QMARK_.call(null,x))?cljs.core.into.call(null,cljs.core.PersistentVector.EMPTY,cljs.core.map.call(null,om$util$force_children),G__18299):G__18299);
-return G__18299__$1;
+var G__19298 = x;
+if(cljs.core.seq_QMARK_.call(null,x)){
+return cljs.core.into.call(null,cljs.core.PersistentVector.EMPTY,cljs.core.map.call(null,om$util$force_children),G__19298);
+} else {
+return G__19298;
+}
 });
 
 //# sourceMappingURL=util.js.map

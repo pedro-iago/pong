@@ -1,11 +1,11 @@
-(ns client.core
+(ns pong.core
   (:require [goog.dom :as gdom]
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
-            [client.aframe-react :as a-vr]
-            [client.parser :refer [parser]]
-            [client.ui.counters :refer [Counter counter]]
-            [client.ui.spheres :refer [CounterSphere counter-sphere]]))
+            [pong.aframe-react :as a-vr]
+            [pong.parser :refer [parser]]
+            [pong.ui.counters :refer [Counter counter]]
+            [pong.ui.spheres :refer [CounterSphere counter-sphere]]))
 
 (defui App
   static om/IQuery
@@ -29,7 +29,8 @@
                             :geometry "primitive: ring;
                             radiusInner: 0.016; radiusOuter: 0.05;"
                             :material "color: orange; shader: flat;"}
-                (a-vr/animation {:react-key "anim" :attribute "scale" :begin "click"
+                (a-vr/animation {:react-key "anim" :attribute "scale"
+                                 :begin "click"
                                  :dur "150" :fill "backwards"
                                  :from "0.1 0.1 0.1" :to "2 2 2"})))
             (counter-sphere (radius 0))
@@ -43,6 +44,10 @@
                          {:id 1 :value 0 :mult 0.186}
                          {:id 2 :value 2 :mult 0.186}]})
 (defonce app-state (atom (om/tree->db App init-data true)))
+;{:counts [[:count/by-id 0] [:count/by-id 1] [:count/by-id 2]],
+; :radius [[:count/by-id 0] [:count/by-id 1] [:count/by-id 2]],
+; :count/by-id {0 {:id 0, :value 1, :mult 0.186}, 1 {:id 1, :value 1, :mult 0.186}, 2 {:id 2, :value 1, :mult 0.186}},
+; :om.next/tables #{:count/by-id}}
 
 (def reconciler
   (om/reconciler

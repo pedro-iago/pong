@@ -7,7 +7,7 @@
   Object
   (render [this]
     (a-vr/entity {:position (repeatedly 3 #(rand-int 2))
-                  :geometry {:primitive "sphere"
+                  :geometry {:primitive 'sphere
                              :radius (-> this om/props :radius)}
                   :material {:color "#268299"}
                   :on-click (-> this om/props :on-click)})))

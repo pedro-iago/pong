@@ -13,13 +13,13 @@
    expressions follows:
 
    QueryRoot    := EdnVector(QueryExpr*)
-   QueryExpr    := (EdnKeyword | IdentExpr | ParamExpr | JoinExpr | UnionExpr)
+   QueryExpr    := (EdnKeyword | IdentExpr | ParamExpr | JoinExpr)
    IdentExpr    := EdnVector2(Keyword, EdnValue)
    ParamExpr    := EdnList2(QueryExpr | EdnSymbol, ParamMapExpr)
    ParamMapExpr := EdnMap(Keyword, EdnValue)
    JoinExpr     := EdnMap((Keyword | IdentExpr), (QueryRoot | UnionExpr | RecurExpr))
    UnionExpr    := EdnMap(Keyword, QueryRoot)
-   RecurExpr    := '...
+   RecurExpr    := ('... | Integer)
 
    Note most apis in Om Next expect a QueryRoot not a QueryExpr.
 
@@ -28,12 +28,14 @@
    Given a QueryExpr you can get the AST via om.next.impl.parser/expr->ast.
    The following keys can appear in the AST representation:
 
-   {:type         (:prop | :join | :call | :root)
+   {:type         (:prop | :join | :call | :root | :union | :union-entry)
     :key          (EdnKeyword | EdnSymbol | IdentExpr)
     :dispatch-key (EdnKeyword | EdnSymbol)
+    :union-key    EdnKeyword
     :query        (QueryRoot | RecurExpr)
     :params       ParamMapExpr
-    :children     EdnVector(AST)}
+    :children     EdnVector(AST)
+    :component    Object}
 
    :query and :params may or may not appear. :type :call is only for
    mutations."}
@@ -50,6 +52,21 @@
    :dispatch-key k
    :key k})
 
+(defn union-entry->ast [[k v]]
+  (let [component (-> v meta :component)]
+    (merge
+      {:type :union-entry
+       :union-key k
+       :query v
+       :children (into [] (map expr->ast) v)}
+      (when-not (nil? component)
+        {:component component}))))
+
+(defn union->ast [m]
+  {:type :union
+   :query m
+   :children (into [] (map union-entry->ast) m)})
+
 (defn call->ast [[f args :as call]]
   (if (= 'quote f)
     (assoc (expr->ast args) :target (or (-> call meta :target) :remote))
@@ -60,16 +77,28 @@
 (defn query->ast
   "Convert a query to its AST representation."
   [query]
-  {:type :root
-   :children (into [] (map expr->ast) query)})
+  (let [component (-> query meta :component)]
+    (merge
+      {:type :root
+       :children (into [] (map expr->ast) query)}
+      (when-not (nil? component)
+        {:component component}))))
 
 (defn join->ast [join]
   (let [[k v] (first join)
-        ast   (expr->ast k)]
+        ast (expr->ast k)
+        component (-> v meta :component)]
     (merge ast
       {:type :join :query v}
-      (when-not (= '... v)
-        {:children (into [] (map expr->ast) v)}))))
+      (when-not (nil? component)
+        {:component component})
+      (when-not (or (number? v) (= '... v))
+        (cond
+          (vector? v) {:children (into [] (map expr->ast) v)}
+          (map? v) {:children [(union->ast v)]}
+          :else (throw
+                  (ex-info (str "Invalid join, " join)
+                    {:type :error/invalid-join})))))))
 
 (defn ident->ast [[k id :as ref]]
   {:type :prop
@@ -100,18 +129,30 @@
   "Given a query expression AST convert it back into a query expression."
   ([ast]
     (ast->expr ast false))
-  ([{:keys [type] :as ast} unparse-children?]
+  ([{:keys [type component] :as ast} unparse?]
    (if (= :root type)
-     (into [] (map ast->expr) (:children ast))
+     (cond-> (into [] (map #(ast->expr % unparse?)) (:children ast))
+       (not (nil? component)) (with-meta {:component component}))
      (let [{:keys [key query query-root params]} ast]
        (wrap-expr query-root
          (if-not (nil? params)
-           (if-not (empty? params)
-             (list (ast->expr (dissoc ast :params)) params)
-             (list (ast->expr (dissoc ast :params))))
-           (if-not (nil? query)
-             (if (true? unparse-children?)
-               {key (ast->expr (:children ast) unparse-children?)}
+           (let [expr (ast->expr (dissoc ast :params) unparse?)]
+             (if-not (empty? params)
+               (list expr params)
+               (list expr)))
+           (if (= :join type)
+             (if (and (not= '... query) (not (number? query)) (true? unparse?))
+               (let [{:keys [children]} ast]
+                 (if (and (== 1 (count children))
+                          (= :union (:type (first children)))) ;; UNION
+                   {key (into {}
+                          (map (fn [{:keys [union-key children component]}]
+                                 [union-key
+                                  (cond-> (into [] (map #(ast->expr % unparse?)) children)
+                                    (not (nil? component)) (with-meta {:component component}))]))
+                          (:children (first children)))}
+                   {key (cond-> (into [] (map #(ast->expr % unparse?)) children)
+                          (not (nil? component)) (with-meta {:component component}))}))
                {key query})
              key)))))))
 
@@ -147,16 +188,15 @@
                                (vector? key)   (assoc :query-root key))
                        type  (:type ast)
                        call? (= :call type)
-                       res   (when (nil? (:target ast))
-                               (case type
-                                 :call
-                                 (do
-                                   (assert mutate "Parse mutation attempted but no :mutate function supplied")
-                                   (mutate env dispatch-key params))
-                                 (:prop :join)
-                                 (do
-                                   (assert read "Parse read attempted but no :read function supplied")
-                                   (read env dispatch-key params))))]
+                       res   (case type
+                               :call
+                               (do
+                                 (assert mutate "Parse mutation attempted but no :mutate function supplied")
+                                 (mutate env dispatch-key params))
+                               (:prop :join :union)
+                               (do
+                                 (assert read "Parse read attempted but no :read function supplied")
+                                 (read env dispatch-key params)))]
                    (if-not (nil? target)
                      (let [ast' (get res target)]
                        (cond-> ret

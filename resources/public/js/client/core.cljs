@@ -43,6 +43,10 @@
                          {:id 1 :value 0 :mult 0.186}
                          {:id 2 :value 2 :mult 0.186}]})
 (defonce app-state (atom (om/tree->db App init-data true)))
+;{:counts [[:count/by-id 0] [:count/by-id 1] [:count/by-id 2]],
+; :radius [[:count/by-id 0] [:count/by-id 1] [:count/by-id 2]],
+; :count/by-id {0 {:id 0, :value 1, :mult 0.186}, 1 {:id 1, :value 1, :mult 0.186}, 2 {:id 2, :value 1, :mult 0.186}},
+; :om.next/tables #{:count/by-id}}
 
 (def reconciler
   (om/reconciler

@@ -1,13 +1,13 @@
-(ns client.ui.spheres
+(ns pong.ui.spheres
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
-            [client.aframe-react :as a-vr]))
+            [pong.aframe-react :as a-vr]))
 
 (defui RandomSphere
   Object
   (render [this]
     (a-vr/entity {:position (repeatedly 3 #(rand-int 2))
-                  :geometry {:primitive "sphere"
+                  :geometry {:primitive 'sphere
                              :radius (-> this om/props :radius)}
                   :material {:color "#268299"}
                   :on-click (-> this om/props :on-click)})))
