@@ -17,7 +17,9 @@
 
   :clean-targets ^{:protect false} ["resources/public/js"]
 
-  :source-paths ["src/clj" "src/cljs" "src/cljc"]
+  :source-paths ["src/clj" "src/cljs" "src/cljc" "script"]
+
+  :test-paths ["test/clj" "test/cljs" "test/cljc"]
   )
 
 

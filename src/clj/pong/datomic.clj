@@ -1,5 +1,5 @@
 (ns pong.datomic
-  (:require [datomic.api :as da]
+  (:require [datomic.api :as d]
             [com.stuartsierra.component :as component]
             [clojure.java.io :as io])
   (:import datomic.Util))

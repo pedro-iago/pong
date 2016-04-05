@@ -1,25 +1,89 @@
 (ns pong.parser
   (:require [om.next :as om]))
 
-(defn read [{:keys [state query] :as env} key params]
+;; =============================================================================
+;; Reads
+
+(defmulti read om/dispatch)
+
+(defmethod read :default
+  [{:keys [state]} k _]
+  (let [st @state] ;; CACHING!!!
+    (if (contains? st k)
+      {:value (get st k)}
+      {:remote true})))
+
+;; work around for a bizarre :simple/:advanced bug
+;; circle back - David
+(defn join [st ref]
+  (cond-> (get-in st ref)
+    (= (:todos/editing st) ref) (assoc :todo/editing true)))
+
+(defn get-todos [st]
+  (into [] (map #(join st %)) (get st :todos/list)))
+
+(defmethod read :todos/list
+  [{:keys [state]} k _]
   (let [st @state]
-    (case key
-      (:counts :radius)
-      {:value (om/db->tree query (get st key) st)}
-      :default
-      (if-let [value (get st key)]
-        {:value value}
-        {:value :not-found}))))
+    (if (contains? st k)
+      {:value (get-todos st)}
+      {:remote true})))
 
-(defn mutate [{:keys [state query] :as env} key params]
-  (let [st @state
-        id (:id params)]
-    (case (name key)
-      "increment!"
-      {:value {:keys [:counts :radius]}
-       :action #(swap! state update-in [:count/by-id id :value] inc)}
-      "decrement!"
-      {:value  {:keys [:counts :radius]}
-       :action #(swap! state update-in [:count/by-id id :value] dec)})))
+;; =============================================================================
+;; Mutations
 
-(def parser (om/parser {:read read :mutate mutate}))
+(defmulti mutate om/dispatch)
+
+(defmethod mutate :default
+  [_ _ _] {:remote true})
+
+(defmethod mutate 'todos/clear
+  [{:keys [state]} _ _]
+  {:action
+   (fn []
+     (let [st @state]
+       (swap! state update-in [:todos/list]
+         (fn [list]
+           (into []
+             (remove #(get-in st (conj % :todo/completed)))
+             list)))))})
+
+(defmethod mutate 'todos/toggle-all
+  [{:keys [state]} _ {:keys [value]}]
+  {:action
+   (fn []
+     (letfn [(step [state' ref]
+               (update-in state' ref assoc
+                 :todo/completed value))]
+       (swap! state
+         #(reduce step % (:todos/list %)))))})
+
+(defmethod mutate 'todo/update
+  [{:keys [state ref]} _ new-props]
+  {:remote true
+   :action ;; OPTIMISTIC UPDATE
+   (fn []
+     (swap! state update-in ref merge new-props))
+   })
+
+(defmethod mutate 'todo/edit
+  [{:keys [state]} _ {:keys [db/id]}]
+  {:action
+   (fn []
+     (swap! state assoc :todos/editing [:todos/by-id id]))})
+
+(defmethod mutate 'todo/cancel-edit
+  [{:keys [state]} _ _]
+  {:action
+   (fn []
+     (swap! state dissoc :todos/editing))})
+
+(defmethod mutate 'todos/create-temp
+  [{:keys [state]} _ new-todo]
+  {:value [:todos/list]
+   :action (fn [] (swap! state assoc :todos/temp new-todo))})
+
+(defmethod mutate 'todos/delete-temp
+  [{:keys [state]} _ _]
+  {:value [:todos/list]
+   :action (fn [] (swap! state dissoc :todos/temp))})

@@ -1,58 +1,82 @@
 (ns pong.core
-  (:require [goog.dom :as gdom]
+  (:require [goog.events :as events]
+            [goog.dom :as gdom]
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
-            [pong.aframe-react :as a-vr]
-            [pong.parser :refer [parser]]
-            [pong.ui.counters :refer [Counter counter]]
-            [pong.ui.spheres :refer [CounterSphere counter-sphere]]))
+            [pong.util :as util :refer [hidden pluralize]]
+            [pong.item :as item]
+            [pong.parser :as p])
+  (:import [goog History]
+           [goog.history EventType]))
 
-(defui App
+;; -----------------------------------------------------------------------------
+;; Components
+
+(defn main [todos {:keys [todos/list] :as props}]
+  (let [checked? (every? :todo/completed list)]
+    (dom/section #js {:id "main" :style (hidden (empty? list))}
+      (dom/input
+        #js {:id "toggle-all"
+             :type "checkbox"
+             :onChange (fn [_]
+                         (om/transact! todos
+                           `[(todos/toggle-all
+                               {:value ~(not checked?)})
+                             :todos/list]))
+             :checked checked?})
+      (apply dom/ul #js {:id "todo-list"}
+        (map item/item list)))))
+
+(defn clear-button [todos completed]
+  (when (pos? completed)
+    (dom/button
+      #js {:id "clear-completed"
+           :onClick (fn [_] (om/transact! todos `[(todos/clear)]))}
+      (str "Clear completed (" completed ")"))))
+
+(defn footer [todos props active completed]
+  (dom/footer #js {:id "footer" :style (hidden (empty? (:todos/list props)))}
+    (dom/span #js {:id "todo-count"}
+      (dom/strong nil active)
+      (str " " (pluralize active "item") " left"))
+    (apply dom/ul #js {:id "filters" :className (name (:todos/showing props))}
+      (map (fn [[x y]] (dom/li nil (dom/a #js {:href (str "#/" x)} y)))
+        [["" "All"] ["active" "Active"] ["completed" "Completed"]]))
+    (clear-button todos completed)))
+
+(defui Todos
+  static om/IQueryParams
+  (params [this]
+    {:todo-item (om/get-query item/TodoItem)})
+
   static om/IQuery
   (query [this]
-    [{:counts (om/get-query Counter)}
-     {:radius (om/get-query CounterSphere)}])
+    '[{:todos/list ?todo-item}])
+
   Object
   (render [this]
-    (let [{:keys [counts radius]} (om/props this)]
+    (let [props (merge (om/props this) {:todos/showing :all})
+          {:keys [todos/list]} props
+          active (count (remove :todo/completed list))
+          completed (- (count list) active)]
       (dom/div nil
-        (dom/div #js{:style #js{:zIndex 5 :position "relative"}}
-          (counter (counts 0))
-          (counter (counts 1))
-          (counter (counts 2)))
-        (dom/div nil
-          (a-vr/scene nil
-            (a-vr/entity {:react-key "cam" :camera ""
-                          :look-controls ""
-                          :position "0 2.2 4" :wasd-controls ""}
-              (a-vr/entity {:react-key "cur" :cursor "" :position "0 0 -3"
-                            :geometry "primitive: ring;
-                            radiusInner: 0.016; radiusOuter: 0.05;"
-                            :material "color: orange; shader: flat;"}
-                (a-vr/animation {:react-key "anim" :attribute "scale"
-                                 :begin "click"
-                                 :dur "150" :fill "backwards"
-                                 :from "0.1 0.1 0.1" :to "2 2 2"})))
-            (counter-sphere (radius 0))
-            (counter-sphere (radius 1))
-            (counter-sphere (radius 2))))))))
+        (dom/header #js {:id "header"}
+          (dom/h1 nil "todos")
+          (dom/input
+            #js {:ref "newField"
+                 :id "new-todo"
+                 :placeholder "What needs to be done?"
+                 :onKeyDown #(do %)})
+          (main this props)
+          (footer this props active completed))))))
 
-(def init-data {:counts [{:id 0 :value 0}
-                         {:id 1 :value 0}
-                         {:id 2 :value 2}]
-                :radius [{:id 0 :value 0 :mult 0.186}
-                         {:id 1 :value 0 :mult 0.186}
-                         {:id 2 :value 2 :mult 0.186}]})
-(defonce app-state (atom (om/tree->db App init-data true)))
-;{:counts [[:count/by-id 0] [:count/by-id 1] [:count/by-id 2]],
-; :radius [[:count/by-id 0] [:count/by-id 1] [:count/by-id 2]],
-; :count/by-id {0 {:id 0, :value 1, :mult 0.186}, 1 {:id 1, :value 1, :mult 0.186}, 2 {:id 2, :value 1, :mult 0.186}},
-; :om.next/tables #{:count/by-id}}
+(def todos (om/factory Todos))
 
 (def reconciler
   (om/reconciler
-    {:state app-state
-     :parser parser}))
+    {:state (atom {})
+     :normalize true
+     :parser (om/parser {:read p/read :mutate p/mutate})
+     :send (util/transit-post "/api")}))
 
-(om/add-root! reconciler
-  App (gdom/getElement "app"))
+(om/add-root! reconciler Todos (gdom/getElement "todoapp"))
