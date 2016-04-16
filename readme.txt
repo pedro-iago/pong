@@ -124,3 +124,18 @@ TITLE: PONG
   ;potencialmente facil de experimentar com o scribble. Por outro lado, brute eh muito mais
   ;funcional no sentido que todas as funcoes sao puras, e portanto mais convenientes, enquanto
   ;ChromaShift mutaciona javascript atraves de macros.
+
+6TH
+ ;clients and servers communicate using HTTP connections. the other option, using
+ ;Websockets, may seem better since it doesn't require a handshake, and the server
+ ;can potentially send much more messages with less latency. However, because of
+ ;the ease to use HTTP, and optimistic updates, the client can sporadically
+ ;synchronizations, say half a second, and simulate an uniform movement in between.
+ ;because accelerations are likely to be low, the clients can be fairly accurate.
+ ;aleph, bidi, yada and the remote synchronazation of om.next have all i need
+ ;furthermore, if i regret and decide to use websockets instead, i can use om next
+ ;merge! on a callback from a clojure(script) Sente configuration.
+ ;in a senser, http fits the initial idea well enough. What i am trying to do first
+ ;is a simulation enviroment (server) rendered and interfaced by the browser.
+ ;so no need for long client streams to the server. If perharps one day I decide
+ ;to use the same ECS structure for a game, I can use playclj and just clojure.

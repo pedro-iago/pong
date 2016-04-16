@@ -10,7 +10,7 @@
      :source-paths ["src/cljs"]
      :compiler {:main 'pong.core
                 :asset-path "js"
-                :output-to "resources/public/js/main.js"
+                :output-to "resources/public/js/app.js"
                 :output-dir "resources/public/js"
                 :parallel-build true
                 :compiler-stats true
@@ -25,6 +25,6 @@
 (defn stop []
   (ra/stop-figwheel!))
 
-;; lein run -m clojure.main --init script/figwheel.clj -r
+;; lein with-profile +cljs-dev run -m clojure.main --init script/figwheel.clj -r
 ;; :cljs/quit
 ;; (stop)
