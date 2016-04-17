@@ -1,9 +1,12 @@
 (ns pong.parser
-  (:require [om.next :as om]))
+  (:require [om.next :as om]
+            [clojure.data.avl :as avl]))
 
 (defn read [{:keys [state query] :as env} key params]
   (let [st @state]
     (case key
+      :entities
+      {:value (-> st (avl/subrange >= :e/a < :e/|) vals)}
       (:counts :radius)
       {:value (om/db->tree query (get st key) st)}
       :default

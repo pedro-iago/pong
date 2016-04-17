@@ -10,6 +10,7 @@
                  [bidi "1.25.0"]
                  [yada "1.1.2"]
 
+                 [org.clojure/core.async "0.2.374"]
                  [net.mikera/core.matrix "0.51.0"]
                  [com.rpl/specter "0.9.2"]
                  [org.clojure/data.avl "0.0.13"]

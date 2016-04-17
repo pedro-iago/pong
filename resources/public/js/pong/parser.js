@@ -2,15 +2,20 @@
 goog.provide('pong.parser');
 goog.require('cljs.core');
 goog.require('om.next');
-pong.parser.read = (function pong$parser$read(p__24341,key,params){
-var map__24353 = p__24341;
-var map__24353__$1 = ((((!((map__24353 == null)))?((((map__24353.cljs$lang$protocol_mask$partition0$ & (64))) || (map__24353.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__24353):map__24353);
-var env = map__24353__$1;
-var state = cljs.core.get.call(null,map__24353__$1,new cljs.core.Keyword(null,"state","state",-1988618099));
-var query = cljs.core.get.call(null,map__24353__$1,new cljs.core.Keyword(null,"query","query",-1288509510));
+goog.require('clojure.data.avl');
+pong.parser.read = (function pong$parser$read(p__35938,key,params){
+var map__35942 = p__35938;
+var map__35942__$1 = ((((!((map__35942 == null)))?((((map__35942.cljs$lang$protocol_mask$partition0$ & (64))) || (map__35942.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__35942):map__35942);
+var env = map__35942__$1;
+var state = cljs.core.get.call(null,map__35942__$1,new cljs.core.Keyword(null,"state","state",-1988618099));
+var query = cljs.core.get.call(null,map__35942__$1,new cljs.core.Keyword(null,"query","query",-1288509510));
 var st = cljs.core.deref.call(null,state);
-var G__24356 = (((key instanceof cljs.core.Keyword))?key.fqn:null);
-switch (G__24356) {
+var G__35944 = (((key instanceof cljs.core.Keyword))?key.fqn:null);
+switch (G__35944) {
+case "entities":
+return new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"value","value",305978217),cljs.core.vals.call(null,clojure.data.avl.subrange.call(null,st,cljs.core._GT__EQ_,new cljs.core.Keyword("e","a","e/a",-2123407433),cljs.core._LT_,new cljs.core.Keyword("e","|","e/|",-352414941)))], null);
+
+break;
 case "counts":
 return new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"value","value",305978217),om.next.db__GT_tree.call(null,query,cljs.core.get.call(null,st,key),st)], null);
 
@@ -34,29 +39,29 @@ throw (new Error([cljs.core.str("No matching clause: "),cljs.core.str(key)].join
 
 }
 });
-pong.parser.mutate = (function pong$parser$mutate(p__24363,key,params){
-var map__24370 = p__24363;
-var map__24370__$1 = ((((!((map__24370 == null)))?((((map__24370.cljs$lang$protocol_mask$partition0$ & (64))) || (map__24370.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__24370):map__24370);
-var env = map__24370__$1;
-var state = cljs.core.get.call(null,map__24370__$1,new cljs.core.Keyword(null,"state","state",-1988618099));
-var query = cljs.core.get.call(null,map__24370__$1,new cljs.core.Keyword(null,"query","query",-1288509510));
+pong.parser.mutate = (function pong$parser$mutate(p__35946,key,params){
+var map__35950 = p__35946;
+var map__35950__$1 = ((((!((map__35950 == null)))?((((map__35950.cljs$lang$protocol_mask$partition0$ & (64))) || (map__35950.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__35950):map__35950);
+var env = map__35950__$1;
+var state = cljs.core.get.call(null,map__35950__$1,new cljs.core.Keyword(null,"state","state",-1988618099));
+var query = cljs.core.get.call(null,map__35950__$1,new cljs.core.Keyword(null,"query","query",-1288509510));
 var st = cljs.core.deref.call(null,state);
 var id = new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(params);
-var G__24372 = cljs.core.name.call(null,key);
-switch (G__24372) {
+var G__35952 = cljs.core.name.call(null,key);
+switch (G__35952) {
 case "increment!":
-return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"value","value",305978217),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"keys","keys",1068423698),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"counts","counts",234305892),new cljs.core.Keyword(null,"radius","radius",-2073122258)], null)], null),new cljs.core.Keyword(null,"action","action",-811238024),((function (G__24372,st,id,map__24370,map__24370__$1,env,state,query){
+return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"value","value",305978217),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"keys","keys",1068423698),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"counts","counts",234305892),new cljs.core.Keyword(null,"radius","radius",-2073122258)], null)], null),new cljs.core.Keyword(null,"action","action",-811238024),((function (G__35952,st,id,map__35950,map__35950__$1,env,state,query){
 return (function (){
 return cljs.core.swap_BANG_.call(null,state,cljs.core.update_in,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("count","by-id","count/by-id",-2098627242),id,new cljs.core.Keyword(null,"value","value",305978217)], null),cljs.core.inc);
-});})(G__24372,st,id,map__24370,map__24370__$1,env,state,query))
+});})(G__35952,st,id,map__35950,map__35950__$1,env,state,query))
 ], null);
 
 break;
 case "decrement!":
-return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"value","value",305978217),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"keys","keys",1068423698),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"counts","counts",234305892),new cljs.core.Keyword(null,"radius","radius",-2073122258)], null)], null),new cljs.core.Keyword(null,"action","action",-811238024),((function (G__24372,st,id,map__24370,map__24370__$1,env,state,query){
+return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"value","value",305978217),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"keys","keys",1068423698),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"counts","counts",234305892),new cljs.core.Keyword(null,"radius","radius",-2073122258)], null)], null),new cljs.core.Keyword(null,"action","action",-811238024),((function (G__35952,st,id,map__35950,map__35950__$1,env,state,query){
 return (function (){
 return cljs.core.swap_BANG_.call(null,state,cljs.core.update_in,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword("count","by-id","count/by-id",-2098627242),id,new cljs.core.Keyword(null,"value","value",305978217)], null),cljs.core.dec);
-});})(G__24372,st,id,map__24370,map__24370__$1,env,state,query))
+});})(G__35952,st,id,map__35950,map__35950__$1,env,state,query))
 ], null);
 
 break;

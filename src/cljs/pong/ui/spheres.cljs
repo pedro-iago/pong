@@ -15,10 +15,10 @@
 
 (defui CounterSphere
   static om/Ident
-  (ident [this props]
+  (ident [_ props]
     [:count/by-id (:id props)])
   static om/IQuery
-  (query [this]
+  (query [_]
     [:id :value :mult])
   Object
   (render [this]
@@ -26,8 +26,3 @@
       (random-sphere {:radius (* mult value)
                       :on-click #(om/transact! this `[(~'decrement! {:id ~id})])}))))
 (def counter-sphere (om/factory CounterSphere {:keyfn :id}))
-
-;the multiplier should be part of the state
-;that would allow for easy integration with scribble
-;a simple change on the atom, by eval would do the job
-;in other words, make the ui parametric, if you wanna scribble

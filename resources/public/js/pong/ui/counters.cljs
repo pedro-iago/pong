@@ -18,7 +18,7 @@
           #js {:onClick
                (fn [e] (om/transact! this `[(~'increment! {:id ~id})]))}
           "Click me!")))))
-(def counter (om/factory Counter))
+(def counter (om/factory Counter {:keyfn :id}))
 
 
 ;; (defn add-in [cs v]

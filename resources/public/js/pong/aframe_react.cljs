@@ -45,7 +45,7 @@
   (render [this]
     (.createElement js/React "a-entity"
       (serialize (om/props this)) (om/children this))))
-(def entity (om/factory Entity)) ;should have uuid as keyfn, put om/next query too
+(def entity (om/factory Entity {:keyfn :id})) ;should have uuid as keyfn, put om/next query too
 
 (defui Scene
   Object
