@@ -139,3 +139,13 @@ TITLE: PONG
  ;is a simulation enviroment (server) rendered and interfaced by the browser.
  ;so no need for long client streams to the server. If perharps one day I decide
  ;to use the same ECS structure for a game, I can use playclj and just clojure.
+
+7TH
+ ;interesting links: https://www.youtube.com/watch?v=eRq5UBx6cbA
+ ;https://www.youtube.com/watch?v=-RaFcpNiYCo (dependency by name can be add to ctrls)
+ ;https://www.youtube.com/watch?v=lql2yFXzKUs (how do scrpits fit with ecs?)
+ ;https://www.youtube.com/watch?v=GglfimrfYn4 (how do hybrid expressions fit with ctrls?)
+ ;try to use specter to abstract out where things are and what I am doing. this way I could
+ ;Effectively have compiled counter-paths that can be choosed wheter it is ecs or dom.
+ ;I may want to build my own version of hybrid expressions, that deal with core.matrix
+ ;https://www.youtube.com/watch?v=TW1ie0pIO_E (do a state inspector like at 24:08)

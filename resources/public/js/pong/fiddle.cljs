@@ -28,7 +28,7 @@
     (om/from-history reconciler
       #uuid "666d611b-66d3-4c36-8a2a-6b257dfdeef2")))
 (reset! app-state (om/tree->db App init-data true))
-(reset-mult! app-state 0.2)
+(reset-mult! app-state 0.3)
 
 ;meta path
 (let []
@@ -58,3 +58,5 @@
     (.requestAnimationFrame js/window loop-sys)
     (swap! app-state sys/step-dom 0.01666))
   (.requestAnimationFrame js/window loop-sys))
+
+(-> @app-state (avl/subrange >= :e/a < :e/|) sys/switch-path :velocity)
