@@ -24,9 +24,9 @@
 (def flow hybrid) ;mode does a continous flow (diff with time)
 (def jump-flow hybrid) ;mode does a jump on the flow (switch flow)
 
-;I need a script/position component that orchestrates changes to jump/position and
-;flow/position, in a way that I can built it as such:
-;(let [p [:position :e/a0]
+;;I need a script/position component that orchestrates changes to jump/position and
+;;flow/position, in a way that I can built it as such:
+;;(let [p [:position :e/a0]
 ;;     q [:position :e/b0]
 ;;     all [:position s/ALL]]
 ;; (->  (sequence [p q]
