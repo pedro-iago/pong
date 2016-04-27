@@ -17,27 +17,27 @@ return cljs.core.sequence.call(null,cljs.core.seq.call(null,cljs.core.concat.cal
 
 clojure.core.matrix.impl.mathsops.def_mop.cljs$lang$macro = true;
 clojure.core.matrix.impl.mathsops.def_mops = (function clojure$core$matrix$impl$mathsops$def_mops(_AMPERSAND_form,_AMPERSAND_env){
-return cljs.core.sequence.call(null,cljs.core.seq.call(null,cljs.core.concat.call(null,cljs.core._conj.call(null,cljs.core.List.EMPTY,new cljs.core.Symbol(null,"do","do",1686842252,null)),(function (){var iter__18874__auto__ = (function clojure$core$matrix$impl$mathsops$def_mops_$_iter__21522(s__21523){
+return cljs.core.sequence.call(null,cljs.core.seq.call(null,cljs.core.concat.call(null,cljs.core._conj.call(null,cljs.core.List.EMPTY,new cljs.core.Symbol(null,"do","do",1686842252,null)),(function (){var iter__19498__auto__ = (function clojure$core$matrix$impl$mathsops$def_mops_$_iter__20052(s__20053){
 return (new cljs.core.LazySeq(null,(function (){
-var s__21523__$1 = s__21523;
+var s__20053__$1 = s__20053;
 while(true){
-var temp__4657__auto__ = cljs.core.seq.call(null,s__21523__$1);
+var temp__4657__auto__ = cljs.core.seq.call(null,s__20053__$1);
 if(temp__4657__auto__){
-var s__21523__$2 = temp__4657__auto__;
-if(cljs.core.chunked_seq_QMARK_.call(null,s__21523__$2)){
-var c__18872__auto__ = cljs.core.chunk_first.call(null,s__21523__$2);
-var size__18873__auto__ = cljs.core.count.call(null,c__18872__auto__);
-var b__21525 = cljs.core.chunk_buffer.call(null,size__18873__auto__);
-if((function (){var i__21524 = (0);
+var s__20053__$2 = temp__4657__auto__;
+if(cljs.core.chunked_seq_QMARK_.call(null,s__20053__$2)){
+var c__19496__auto__ = cljs.core.chunk_first.call(null,s__20053__$2);
+var size__19497__auto__ = cljs.core.count.call(null,c__19496__auto__);
+var b__20055 = cljs.core.chunk_buffer.call(null,size__19497__auto__);
+if((function (){var i__20054 = (0);
 while(true){
-if((i__21524 < size__18873__auto__)){
-var vec__21538 = cljs.core._nth.call(null,c__18872__auto__,i__21524);
-var sym_SHARP_ = cljs.core.nth.call(null,vec__21538,(0),null);
-var op_SHARP_ = cljs.core.nth.call(null,vec__21538,(1),null);
-cljs.core.chunk_append.call(null,b__21525,cljs.core.sequence.call(null,cljs.core.seq.call(null,cljs.core.concat.call(null,cljs.core._conj.call(null,cljs.core.List.EMPTY,new cljs.core.Symbol("clojure.core.matrix.impl.mathsops","def-mop","clojure.core.matrix.impl.mathsops/def-mop",-110958166,null)),cljs.core._conj.call(null,cljs.core.List.EMPTY,sym_SHARP_),cljs.core._conj.call(null,cljs.core.List.EMPTY,op_SHARP_)))));
+if((i__20054 < size__19497__auto__)){
+var vec__20073 = cljs.core._nth.call(null,c__19496__auto__,i__20054);
+var sym_SHARP_ = cljs.core.nth.call(null,vec__20073,(0),null);
+var op_SHARP_ = cljs.core.nth.call(null,vec__20073,(1),null);
+cljs.core.chunk_append.call(null,b__20055,cljs.core.sequence.call(null,cljs.core.seq.call(null,cljs.core.concat.call(null,cljs.core._conj.call(null,cljs.core.List.EMPTY,new cljs.core.Symbol("clojure.core.matrix.impl.mathsops","def-mop","clojure.core.matrix.impl.mathsops/def-mop",-110958166,null)),cljs.core._conj.call(null,cljs.core.List.EMPTY,sym_SHARP_),cljs.core._conj.call(null,cljs.core.List.EMPTY,op_SHARP_)))));
 
-var G__21540 = (i__21524 + (1));
-i__21524 = G__21540;
+var G__20082 = (i__20054 + (1));
+i__20054 = G__20082;
 continue;
 } else {
 return true;
@@ -45,15 +45,15 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__21525),clojure$core$matrix$impl$mathsops$def_mops_$_iter__21522.call(null,cljs.core.chunk_rest.call(null,s__21523__$2)));
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__20055),clojure$core$matrix$impl$mathsops$def_mops_$_iter__20052.call(null,cljs.core.chunk_rest.call(null,s__20053__$2)));
 } else {
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__21525),null);
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__20055),null);
 }
 } else {
-var vec__21539 = cljs.core.first.call(null,s__21523__$2);
-var sym_SHARP_ = cljs.core.nth.call(null,vec__21539,(0),null);
-var op_SHARP_ = cljs.core.nth.call(null,vec__21539,(1),null);
-return cljs.core.cons.call(null,cljs.core.sequence.call(null,cljs.core.seq.call(null,cljs.core.concat.call(null,cljs.core._conj.call(null,cljs.core.List.EMPTY,new cljs.core.Symbol("clojure.core.matrix.impl.mathsops","def-mop","clojure.core.matrix.impl.mathsops/def-mop",-110958166,null)),cljs.core._conj.call(null,cljs.core.List.EMPTY,sym_SHARP_),cljs.core._conj.call(null,cljs.core.List.EMPTY,op_SHARP_)))),clojure$core$matrix$impl$mathsops$def_mops_$_iter__21522.call(null,cljs.core.rest.call(null,s__21523__$2)));
+var vec__20074 = cljs.core.first.call(null,s__20053__$2);
+var sym_SHARP_ = cljs.core.nth.call(null,vec__20074,(0),null);
+var op_SHARP_ = cljs.core.nth.call(null,vec__20074,(1),null);
+return cljs.core.cons.call(null,cljs.core.sequence.call(null,cljs.core.seq.call(null,cljs.core.concat.call(null,cljs.core._conj.call(null,cljs.core.List.EMPTY,new cljs.core.Symbol("clojure.core.matrix.impl.mathsops","def-mop","clojure.core.matrix.impl.mathsops/def-mop",-110958166,null)),cljs.core._conj.call(null,cljs.core.List.EMPTY,sym_SHARP_),cljs.core._conj.call(null,cljs.core.List.EMPTY,op_SHARP_)))),clojure$core$matrix$impl$mathsops$def_mops_$_iter__20052.call(null,cljs.core.rest.call(null,s__20053__$2)));
 }
 } else {
 return null;
@@ -62,7 +62,7 @@ break;
 }
 }),null,null));
 });
-return iter__18874__auto__.call(null,clojure.core.matrix.impl.mathsops.maths_ops);
+return iter__19498__auto__.call(null,clojure.core.matrix.impl.mathsops.maths_ops);
 })())));
 });
 

@@ -5,8 +5,9 @@
             [clojure.data.avl :as avl])
   (:require-macros [com.rpl.specter.macros :refer [defpath]]))
 
+;TODO: investigate PAMELA integration https://github.com/dollabs/pamela
 ;SERVER-LOGIC todo: move it to cljc https://juxt.pro/blog/posts/course-notes-2.html
-(defpath ALL []
+(defpath ALL [] ;todo: reader conditional (ALL can be s/ALL for clj)
   (select* [this structure next-fn]
     (doall (mapcat next-fn structure)))
   (transform* [this structure next-fn]
@@ -20,66 +21,76 @@
 (defn velocity [x y z] [x y z])
 (defn geometry [prim r] {:primitive prim :radius r}) ;todo: case on primitive
 (defn material [c] {:color c}) ;todo: other properties
-(defn ctrl [tr pth] {:transform tr :params-path pth}) ;transform updates the component
-(defn src [cr pth] {:create cr :params-path pth}) ;todo: create appends an entity-map to dom
-(defn sink [de pth] {:delete de :params-path pth}) ;todo: delete removes an entity-map from dom
+(defn hybrid
+  ([pth] (hybrid identity [pth]))
+  ([md pths] {:mode md :params-path (map s/comp-paths pths)}))
+(def jump hybrid) ;mode does a discrete jump (straight set)
+(def flow hybrid) ;mode does a continous flow (diff with time)
+
+;move this to the hybrid namespace
+(defn reach [p q] (-> (mo/- q p) (mo/* 0.4))) ;todo take rate as parameter
+(defn avoid [p q] (as-> (mo/- p q) err (->> err m/magnitude-squared (mo// err) (mo/* 4))))
+(defn mean [mtx] (mo// (reduce mo/+ mtx) (count mtx)))
 
 (def dom
-  (avl/sorted-map
-   :e/a0 {:id :e/a0
-          :position [1 0 0]
-          :velocity [1 1 0]
+  {:e/a0 {:id :e/a0
+          :position [-1 1 1]
           :geometry (geometry "sphere" 0.5)
           :material (material "#fa2291")
-          :ctrl/velocity (ctrl (fn [p1 p2] (mo/* 2 (mo/- p1 p2)))
-                           [[:position :e/b0] [:position :e/a0]])}
+          :flow/position (flow reach [[:position :e/a0] [:position :e/cb]])}
    :e/a1 {:id :e/a1
           :position [0 0 0]
-          :velocity [0 0 0]
           :geometry (geometry "sphere" 0.1)
           :material (material "#11f291")
-          :ctrl/velocity (ctrl (fn [p1 p2] (mo/* 4 (mo// (mo/- p2 p1) ;todo: reuse ctrl fns
-                                                   (m/magnitude-squared (mo/- p2 p1)))))
-                           [[:position :e/b0] [:position :e/a1]])}
+          :flow/position (flow avoid [[:position :e/a1] [:position :e/cb]])}
    :e/b0 {:id :e/b0
-          :position [0 5 -15]}))
+          :position [-1 1 3]
+          :geometry (geometry "sphere" 0.2)
+          :material (material "#c0c32d")
+          :flow/position (flow [:velocity :e/b0])
+          :velocity [0 0 0.1]
+          :flow/velocity (flow reach [[:position :e/b0] [:position :e/a1]])}
+   :e/b1 {:id :e/b1
+          :position [-1 3 1]
+          :geometry (geometry "sphere" 0.2)
+          :material (material "#c0c32d")
+          :flow/position (flow [:velocity :e/b0])
+          :velocity [0 0 0.1]
+          :flow/velocity (flow reach [[:position :e/b0] [:position :e/a1]])}
+   :e/b2 {:id :e/b2
+          :position [-3 1 1]
+          :geometry (geometry "sphere" 0.2)
+          :material (material "#c0c32d")
+          :flow/position (flow [:velocity :e/b0])
+          :velocity [0 0 0.1]
+          :flow/velocity (flow reach [[:position :e/b0] [:position :e/a1]])}
+   :e/cb {:id :e/cb
+          :position [-1.666 1.666 1.666]
+          :jump/position (jump mean [[:position
+                                      (s/view #(vals (avl/subrange % >= :e/b0 <= :e/b2)))]])}})
 
-(def KEY1-KEY2-VAL ;dom/ecs path todo: think about making symetric paths
+(def KEY1-KEY2-VAL ;dom/ecs path
   (s/comp-paths [ALL (s/collect-one s/FIRST) s/LAST
                  ALL (s/collect-one s/FIRST) s/LAST]))
 (defn switch-path [dom]
   (reduce-kv #(assoc %1 %2 (apply avl/sorted-map %3)) (avl/sorted-map)
-    (reduce #(update %1 (second %2) conj (peek %2) (first %2)) {}
-            (s/select
-              [KEY1-KEY2-VAL ;todo: switch the params-paths?
-               (s/transformed
-                 [(s/selected? :params-path some?)
-                  :params-path ALL] s/comp-paths)] dom))))
-(def ecs (switch-path dom))
-(def dom-view (switch-path (avl/subrange ecs < :|)))
+    (reduce #(update %1 (second %2) conj (peek %2) (first %2))
+            {} (s/select [KEY1-KEY2-VAL] dom))))
 
-(def KEY-VAL
-  (s/comp-paths [ALL (s/collect-one s/FIRST) s/LAST]))
-(defn sys-vel [st dt]
-  (update st :position merge
+(defn sys-hybrid [st dt]
+  (as->
     (s/transform
-      KEY-VAL
-      #(-> st :position %1 (mo/+ (mo/* %2 dt))) (:velocity st))))
-
-(def NAME-VAL
-  (s/comp-paths [ALL (s/transformed s/FIRST #(-> % name keyword))
-                 (s/collect-one s/FIRST) s/LAST ALL s/LAST]))
-(defn sys-ctrl [st dt]
-  (merge-with merge st
-    (s/transform
-      NAME-VAL
-      #(apply (:transform %2) (s/select (apply s/multi-path (:params-path %2)) st))
-      (avl/subrange st >= :ctrl/a < :ctrl/|))))
+      KEY1-KEY2-VAL
+      #(as-> (apply (:mode %3) (s/select (apply s/multi-path (:params-path %3)) st)) nv
+             (case (namespace %1)
+               "jump" nv
+               "flow" (-> nv (mo/* dt) (mo/+ (->> %1 name keyword (get st) %2)))))
+      (avl/subrange st > :|)) nst
+    (apply merge-with merge st (map #(hash-map (-> % first name keyword) (peek %)) nst))))
 
 (defn step-ecs [ecs dt]
   (-> ecs
-      (sys-vel dt)
-      (sys-ctrl dt)))
+      (sys-hybrid dt)))
 
 (defn step-dom [dom dt]
   (merge dom
@@ -88,3 +99,7 @@
         switch-path
         (step-ecs dt)
         switch-path)))
+
+;todo: reader conditional
+(def app-state (atom (switch-path dom)))
+(avl/subrange (swap! app-state step-ecs 0.01666) < :|)

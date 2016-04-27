@@ -10,12 +10,12 @@
       #(cond
         (fn? %3) %1
         (map? %3)
-        (assoc %1 %2
+        (assoc %1 (subs (str %2) 1)
           (str/join "; "
             (map (fn [[k v]] (str/join ": " [(name k) v])) %3)))
         (or (seq? %3) (vector? %3))
-        (assoc %1 %2 (str/join " " %3))
-        :else (assoc %1 %2 %3))
+        (assoc %1 (subs (str %2) 1) (str/join " " %3))
+        :else (assoc %1 (subs (str %2) 1) %3))
       {} props)))
 
 (defui Animation

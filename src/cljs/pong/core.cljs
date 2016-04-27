@@ -32,7 +32,8 @@
               {:id 2 :value 1}]
      :radius [{:id 0 :value 0 :mult 0.186}
               {:id 1 :value 0 :mult 0.186}
-              {:id 2 :value 1 :mult 0.186}]}))
+              {:id 2 :value 0 :mult 0.186}]}))
+
 (defonce app-state
   (atom (reduce-kv #(assoc %1 %2 %3) (avl/sorted-map) (om/tree->db App init-data true))))
 
@@ -42,3 +43,9 @@
      :parser parser}))
 
 (om/add-root! reconciler App (gdom/getElement "app"))
+
+(let []
+  (defn loop-sys []
+    (.requestAnimationFrame js/window loop-sys)
+    (swap! app-state sys/step-dom 0.01666))
+  (.requestAnimationFrame js/window loop-sys))

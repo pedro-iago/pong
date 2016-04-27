@@ -52,8 +52,8 @@ om.tempid.TempId.cljs$lang$type = true;
 
 om.tempid.TempId.cljs$lang$ctorStr = "om.tempid/TempId";
 
-om.tempid.TempId.cljs$lang$ctorPrWriter = (function (this__18386__auto__,writer__18387__auto__,opt__18388__auto__){
-return cljs.core._write.call(null,writer__18387__auto__,"om.tempid/TempId");
+om.tempid.TempId.cljs$lang$ctorPrWriter = (function (this__19324__auto__,writer__19325__auto__,opt__19326__auto__){
+return cljs.core._write.call(null,writer__19325__auto__,"om.tempid/TempId");
 });
 
 om.tempid.__GT_TempId = (function om$tempid$__GT_TempId(id,__hash){
@@ -61,23 +61,23 @@ return (new om.tempid.TempId(id,__hash));
 });
 
 om.tempid.tempid = (function om$tempid$tempid(var_args){
-var args18913 = [];
-var len__18846__auto___18929 = arguments.length;
-var i__18847__auto___18930 = (0);
+var args23478 = [];
+var len__19784__auto___23494 = arguments.length;
+var i__19785__auto___23495 = (0);
 while(true){
-if((i__18847__auto___18930 < len__18846__auto___18929)){
-args18913.push((arguments[i__18847__auto___18930]));
+if((i__19785__auto___23495 < len__19784__auto___23494)){
+args23478.push((arguments[i__19785__auto___23495]));
 
-var G__18933 = (i__18847__auto___18930 + (1));
-i__18847__auto___18930 = G__18933;
+var G__23497 = (i__19785__auto___23495 + (1));
+i__19785__auto___23495 = G__23497;
 continue;
 } else {
 }
 break;
 }
 
-var G__18924 = args18913.length;
-switch (G__18924) {
+var G__23483 = args23478.length;
+switch (G__23483) {
 case 0:
 return om.tempid.tempid.cljs$core$IFn$_invoke$arity$0();
 
@@ -87,7 +87,7 @@ return om.tempid.tempid.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args18913.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args23478.length)].join('')));
 
 }
 });

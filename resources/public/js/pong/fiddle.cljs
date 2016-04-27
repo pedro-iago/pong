@@ -22,13 +22,18 @@
     (reduce #(assoc-in %1 [:count/by-id %2 :mult] mult)
       @st (range 0 (-> @st :count/by-id count)))))
 
+;verify serialize fn
+(parser {:state app-state} [:entities])
+(-> @app-state :e/a0)
+(-> @app-state :e/a0 a-vr/serialize)
+
 ;reset atom (copy uuid from log)
 (comment
   (reset! app-state
     (om/from-history reconciler
       #uuid "666d611b-66d3-4c36-8a2a-6b257dfdeef2")))
-(reset! app-state (om/tree->db App init-data true))
-(reset-mult! app-state 0.3)
+(reset! app-state (reduce-kv #(assoc %1 %2 %3) (avl/sorted-map) (om/tree->db App init-data true)))
+(reset-mult! app-state 0.1)
 
 ;meta path
 (let []
@@ -58,5 +63,5 @@
     (.requestAnimationFrame js/window loop-sys)
     (swap! app-state sys/step-dom 0.01666))
   (.requestAnimationFrame js/window loop-sys))
-
-(-> @app-state (avl/subrange >= :e/a < :e/|) sys/switch-path :velocity)
+(-> app-state deref type)
+(-> @app-state (avl/subrange >= :e/a < :e/|) sys/switch-path :position)

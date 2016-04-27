@@ -63,23 +63,23 @@ return clojure.core.matrix.protocols.implementation_key.call(null,m);
  * when they are loaded, once for each implementation keyword registered. Safe to call multiple times.
  */
 clojure.core.matrix.implementations.register_implementation = (function clojure$core$matrix$implementations$register_implementation(var_args){
-var args21721 = [];
-var len__19160__auto___21724 = arguments.length;
-var i__19161__auto___21725 = (0);
+var args23016 = [];
+var len__19784__auto___23029 = arguments.length;
+var i__19785__auto___23030 = (0);
 while(true){
-if((i__19161__auto___21725 < len__19160__auto___21724)){
-args21721.push((arguments[i__19161__auto___21725]));
+if((i__19785__auto___23030 < len__19784__auto___23029)){
+args23016.push((arguments[i__19785__auto___23030]));
 
-var G__21726 = (i__19161__auto___21725 + (1));
-i__19161__auto___21725 = G__21726;
+var G__23031 = (i__19785__auto___23030 + (1));
+i__19785__auto___23030 = G__23031;
 continue;
 } else {
 }
 break;
 }
 
-var G__21723 = args21721.length;
-switch (G__21723) {
+var G__23020 = args23016.length;
+switch (G__23020) {
 case 1:
 return clojure.core.matrix.implementations.register_implementation.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -89,7 +89,7 @@ return clojure.core.matrix.implementations.register_implementation.cljs$core$IFn
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args21721.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args23016.length)].join('')));
 
 }
 });
@@ -139,23 +139,23 @@ return clojure.core.matrix.implementations.try_load_implementation.call(null,clo
  * Returns nil if the implementation cannot be found.
  */
 clojure.core.matrix.implementations.get_canonical_object = (function clojure$core$matrix$implementations$get_canonical_object(var_args){
-var args21728 = [];
-var len__19160__auto___21731 = arguments.length;
-var i__19161__auto___21732 = (0);
+var args23047 = [];
+var len__19784__auto___23050 = arguments.length;
+var i__19785__auto___23051 = (0);
 while(true){
-if((i__19161__auto___21732 < len__19160__auto___21731)){
-args21728.push((arguments[i__19161__auto___21732]));
+if((i__19785__auto___23051 < len__19784__auto___23050)){
+args23047.push((arguments[i__19785__auto___23051]));
 
-var G__21733 = (i__19161__auto___21732 + (1));
-i__19161__auto___21732 = G__21733;
+var G__23052 = (i__19785__auto___23051 + (1));
+i__19785__auto___23051 = G__23052;
 continue;
 } else {
 }
 break;
 }
 
-var G__21730 = args21728.length;
-switch (G__21730) {
+var G__23049 = args23047.length;
+switch (G__23049) {
 case 0:
 return clojure.core.matrix.implementations.get_canonical_object.cljs$core$IFn$_invoke$arity$0();
 
@@ -165,7 +165,7 @@ return clojure.core.matrix.implementations.get_canonical_object.cljs$core$IFn$_i
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args21728.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args23047.length)].join('')));
 
 }
 });
@@ -178,17 +178,17 @@ clojure.core.matrix.implementations.get_canonical_object.cljs$core$IFn$_invoke$a
 var k = clojure.core.matrix.implementations.get_implementation_key.call(null,m);
 var obj = cljs.core.deref.call(null,clojure.core.matrix.implementations.canonical_objects).call(null,k);
 if(cljs.core.truth_(k)){
-var or__18102__auto__ = obj;
-if(cljs.core.truth_(or__18102__auto__)){
-return or__18102__auto__;
+var or__18726__auto__ = obj;
+if(cljs.core.truth_(or__18726__auto__)){
+return or__18726__auto__;
 } else {
-var or__18102__auto____$1 = (cljs.core.truth_(clojure.core.matrix.implementations.try_load_implementation.call(null,k))?cljs.core.deref.call(null,clojure.core.matrix.implementations.canonical_objects).call(null,k):null);
-if(cljs.core.truth_(or__18102__auto____$1)){
-return or__18102__auto____$1;
+var or__18726__auto____$1 = (cljs.core.truth_(clojure.core.matrix.implementations.try_load_implementation.call(null,k))?cljs.core.deref.call(null,clojure.core.matrix.implementations.canonical_objects).call(null,k):null);
+if(cljs.core.truth_(or__18726__auto____$1)){
+return or__18726__auto____$1;
 } else {
-var or__18102__auto____$2 = (((m instanceof cljs.core.Keyword))?null:m);
-if(cljs.core.truth_(or__18102__auto____$2)){
-return or__18102__auto____$2;
+var or__18726__auto____$2 = (((m instanceof cljs.core.Keyword))?null:m);
+if(cljs.core.truth_(or__18726__auto____$2)){
+return or__18726__auto____$2;
 } else {
 return null;
 }
@@ -204,9 +204,9 @@ clojure.core.matrix.implementations.get_canonical_object.cljs$lang$maxFixedArity
  * Like get-canonical-object, except it throws an exception if the implementation cannot be found
  */
 clojure.core.matrix.implementations.get_canonical_object_or_throw = (function clojure$core$matrix$implementations$get_canonical_object_or_throw(mk){
-var or__18102__auto__ = clojure.core.matrix.implementations.get_canonical_object.call(null,mk);
-if(cljs.core.truth_(or__18102__auto__)){
-return or__18102__auto__;
+var or__18726__auto__ = clojure.core.matrix.implementations.get_canonical_object.call(null,mk);
+if(cljs.core.truth_(or__18726__auto__)){
+return or__18726__auto__;
 } else {
 throw cljs.core.ex_info.call(null,[cljs.core.str("Cannot find implementation for "),cljs.core.str(mk)].join(''),cljs.core.PersistentArrayMap.EMPTY);
 }
@@ -216,13 +216,13 @@ throw cljs.core.ex_info.call(null,[cljs.core.str("Cannot find implementation for
  * returns another array type.
  */
 clojure.core.matrix.implementations.construct = (function clojure$core$matrix$implementations$construct(m,data){
-var or__18102__auto__ = clojure.core.matrix.protocols.construct_matrix.call(null,m,data);
-if(cljs.core.truth_(or__18102__auto__)){
-return or__18102__auto__;
+var or__18726__auto__ = clojure.core.matrix.protocols.construct_matrix.call(null,m,data);
+if(cljs.core.truth_(or__18726__auto__)){
+return or__18726__auto__;
 } else {
-var or__18102__auto____$1 = clojure.core.matrix.protocols.coerce_param.call(null,m,data);
-if(cljs.core.truth_(or__18102__auto____$1)){
-return or__18102__auto____$1;
+var or__18726__auto____$1 = clojure.core.matrix.protocols.coerce_param.call(null,m,data);
+if(cljs.core.truth_(or__18726__auto____$1)){
+return or__18726__auto____$1;
 } else {
 return clojure.core.matrix.protocols.coerce_param.call(null,cljs.core.PersistentVector.EMPTY,data);
 }

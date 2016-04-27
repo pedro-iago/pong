@@ -8,7 +8,7 @@
     [select* transform* collect-val]])
   (:require [com.rpl.specter.protocols :as p]
             [clojure.walk :as walk]
-            [clojure.core.reducers :as r]
+                                               
             [clojure.string :as s]
                                                      
             )
@@ -123,6 +123,8 @@
       (com.rpl.specter.impl/bind-params* this a 0))
     ))
 
+(defn params-needed-path? [o]
+  (instance? ParamsNeededPath o))
 
 (defn bind-params* [^ParamsNeededPath params-needed-path params idx]
   (->CompiledPath
@@ -480,19 +482,6 @@
     (get-cell ret)
     ))
 
-(defn filter+ancestry [path aseq]
-  (let [aseq (vec aseq)]
-    (reduce (fn [[s m :as orig] i]
-              (let [e (get aseq i)
-                    pos (count s)]
-                (if (selected?* path e)
-                  [(conj s e) (assoc m pos i)]
-                  orig
-                  )))
-            [[] {}]
-            (range (count aseq))
-            )))
-
 (defn key-select [akey structure next-fn]
   (next-fn (get structure akey)))
 
@@ -500,19 +489,53 @@
   (assoc structure akey (next-fn (get structure akey))
   ))
 
+     
+                                    
+                                         
+
+      
+(defn all-select [structure next-fn]
+  (into [] (mapcat #(next-fn %)) structure))
+
+      
+(defn queue? [coll]
+  (= (type coll) (type #queue [])))
+
+     
+                   
+                                                
+
+     
+                                       
+                                          
+                                                                      
+                                                                         
+                                         
+
+                          
+                                                                            
+
+               
+                                                                
+         
+
+      
+(defn all-transform [structure next-fn]
+  (let [empty-structure (empty structure)]
+    (if (and (list? empty-structure) (not (queue? empty-structure)))
+        ;; this is done to maintain order, otherwise lists get reversed
+        (doall (map next-fn structure))
+        (into empty-structure (map #(next-fn %)) structure)
+        )))
+
 (deftype AllStructurePath [])
 
 (extend-protocol p/StructurePath
   AllStructurePath
   (select* [this structure next-fn]
-    (into [] (r/mapcat next-fn structure)))
+    (all-select structure next-fn))
   (transform* [this structure next-fn]
-    (let [empty-structure (empty structure)]
-      (if (list? empty-structure)
-        ;; this is done to maintain order, otherwise lists get reversed
-        (doall (map next-fn structure))
-        (->> structure (r/map next-fn) (into empty-structure))
-        ))))
+    (all-transform structure next-fn)))
 
 (deftype ValCollect [])
 
