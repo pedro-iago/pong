@@ -66,7 +66,7 @@
           :flow/velocity (flow reach [[:position :e/b0] [:position :e/a1]])}
    :e/cb {:id :e/cb
           :position [-1.666 1.666 1.666]
-          :jump/position (jump mean [[:position
+          :jump/position (jump mean [[:position ;todo: definir um caminho que use subrange
                                       (s/view #(vals (avl/subrange % >= :e/b0 <= :e/b2)))]])}})
 
 (def KEY1-KEY2-VAL ;dom/ecs path
@@ -99,7 +99,3 @@
         switch-path
         (step-ecs dt)
         switch-path)))
-
-;todo: reader conditional
-(def app-state (atom (switch-path dom)))
-(avl/subrange (swap! app-state step-ecs 0.01666) < :|)

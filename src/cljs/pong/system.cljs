@@ -21,7 +21,7 @@
 (defn velocity [x y z] [x y z])
 (defn geometry [prim r] {:primitive prim :radius r}) ;todo: case on primitive
 (defn material [c] {:color c}) ;todo: other properties
-(defn hybrid
+(defn hybrid ;todo: ilustate procedure here, by type. next/position for either jump or flow
   ([pth] (hybrid identity [pth]))
   ([md pths] {:mode md :params-path (map s/comp-paths pths)}))
 (def jump hybrid) ;mode does a discrete jump (straight set)
@@ -33,41 +33,42 @@
 (defn mean [mtx] (mo// (reduce mo/+ mtx) (count mtx)))
 
 (def dom
-  {:e/a0 {:id :e/a0
-          :position [-1 1 1]
-          :geometry (geometry "sphere" 0.5)
-          :material (material "#fa2291")
-          :flow/position (flow reach [[:position :e/a0] [:position :e/cb]])}
-   :e/a1 {:id :e/a1
-          :position [0 0 0]
-          :geometry (geometry "sphere" 0.1)
-          :material (material "#11f291")
-          :flow/position (flow avoid [[:position :e/a1] [:position :e/cb]])}
-   :e/b0 {:id :e/b0
-          :position [-1 1 3]
-          :geometry (geometry "sphere" 0.2)
-          :material (material "#c0c32d")
-          :flow/position (flow [:velocity :e/b0])
-          :velocity [0 0 0.1]
-          :flow/velocity (flow reach [[:position :e/b0] [:position :e/a1]])}
-   :e/b1 {:id :e/b1
-          :position [-1 3 1]
-          :geometry (geometry "sphere" 0.2)
-          :material (material "#c0c32d")
-          :flow/position (flow [:velocity :e/b0])
-          :velocity [0 0 0.1]
-          :flow/velocity (flow reach [[:position :e/b0] [:position :e/a1]])}
-   :e/b2 {:id :e/b2
-          :position [-3 1 1]
-          :geometry (geometry "sphere" 0.2)
-          :material (material "#c0c32d")
-          :flow/position (flow [:velocity :e/b0])
-          :velocity [0 0 0.1]
-          :flow/velocity (flow reach [[:position :e/b0] [:position :e/a1]])}
-   :e/cb {:id :e/cb
-          :position [-1.666 1.666 1.666]
-          :jump/position (jump mean [[:position
-                                      (s/view #(vals (avl/subrange % >= :e/b0 <= :e/b2)))]])}})
+  (avl/sorted-map
+    :e/a0 {:id :e/a0
+           :position [-1 1 1]
+           :geometry (geometry "sphere" 0.5)
+           :material (material "#fa2291")
+           :flow/position (flow reach [[:position :e/a0] [:position :e/cb]])}
+    :e/a1 {:id :e/a1
+           :position [0 0 0]
+           :geometry (geometry "sphere" 0.1)
+           :material (material "#11f291")
+           :flow/position (flow avoid [[:position :e/a1] [:position :e/cb]])}
+    :e/b0 {:id :e/b0
+           :position [-1 1 3]
+           :geometry (geometry "sphere" 0.2)
+           :material (material "#c0c32d")
+           :flow/position (flow [:velocity :e/b0])
+           :velocity [0 0 0.1]
+           :flow/velocity (flow reach [[:position :e/b0] [:position :e/a1]])}
+    :e/b1 {:id :e/b1
+           :position [-1 3 1]
+           :geometry (geometry "sphere" 0.2)
+           :material (material "#c0c32d")
+           :flow/position (flow [:velocity :e/b0])
+           :velocity [0 0 0.1]
+           :flow/velocity (flow reach [[:position :e/b0] [:position :e/a1]])}
+    :e/b2 {:id :e/b2
+           :position [-3 1 1]
+           :geometry (geometry "sphere" 0.2)
+           :material (material "#c0c32d")
+           :flow/position (flow [:velocity :e/b0])
+           :velocity [0 0 0.1]
+           :flow/velocity (flow reach [[:position :e/b0] [:position :e/a1]])}
+    :e/cb {:id :e/cb
+           :position [-1.666 1.666 1.666]
+           :jump/position (jump mean [[:position ;todo: definir um caminho que use subrange
+                                        (s/view #(vals (avl/subrange % >= :e/b0 <= :e/b2)))]])}))
 
 (def KEY1-KEY2-VAL ;dom/ecs path
   (s/comp-paths [ALL (s/collect-one s/FIRST) s/LAST
@@ -100,6 +101,4 @@
         (step-ecs dt)
         switch-path)))
 
-;todo: reader conditional
-(def app-state (atom (switch-path dom)))
-(avl/subrange (swap! app-state step-ecs 0.01666) < :|)
+;; (:position (switch-path (step-dom dom 0.1)))

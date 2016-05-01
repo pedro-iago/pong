@@ -20,10 +20,10 @@
 ;; Please note that when you stop the Figwheel Server http-kit throws
 ;; a java.util.concurrent.RejectedExecutionException, this is expected
 
-(ra/cljs-repl)
+;; (ra/cljs-repl)
 
-(defn stop []
-  (ra/stop-figwheel!))
+;; (defn stop []
+;;   (ra/stop-figwheel!))
 
 ;; lein with-profile +cljs-dev run -m clojure.main --init script/figwheel.clj -r
 ;; :cljs/quit

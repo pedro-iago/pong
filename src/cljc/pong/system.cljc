@@ -2,7 +2,6 @@
 (distill '[[expectations "2.0.9"]
            [net.mikera/core.matrix "0.51.0"]
            [com.rpl/specter "0.10.0"]
-           [org.clojure/core.match "0.3.0-alpha4"]
            [org.clojure/data.avl "0.0.13"]])
 ;; ($/load-project)
 

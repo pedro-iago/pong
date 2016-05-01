@@ -31,7 +31,7 @@
 (comment
   (reset! app-state
     (om/from-history reconciler
-      #uuid "666d611b-66d3-4c36-8a2a-6b257dfdeef2")))
+      #uuid "1c8c979d-afc7-4f4f-a017-c30afabd543f")))
 (reset! app-state (reduce-kv #(assoc %1 %2 %3) (avl/sorted-map) (om/tree->db App init-data true)))
 (reset-mult! app-state 0.1)
 

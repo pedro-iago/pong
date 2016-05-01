@@ -6,7 +6,7 @@
 (defui RandomSphere
   Object
   (render [this]
-    (a-vr/entity {:position (repeatedly 3 #(rand-int 2))
+    (a-vr/entity {:position (repeatedly 3 #(rand-int 3))
                   :geometry {:primitive 'sphere
                              :radius (-> this om/props :radius)}
                   :material {:color "#268299"}
