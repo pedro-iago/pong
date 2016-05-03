@@ -13,9 +13,9 @@
 (defui App
   static om/IQuery
   (query [this]
-    [{:counts (om/get-query Counter)}
-     {:radius (om/get-query CounterSphere)}
-     :entities])
+    [:entities
+     {:counts (om/get-query Counter)}
+     {:radius (om/get-query CounterSphere)}])
   Object
   (render [this]
     (let [{:keys [counts radius entities]} (om/props this)]
@@ -23,16 +23,16 @@
         (apply dom/div #js{:style #js{:zIndex 1 :position "relative"}}
           (map counter counts))
         (dom/div nil
-          (apply empty-scene entities (map counter-sphere radius)))))))
+          (apply empty-scene (vals entities) (map counter-sphere radius)))))))
 
 (def init-data
-  (merge sys/dom
-    {:counts [{:id 0 :value 0}
-              {:id 1 :value 0}
-              {:id 2 :value 1}]
-     :radius [{:id 0 :value 0 :mult 0.186}
-              {:id 1 :value 0 :mult 0.186}
-              {:id 2 :value 0 :mult 0.186}]}))
+  {:entities sys/dom
+   :counts [{:id 0 :value 0}
+            {:id 1 :value 0}
+            {:id 2 :value 1}]
+   :radius [{:id 0 :value 0 :mult 0.186}
+            {:id 1 :value 0 :mult 0.186}
+            {:id 2 :value 0 :mult 0.186}]})
 
 (defonce app-state
   (atom (reduce-kv #(assoc %1 %2 %3) (avl/sorted-map) (om/tree->db App init-data true))))
@@ -47,5 +47,5 @@
 (let []
   (defn loop-sys []
     (.requestAnimationFrame js/window loop-sys)
-    (swap! app-state sys/step-dom 0.01666))
+    (swap! app-state update :entities sys/step-dom 0.01666))
   (.requestAnimationFrame js/window loop-sys))

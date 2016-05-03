@@ -24,8 +24,8 @@
 
 ;verify serialize fn
 (parser {:state app-state} [:entities])
-(-> @app-state :e/a0)
-(-> @app-state :e/a0 a-vr/serialize)
+(-> @app-state :love)
+(-> @app-state :love a-vr/serialize)
 
 ;reset atom (copy uuid from log)
 (comment
@@ -63,5 +63,3 @@
     (.requestAnimationFrame js/window loop-sys)
     (swap! app-state sys/step-dom 0.01666))
   (.requestAnimationFrame js/window loop-sys))
-(-> app-state deref type)
-(-> @app-state (avl/subrange >= :e/a < :e/|) sys/switch-path :position)
