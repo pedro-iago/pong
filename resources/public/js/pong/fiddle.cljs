@@ -24,16 +24,16 @@
 
 ;verify serialize fn
 (parser {:state app-state} [:entities])
-(-> @app-state :love)
-(-> @app-state :love a-vr/serialize)
+(-> @app-state :entities :center)
+(-> @app-state :entities :triangle/a a-vr/serialize)
 
 ;reset atom (copy uuid from log)
 (comment
   (reset! app-state
     (om/from-history reconciler
-      #uuid "1c8c979d-afc7-4f4f-a017-c30afabd543f")))
+      #uuid "a4e92ec5-126a-41dd-aa5c-4983bf042467")))
 (reset! app-state (reduce-kv #(assoc %1 %2 %3) (avl/sorted-map) (om/tree->db App init-data true)))
-(reset-mult! app-state 0.1)
+(reset-mult! app-state 0.4)
 
 ;meta path
 (let []

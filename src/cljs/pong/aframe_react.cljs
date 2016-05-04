@@ -1,21 +1,30 @@
 (ns pong.aframe-react
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
+            [com.rpl.specter :as s]
+            [com.rpl.specter.impl :refer [compiled-path?]]
             [clojure.string :as str]))
 
+(def MESS (s/walker (some-fn fn? compiled-path?)))
+(defn get-name [obj]
+  (cond
+    (fn? obj) (-> obj (aget "name") (str/split "$") peek)
+    (compiled-path? obj) '?path))
 ;serializes clojure maps into aframe style
 (defn serialize [props]
   (clj->js
     (reduce-kv
-      #(cond
-        (fn? %3) %1
-        (map? %3)
-        (assoc %1 (subs (str %2) 1)
-          (str/join "; "
-            (map (fn [[k v]] (str/join ": " [(name k) v])) %3)))
-        (or (seq? %3) (vector? %3))
-        (assoc %1 (subs (str %2) 1) (str/join " " %3))
-        :else (assoc %1 (subs (str %2) 1) %3))
+      #(as-> (subs (str %2) 1) str-key
+        (cond
+          (fn? %3) %1
+          (map? %3)
+          (assoc %1 str-key
+            (str/join "; "
+              (map (fn [[k v]]
+                       (str/join ": " [(name k) (s/transform MESS get-name v)])) %3)))
+          (or (seq? %3) (vector? %3))
+          (assoc %1 str-key (str/join " " %3))
+          :else (assoc %1 str-key %3)))
       {} props)))
 
 (defui Animation

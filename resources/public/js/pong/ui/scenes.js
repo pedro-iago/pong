@@ -22,17 +22,17 @@ return this__21833__auto__;
 
 pong.ui.scenes.EmptyScene.prototype = goog.object.clone(React.Component.prototype);
 
-var x34331_34354 = pong.ui.scenes.EmptyScene.prototype;
-x34331_34354.componentWillUpdate = ((function (x34331_34354){
+var x39308_39324 = pong.ui.scenes.EmptyScene.prototype;
+x39308_39324.componentWillUpdate = ((function (x39308_39324){
 return (function (next_props__21774__auto__,next_state__21775__auto__){
 var this__21773__auto__ = this;
 om.next.merge_pending_props_BANG_.call(null,this__21773__auto__);
 
 return om.next.merge_pending_state_BANG_.call(null,this__21773__auto__);
-});})(x34331_34354))
+});})(x39308_39324))
 ;
 
-x34331_34354.shouldComponentUpdate = ((function (x34331_34354){
+x39308_39324.shouldComponentUpdate = ((function (x39308_39324){
 return (function (next_props__21774__auto__,next_state__21775__auto__){
 var this__21773__auto__ = this;
 var or__18726__auto__ = cljs.core.not_EQ_.call(null,om.next.props.call(null,this__21773__auto__),goog.object.get(next_props__21774__auto__,"omcljs$value"));
@@ -46,10 +46,10 @@ return cljs.core.not_EQ_.call(null,goog.object.get(this__21773__auto__.state,"om
 return and__18714__auto__;
 }
 }
-});})(x34331_34354))
+});})(x39308_39324))
 ;
 
-x34331_34354.componentWillUnmount = ((function (x34331_34354){
+x39308_39324.componentWillUnmount = ((function (x39308_39324){
 return (function (){
 var this__21773__auto__ = this;
 var r__21779__auto__ = om.next.get_reconciler.call(null,this__21773__auto__);
@@ -66,24 +66,24 @@ return null;
 } else {
 return om.next.protocols.drop_component_BANG_.call(null,indexer__21778__auto__,this__21773__auto__);
 }
-});})(x34331_34354))
+});})(x39308_39324))
 ;
 
-x34331_34354.componentDidUpdate = ((function (x34331_34354){
+x39308_39324.componentDidUpdate = ((function (x39308_39324){
 return (function (prev_props__21776__auto__,prev_state__21777__auto__){
 var this__21773__auto__ = this;
 return om.next.clear_prev_props_BANG_.call(null,this__21773__auto__);
-});})(x34331_34354))
+});})(x39308_39324))
 ;
 
-x34331_34354.isMounted = ((function (x34331_34354){
+x39308_39324.isMounted = ((function (x39308_39324){
 return (function (){
 var this__21773__auto__ = this;
 return cljs.core.boolean$.call(null,goog.object.getValueByKeys(this__21773__auto__,"_reactInternalInstance","_renderedComponent"));
-});})(x34331_34354))
+});})(x39308_39324))
 ;
 
-x34331_34354.componentWillMount = ((function (x34331_34354){
+x39308_39324.componentWillMount = ((function (x39308_39324){
 return (function (){
 var this__21773__auto__ = this;
 var indexer__21778__auto__ = cljs.core.get_in.call(null,om.next.get_reconciler.call(null,this__21773__auto__),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"config","config",994861415),new cljs.core.Keyword(null,"indexer","indexer",-1774914315)], null));
@@ -92,18 +92,18 @@ return null;
 } else {
 return om.next.protocols.index_component_BANG_.call(null,indexer__21778__auto__,this__21773__auto__);
 }
-});})(x34331_34354))
+});})(x39308_39324))
 ;
 
-x34331_34354.render = ((function (x34331_34354){
+x39308_39324.render = ((function (x39308_39324){
 return (function (){
 var this__21772__auto__ = this;
 var this$ = this__21772__auto__;
-var _STAR_reconciler_STAR_34346 = om.next._STAR_reconciler_STAR_;
-var _STAR_depth_STAR_34347 = om.next._STAR_depth_STAR_;
-var _STAR_shared_STAR_34348 = om.next._STAR_shared_STAR_;
-var _STAR_instrument_STAR_34349 = om.next._STAR_instrument_STAR_;
-var _STAR_parent_STAR_34350 = om.next._STAR_parent_STAR_;
+var _STAR_reconciler_STAR_39310 = om.next._STAR_reconciler_STAR_;
+var _STAR_depth_STAR_39311 = om.next._STAR_depth_STAR_;
+var _STAR_shared_STAR_39312 = om.next._STAR_shared_STAR_;
+var _STAR_instrument_STAR_39313 = om.next._STAR_instrument_STAR_;
+var _STAR_parent_STAR_39314 = om.next._STAR_parent_STAR_;
 om.next._STAR_reconciler_STAR_ = om.next.get_reconciler.call(null,this__21772__auto__);
 
 om.next._STAR_depth_STAR_ = (om.next.depth.call(null,this__21772__auto__) + (1));
@@ -115,16 +115,16 @@ om.next._STAR_instrument_STAR_ = om.next.instrument.call(null,this__21772__auto_
 om.next._STAR_parent_STAR_ = this__21772__auto__;
 
 try{return cljs.core.apply.call(null,pong.aframe_react.scene,null,pong.aframe_react.entity.call(null,new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"react-key","react-key",1337881348),"cam",new cljs.core.Keyword(null,"camera","camera",-1190348585),"",new cljs.core.Keyword(null,"look-controls","look-controls",-1142308254),"",new cljs.core.Keyword(null,"position","position",-2011731912),"0 2.2 4",new cljs.core.Keyword(null,"wasd-controls","wasd-controls",547193661),""], null),pong.aframe_react.entity.call(null,new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"react-key","react-key",1337881348),"cur",new cljs.core.Keyword(null,"cursor","cursor",1011937484),"",new cljs.core.Keyword(null,"position","position",-2011731912),"0 0 -3",new cljs.core.Keyword(null,"geometry","geometry",-405034994),"primitive: ring;\n                      radiusInner: 0.016; radiusOuter: 0.05;",new cljs.core.Keyword(null,"material","material",460118677),"color: orange; shader: flat;"], null),pong.aframe_react.animation.call(null,new cljs.core.PersistentArrayMap(null, 7, [new cljs.core.Keyword(null,"react-key","react-key",1337881348),"anim",new cljs.core.Keyword(null,"attribute","attribute",-2074029119),"scale",new cljs.core.Keyword(null,"begin","begin",-319034319),"click",new cljs.core.Keyword(null,"dur","dur",1464522452),"150",new cljs.core.Keyword(null,"fill","fill",883462889),"backwards",new cljs.core.Keyword(null,"from","from",1815293044),"0.1 0.1 0.1",new cljs.core.Keyword(null,"to","to",192099007),"2 2 2"], null)))),cljs.core.map.call(null,pong.aframe_react.entity,om.next.props.call(null,this$)),om.next.children.call(null,this$));
-}finally {om.next._STAR_parent_STAR_ = _STAR_parent_STAR_34350;
+}finally {om.next._STAR_parent_STAR_ = _STAR_parent_STAR_39314;
 
-om.next._STAR_instrument_STAR_ = _STAR_instrument_STAR_34349;
+om.next._STAR_instrument_STAR_ = _STAR_instrument_STAR_39313;
 
-om.next._STAR_shared_STAR_ = _STAR_shared_STAR_34348;
+om.next._STAR_shared_STAR_ = _STAR_shared_STAR_39312;
 
-om.next._STAR_depth_STAR_ = _STAR_depth_STAR_34347;
+om.next._STAR_depth_STAR_ = _STAR_depth_STAR_39311;
 
-om.next._STAR_reconciler_STAR_ = _STAR_reconciler_STAR_34346;
-}});})(x34331_34354))
+om.next._STAR_reconciler_STAR_ = _STAR_reconciler_STAR_39310;
+}});})(x39308_39324))
 ;
 
 
@@ -134,10 +134,10 @@ pong.ui.scenes.EmptyScene.prototype.constructor.displayName = "pong.ui.scenes/Em
 
 pong.ui.scenes.EmptyScene.prototype.om$isComponent = true;
 
-var x34352_34367 = pong.ui.scenes.EmptyScene;
+var x39320_39326 = pong.ui.scenes.EmptyScene;
 
 
-var x34353_34368 = pong.ui.scenes.EmptyScene.prototype;
+var x39322_39327 = pong.ui.scenes.EmptyScene.prototype;
 
 
 pong.ui.scenes.EmptyScene.cljs$lang$type = true;
