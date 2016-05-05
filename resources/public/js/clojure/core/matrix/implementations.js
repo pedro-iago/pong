@@ -63,23 +63,23 @@ return clojure.core.matrix.protocols.implementation_key.call(null,m);
  * when they are loaded, once for each implementation keyword registered. Safe to call multiple times.
  */
 clojure.core.matrix.implementations.register_implementation = (function clojure$core$matrix$implementations$register_implementation(var_args){
-var args23016 = [];
-var len__19784__auto___23029 = arguments.length;
-var i__19785__auto___23030 = (0);
+var args35745 = [];
+var len__19784__auto___35750 = arguments.length;
+var i__19785__auto___35751 = (0);
 while(true){
-if((i__19785__auto___23030 < len__19784__auto___23029)){
-args23016.push((arguments[i__19785__auto___23030]));
+if((i__19785__auto___35751 < len__19784__auto___35750)){
+args35745.push((arguments[i__19785__auto___35751]));
 
-var G__23031 = (i__19785__auto___23030 + (1));
-i__19785__auto___23030 = G__23031;
+var G__35752 = (i__19785__auto___35751 + (1));
+i__19785__auto___35751 = G__35752;
 continue;
 } else {
 }
 break;
 }
 
-var G__23020 = args23016.length;
-switch (G__23020) {
+var G__35747 = args35745.length;
+switch (G__35747) {
 case 1:
 return clojure.core.matrix.implementations.register_implementation.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -89,7 +89,7 @@ return clojure.core.matrix.implementations.register_implementation.cljs$core$IFn
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args23016.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args35745.length)].join('')));
 
 }
 });
@@ -139,23 +139,23 @@ return clojure.core.matrix.implementations.try_load_implementation.call(null,clo
  * Returns nil if the implementation cannot be found.
  */
 clojure.core.matrix.implementations.get_canonical_object = (function clojure$core$matrix$implementations$get_canonical_object(var_args){
-var args23047 = [];
-var len__19784__auto___23050 = arguments.length;
-var i__19785__auto___23051 = (0);
+var args35762 = [];
+var len__19784__auto___35766 = arguments.length;
+var i__19785__auto___35767 = (0);
 while(true){
-if((i__19785__auto___23051 < len__19784__auto___23050)){
-args23047.push((arguments[i__19785__auto___23051]));
+if((i__19785__auto___35767 < len__19784__auto___35766)){
+args35762.push((arguments[i__19785__auto___35767]));
 
-var G__23052 = (i__19785__auto___23051 + (1));
-i__19785__auto___23051 = G__23052;
+var G__35768 = (i__19785__auto___35767 + (1));
+i__19785__auto___35767 = G__35768;
 continue;
 } else {
 }
 break;
 }
 
-var G__23049 = args23047.length;
-switch (G__23049) {
+var G__35764 = args35762.length;
+switch (G__35764) {
 case 0:
 return clojure.core.matrix.implementations.get_canonical_object.cljs$core$IFn$_invoke$arity$0();
 
@@ -165,7 +165,7 @@ return clojure.core.matrix.implementations.get_canonical_object.cljs$core$IFn$_i
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args23047.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args35762.length)].join('')));
 
 }
 });

@@ -3,6 +3,11 @@
             [om.dom :as dom]
             [pong.aframe-react :as a-vr]))
 
+;I should do more logic here, to ensure props is built correctly
+;I need a function that takes the entities values and decides if they are children
+;from who, decide they if they are animation, or mixins, or assets..
+;i need a context-type, that decides which of these the map of components is
+;todo: ask myself if any of this can be done by the parser
 (defui EmptyScene
   Object
   (render [this]

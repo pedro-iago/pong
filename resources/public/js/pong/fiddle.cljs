@@ -11,7 +11,7 @@
             [clojure.core.matrix :as m]
             [clojure.core.matrix.operators :as mo]
             [clojure.data.avl :as avl]
-            [pong.system :as sys]
+            [pong.systems :as sys]
             [cljs.core.async :as async])
   (:require-macros [com.rpl.specter.macros :refer [defpath]]
                    [cljs.core.async.macros :refer [go]]))
@@ -24,7 +24,7 @@
 
 ;verify serialize fn
 (parser {:state app-state} [:entities])
-(-> @app-state :entities :center)
+(-> @app-state :entities :center a-vr/serialize)
 (-> @app-state :entities :triangle/a a-vr/serialize)
 
 ;reset atom (copy uuid from log)
@@ -36,9 +36,8 @@
 (reset-mult! app-state 0.4)
 
 ;meta path
-(let []
-  (om/path (om/class->any reconciler CounterSphere))
-  (om/path (om/class->any reconciler Counter)))
+(om/path (om/class->any reconciler CounterSphere))
+(om/path (om/class->any reconciler Counter))
 
 ;increment!
 (om/transact!
@@ -58,7 +57,7 @@
     (fn [] (.log js/console "On click!"))))
 
 ;system updates
-(let []
+(comment
   (defn loop-sys []
     (.requestAnimationFrame js/window loop-sys)
     (swap! app-state sys/step-dom 0.01666))

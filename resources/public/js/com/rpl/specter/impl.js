@@ -43,14 +43,14 @@ return [cljs.core.str(o)].join('');
 });
 com.rpl.specter.impl.smart_str = (function com$rpl$specter$impl$smart_str(var_args){
 var args__19791__auto__ = [];
-var len__19784__auto___20375 = arguments.length;
-var i__19785__auto___20376 = (0);
+var len__19784__auto___34085 = arguments.length;
+var i__19785__auto___34086 = (0);
 while(true){
-if((i__19785__auto___20376 < len__19784__auto___20375)){
-args__19791__auto__.push((arguments[i__19785__auto___20376]));
+if((i__19785__auto___34086 < len__19784__auto___34085)){
+args__19791__auto__.push((arguments[i__19785__auto___34086]));
 
-var G__20377 = (i__19785__auto___20376 + (1));
-i__19785__auto___20376 = G__20377;
+var G__34087 = (i__19785__auto___34086 + (1));
+i__19785__auto___34086 = G__34087;
 continue;
 } else {
 }
@@ -67,19 +67,19 @@ return cljs.core.apply.call(null,cljs.core.str,cljs.core.map.call(null,com.rpl.s
 
 com.rpl.specter.impl.smart_str.cljs$lang$maxFixedArity = (0);
 
-com.rpl.specter.impl.smart_str.cljs$lang$applyTo = (function (seq20374){
-return com.rpl.specter.impl.smart_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq20374));
+com.rpl.specter.impl.smart_str.cljs$lang$applyTo = (function (seq34084){
+return com.rpl.specter.impl.smart_str.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq34084));
 });
 com.rpl.specter.impl.throw_illegal = (function com$rpl$specter$impl$throw_illegal(var_args){
 var args__19791__auto__ = [];
-var len__19784__auto___20379 = arguments.length;
-var i__19785__auto___20380 = (0);
+var len__19784__auto___34089 = arguments.length;
+var i__19785__auto___34090 = (0);
 while(true){
-if((i__19785__auto___20380 < len__19784__auto___20379)){
-args__19791__auto__.push((arguments[i__19785__auto___20380]));
+if((i__19785__auto___34090 < len__19784__auto___34089)){
+args__19791__auto__.push((arguments[i__19785__auto___34090]));
 
-var G__20381 = (i__19785__auto___20380 + (1));
-i__19785__auto___20380 = G__20381;
+var G__34091 = (i__19785__auto___34090 + (1));
+i__19785__auto___34090 = G__34091;
 continue;
 } else {
 }
@@ -96,8 +96,8 @@ throw (new Error(cljs.core.apply.call(null,cljs.core.str,args)));
 
 com.rpl.specter.impl.throw_illegal.cljs$lang$maxFixedArity = (0);
 
-com.rpl.specter.impl.throw_illegal.cljs$lang$applyTo = (function (seq20378){
-return com.rpl.specter.impl.throw_illegal.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq20378));
+com.rpl.specter.impl.throw_illegal.cljs$lang$applyTo = (function (seq34088){
+return com.rpl.specter.impl.throw_illegal.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq34088));
 });
 com.rpl.specter.impl.benchmark = (function com$rpl$specter$impl$benchmark(iters,afn){
 var start__19654__auto__ = cljs.core.system_time.call(null);
@@ -107,8 +107,8 @@ while(true){
 if((_ < n__19629__auto__)){
 afn.call(null);
 
-var G__20382 = (_ + (1));
-_ = G__20382;
+var G__34092 = (_ + (1));
+_ = G__34092;
 continue;
 } else {
 return null;
@@ -204,11 +204,11 @@ var this__19340__auto____$1 = this;
 return cljs.core._lookup.call(null,this__19340__auto____$1,k__19341__auto__,null);
 });
 
-com.rpl.specter.impl.TransformFunctions.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__19342__auto__,k20384,else__19343__auto__){
+com.rpl.specter.impl.TransformFunctions.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__19342__auto__,k34094,else__19343__auto__){
 var self__ = this;
 var this__19342__auto____$1 = this;
-var G__20386 = (((k20384 instanceof cljs.core.Keyword))?k20384.fqn:null);
-switch (G__20386) {
+var G__34096 = (((k34094 instanceof cljs.core.Keyword))?k34094.fqn:null);
+switch (G__34096) {
 case "executors":
 return self__.executors;
 
@@ -222,7 +222,7 @@ return self__.transformer;
 
 break;
 default:
-return cljs.core.get.call(null,self__.__extmap,k20384,else__19343__auto__);
+return cljs.core.get.call(null,self__.__extmap,k34094,else__19343__auto__);
 
 }
 });
@@ -240,10 +240,10 @@ return cljs.core.pr_sequential_writer.call(null,writer__19355__auto__,pr_pair__1
 
 com.rpl.specter.impl.TransformFunctions.prototype.cljs$core$IIterable$ = true;
 
-com.rpl.specter.impl.TransformFunctions.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__20383){
+com.rpl.specter.impl.TransformFunctions.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__34093){
 var self__ = this;
-var G__20383__$1 = this;
-return (new cljs.core.RecordIter((0),G__20383__$1,3,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"executors","executors",-331073403),new cljs.core.Keyword(null,"selector","selector",762528866),new cljs.core.Keyword(null,"transformer","transformer",-1493470620)], null),cljs.core._iterator.call(null,self__.__extmap)));
+var G__34093__$1 = this;
+return (new cljs.core.RecordIter((0),G__34093__$1,3,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"executors","executors",-331073403),new cljs.core.Keyword(null,"selector","selector",762528866),new cljs.core.Keyword(null,"transformer","transformer",-1493470620)], null),cljs.core._iterator.call(null,self__.__extmap)));
 });
 
 com.rpl.specter.impl.TransformFunctions.prototype.cljs$core$IMeta$_meta$arity$1 = (function (this__19338__auto__){
@@ -309,21 +309,21 @@ return (new com.rpl.specter.impl.TransformFunctions(self__.executors,self__.sele
 }
 });
 
-com.rpl.specter.impl.TransformFunctions.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__19347__auto__,k__19348__auto__,G__20383){
+com.rpl.specter.impl.TransformFunctions.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__19347__auto__,k__19348__auto__,G__34093){
 var self__ = this;
 var this__19347__auto____$1 = this;
-var pred__20387 = cljs.core.keyword_identical_QMARK_;
-var expr__20388 = k__19348__auto__;
-if(cljs.core.truth_(pred__20387.call(null,new cljs.core.Keyword(null,"executors","executors",-331073403),expr__20388))){
-return (new com.rpl.specter.impl.TransformFunctions(G__20383,self__.selector,self__.transformer,self__.__meta,self__.__extmap,null));
+var pred__34097 = cljs.core.keyword_identical_QMARK_;
+var expr__34098 = k__19348__auto__;
+if(cljs.core.truth_(pred__34097.call(null,new cljs.core.Keyword(null,"executors","executors",-331073403),expr__34098))){
+return (new com.rpl.specter.impl.TransformFunctions(G__34093,self__.selector,self__.transformer,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_(pred__20387.call(null,new cljs.core.Keyword(null,"selector","selector",762528866),expr__20388))){
-return (new com.rpl.specter.impl.TransformFunctions(self__.executors,G__20383,self__.transformer,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_(pred__34097.call(null,new cljs.core.Keyword(null,"selector","selector",762528866),expr__34098))){
+return (new com.rpl.specter.impl.TransformFunctions(self__.executors,G__34093,self__.transformer,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_(pred__20387.call(null,new cljs.core.Keyword(null,"transformer","transformer",-1493470620),expr__20388))){
-return (new com.rpl.specter.impl.TransformFunctions(self__.executors,self__.selector,G__20383,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_(pred__34097.call(null,new cljs.core.Keyword(null,"transformer","transformer",-1493470620),expr__34098))){
+return (new com.rpl.specter.impl.TransformFunctions(self__.executors,self__.selector,G__34093,self__.__meta,self__.__extmap,null));
 } else {
-return (new com.rpl.specter.impl.TransformFunctions(self__.executors,self__.selector,self__.transformer,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__19348__auto__,G__20383),null));
+return (new com.rpl.specter.impl.TransformFunctions(self__.executors,self__.selector,self__.transformer,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__19348__auto__,G__34093),null));
 }
 }
 }
@@ -335,10 +335,10 @@ var this__19352__auto____$1 = this;
 return cljs.core.seq.call(null,cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"executors","executors",-331073403),self__.executors],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"selector","selector",762528866),self__.selector],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"transformer","transformer",-1493470620),self__.transformer],null))], null),self__.__extmap));
 });
 
-com.rpl.specter.impl.TransformFunctions.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__19339__auto__,G__20383){
+com.rpl.specter.impl.TransformFunctions.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__19339__auto__,G__34093){
 var self__ = this;
 var this__19339__auto____$1 = this;
-return (new com.rpl.specter.impl.TransformFunctions(self__.executors,self__.selector,self__.transformer,G__20383,self__.__extmap,self__.__hash));
+return (new com.rpl.specter.impl.TransformFunctions(self__.executors,self__.selector,self__.transformer,G__34093,self__.__extmap,self__.__hash));
 });
 
 com.rpl.specter.impl.TransformFunctions.prototype.cljs$core$ICollection$_conj$arity$2 = (function (this__19345__auto__,entry__19346__auto__){
@@ -369,8 +369,8 @@ com.rpl.specter.impl.__GT_TransformFunctions = (function com$rpl$specter$impl$__
 return (new com.rpl.specter.impl.TransformFunctions(executors,selector,transformer,null,null,null));
 });
 
-com.rpl.specter.impl.map__GT_TransformFunctions = (function com$rpl$specter$impl$map__GT_TransformFunctions(G__20385){
-return (new com.rpl.specter.impl.TransformFunctions(new cljs.core.Keyword(null,"executors","executors",-331073403).cljs$core$IFn$_invoke$arity$1(G__20385),new cljs.core.Keyword(null,"selector","selector",762528866).cljs$core$IFn$_invoke$arity$1(G__20385),new cljs.core.Keyword(null,"transformer","transformer",-1493470620).cljs$core$IFn$_invoke$arity$1(G__20385),null,cljs.core.dissoc.call(null,G__20385,new cljs.core.Keyword(null,"executors","executors",-331073403),new cljs.core.Keyword(null,"selector","selector",762528866),new cljs.core.Keyword(null,"transformer","transformer",-1493470620)),null));
+com.rpl.specter.impl.map__GT_TransformFunctions = (function com$rpl$specter$impl$map__GT_TransformFunctions(G__34095){
+return (new com.rpl.specter.impl.TransformFunctions(new cljs.core.Keyword(null,"executors","executors",-331073403).cljs$core$IFn$_invoke$arity$1(G__34095),new cljs.core.Keyword(null,"selector","selector",762528866).cljs$core$IFn$_invoke$arity$1(G__34095),new cljs.core.Keyword(null,"transformer","transformer",-1493470620).cljs$core$IFn$_invoke$arity$1(G__34095),null,cljs.core.dissoc.call(null,G__34095,new cljs.core.Keyword(null,"executors","executors",-331073403),new cljs.core.Keyword(null,"selector","selector",762528866),new cljs.core.Keyword(null,"transformer","transformer",-1493470620)),null));
 });
 
 
@@ -407,11 +407,11 @@ var this__19340__auto____$1 = this;
 return cljs.core._lookup.call(null,this__19340__auto____$1,k__19341__auto__,null);
 });
 
-com.rpl.specter.impl.CompiledPath.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__19342__auto__,k20399,else__19343__auto__){
+com.rpl.specter.impl.CompiledPath.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__19342__auto__,k34102,else__19343__auto__){
 var self__ = this;
 var this__19342__auto____$1 = this;
-var G__20401 = (((k20399 instanceof cljs.core.Keyword))?k20399.fqn:null);
-switch (G__20401) {
+var G__34104 = (((k34102 instanceof cljs.core.Keyword))?k34102.fqn:null);
+switch (G__34104) {
 case "transform-fns":
 return self__.transform_fns;
 
@@ -425,7 +425,7 @@ return self__.params_idx;
 
 break;
 default:
-return cljs.core.get.call(null,self__.__extmap,k20399,else__19343__auto__);
+return cljs.core.get.call(null,self__.__extmap,k34102,else__19343__auto__);
 
 }
 });
@@ -443,10 +443,10 @@ return cljs.core.pr_sequential_writer.call(null,writer__19355__auto__,pr_pair__1
 
 com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IIterable$ = true;
 
-com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__20398){
+com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__34101){
 var self__ = this;
-var G__20398__$1 = this;
-return (new cljs.core.RecordIter((0),G__20398__$1,3,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),new cljs.core.Keyword(null,"params","params",710516235),new cljs.core.Keyword(null,"params-idx","params-idx",340984624)], null),cljs.core._iterator.call(null,self__.__extmap)));
+var G__34101__$1 = this;
+return (new cljs.core.RecordIter((0),G__34101__$1,3,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),new cljs.core.Keyword(null,"params","params",710516235),new cljs.core.Keyword(null,"params-idx","params-idx",340984624)], null),cljs.core._iterator.call(null,self__.__extmap)));
 });
 
 com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IMeta$_meta$arity$1 = (function (this__19338__auto__){
@@ -485,7 +485,7 @@ com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IEquiv$_equiv$arity$2 = (f
 var self__ = this;
 var this__19336__auto____$1 = this;
 if(cljs.core.truth_((function (){var and__18714__auto__ = other__19337__auto__;
-if(cljs.core.truth_(and__18714__auto__)){
+if(and__18714__auto__){
 var and__18714__auto____$1 = (this__19336__auto____$1.constructor === other__19337__auto__.constructor);
 if(and__18714__auto____$1){
 return cljs.core.equiv_map.call(null,this__19336__auto____$1,other__19337__auto__);
@@ -512,21 +512,21 @@ return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,self__.params
 }
 });
 
-com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__19347__auto__,k__19348__auto__,G__20398){
+com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__19347__auto__,k__19348__auto__,G__34101){
 var self__ = this;
 var this__19347__auto____$1 = this;
-var pred__20402 = cljs.core.keyword_identical_QMARK_;
-var expr__20403 = k__19348__auto__;
-if(pred__20402.call(null,new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),expr__20403)){
-return (new com.rpl.specter.impl.CompiledPath(G__20398,self__.params,self__.params_idx,self__.__meta,self__.__extmap,null));
+var pred__34105 = cljs.core.keyword_identical_QMARK_;
+var expr__34106 = k__19348__auto__;
+if(cljs.core.truth_(pred__34105.call(null,new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),expr__34106))){
+return (new com.rpl.specter.impl.CompiledPath(G__34101,self__.params,self__.params_idx,self__.__meta,self__.__extmap,null));
 } else {
-if(pred__20402.call(null,new cljs.core.Keyword(null,"params","params",710516235),expr__20403)){
-return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,G__20398,self__.params_idx,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_(pred__34105.call(null,new cljs.core.Keyword(null,"params","params",710516235),expr__34106))){
+return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,G__34101,self__.params_idx,self__.__meta,self__.__extmap,null));
 } else {
-if(pred__20402.call(null,new cljs.core.Keyword(null,"params-idx","params-idx",340984624),expr__20403)){
-return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,self__.params,G__20398,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_(pred__34105.call(null,new cljs.core.Keyword(null,"params-idx","params-idx",340984624),expr__34106))){
+return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,self__.params,G__34101,self__.__meta,self__.__extmap,null));
 } else {
-return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,self__.params,self__.params_idx,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__19348__auto__,G__20398),null));
+return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,self__.params,self__.params_idx,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__19348__auto__,G__34101),null));
 }
 }
 }
@@ -538,10 +538,10 @@ var this__19352__auto____$1 = this;
 return cljs.core.seq.call(null,cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),self__.transform_fns],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"params","params",710516235),self__.params],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"params-idx","params-idx",340984624),self__.params_idx],null))], null),self__.__extmap));
 });
 
-com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__19339__auto__,G__20398){
+com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__19339__auto__,G__34101){
 var self__ = this;
 var this__19339__auto____$1 = this;
-return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,self__.params,self__.params_idx,G__20398,self__.__extmap,self__.__hash));
+return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,self__.params,self__.params_idx,G__34101,self__.__extmap,self__.__hash));
 });
 
 com.rpl.specter.impl.CompiledPath.prototype.cljs$core$ICollection$_conj$arity$2 = (function (this__19345__auto__,entry__19346__auto__){
@@ -572,8 +572,8 @@ com.rpl.specter.impl.__GT_CompiledPath = (function com$rpl$specter$impl$__GT_Com
 return (new com.rpl.specter.impl.CompiledPath(transform_fns,params,params_idx,null,null,null));
 });
 
-com.rpl.specter.impl.map__GT_CompiledPath = (function com$rpl$specter$impl$map__GT_CompiledPath(G__20400){
-return (new com.rpl.specter.impl.CompiledPath(new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649).cljs$core$IFn$_invoke$arity$1(G__20400),new cljs.core.Keyword(null,"params","params",710516235).cljs$core$IFn$_invoke$arity$1(G__20400),new cljs.core.Keyword(null,"params-idx","params-idx",340984624).cljs$core$IFn$_invoke$arity$1(G__20400),null,cljs.core.dissoc.call(null,G__20400,new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),new cljs.core.Keyword(null,"params","params",710516235),new cljs.core.Keyword(null,"params-idx","params-idx",340984624)),null));
+com.rpl.specter.impl.map__GT_CompiledPath = (function com$rpl$specter$impl$map__GT_CompiledPath(G__34103){
+return (new com.rpl.specter.impl.CompiledPath(new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649).cljs$core$IFn$_invoke$arity$1(G__34103),new cljs.core.Keyword(null,"params","params",710516235).cljs$core$IFn$_invoke$arity$1(G__34103),new cljs.core.Keyword(null,"params-idx","params-idx",340984624).cljs$core$IFn$_invoke$arity$1(G__34103),null,cljs.core.dissoc.call(null,G__34103,new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),new cljs.core.Keyword(null,"params","params",710516235),new cljs.core.Keyword(null,"params-idx","params-idx",340984624)),null));
 });
 
 com.rpl.specter.impl.compiled_path_QMARK_ = (function com$rpl$specter$impl$compiled_path_QMARK_(o){
@@ -619,11 +619,11 @@ var this__19340__auto____$1 = this;
 return cljs.core._lookup.call(null,this__19340__auto____$1,k__19341__auto__,null);
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__19342__auto__,k20618,else__19343__auto__){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__19342__auto__,k34322,else__19343__auto__){
 var self__ = this;
 var this__19342__auto____$1 = this;
-var G__20621 = (((k20618 instanceof cljs.core.Keyword))?k20618.fqn:null);
-switch (G__20621) {
+var G__34327 = (((k34322 instanceof cljs.core.Keyword))?k34322.fqn:null);
+switch (G__34327) {
 case "transform-fns":
 return self__.transform_fns;
 
@@ -633,7 +633,7 @@ return self__.num_needed_params;
 
 break;
 default:
-return cljs.core.get.call(null,self__.__extmap,k20618,else__19343__auto__);
+return cljs.core.get.call(null,self__.__extmap,k34322,else__19343__auto__);
 
 }
 });
@@ -651,1234 +651,1234 @@ return cljs.core.pr_sequential_writer.call(null,writer__19355__auto__,pr_pair__1
 
 com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IIterable$ = true;
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__20617){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__34321){
 var self__ = this;
-var G__20617__$1 = this;
-return (new cljs.core.RecordIter((0),G__20617__$1,2,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),new cljs.core.Keyword(null,"num-needed-params","num-needed-params",-1219326097)], null),cljs.core._iterator.call(null,self__.__extmap)));
+var G__34321__$1 = this;
+return (new cljs.core.RecordIter((0),G__34321__$1,2,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),new cljs.core.Keyword(null,"num-needed-params","num-needed-params",-1219326097)], null),cljs.core._iterator.call(null,self__.__extmap)));
 });
 
 com.rpl.specter.impl.ParamsNeededPath.prototype.call = (function() {
-var G__20626 = null;
-var G__20626__1 = (function (self__){
+var G__34336 = null;
+var G__34336__1 = (function (self__){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(0));
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__2 = (function (self__,G__20407){
+var G__34336__2 = (function (self__,G__34111){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(1));
-(array20406[(0)] = G__20407);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(1));
+(array34110[(0)] = G__34111);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__3 = (function (self__,G__20408,G__20409){
+var G__34336__3 = (function (self__,G__34112,G__34113){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(2));
-(array20406[(0)] = G__20408);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(2));
+(array34110[(0)] = G__34112);
 
-(array20406[(1)] = G__20409);
+(array34110[(1)] = G__34113);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__4 = (function (self__,G__20410,G__20411,G__20412){
+var G__34336__4 = (function (self__,G__34114,G__34115,G__34116){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(3));
-(array20406[(0)] = G__20410);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(3));
+(array34110[(0)] = G__34114);
 
-(array20406[(1)] = G__20411);
+(array34110[(1)] = G__34115);
 
-(array20406[(2)] = G__20412);
+(array34110[(2)] = G__34116);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__5 = (function (self__,G__20413,G__20414,G__20415,G__20416){
+var G__34336__5 = (function (self__,G__34117,G__34118,G__34119,G__34120){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(4));
-(array20406[(0)] = G__20413);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(4));
+(array34110[(0)] = G__34117);
 
-(array20406[(1)] = G__20414);
+(array34110[(1)] = G__34118);
 
-(array20406[(2)] = G__20415);
+(array34110[(2)] = G__34119);
 
-(array20406[(3)] = G__20416);
+(array34110[(3)] = G__34120);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__6 = (function (self__,G__20417,G__20418,G__20419,G__20420,G__20421){
+var G__34336__6 = (function (self__,G__34121,G__34122,G__34123,G__34124,G__34125){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(5));
-(array20406[(0)] = G__20417);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(5));
+(array34110[(0)] = G__34121);
 
-(array20406[(1)] = G__20418);
+(array34110[(1)] = G__34122);
 
-(array20406[(2)] = G__20419);
+(array34110[(2)] = G__34123);
 
-(array20406[(3)] = G__20420);
+(array34110[(3)] = G__34124);
 
-(array20406[(4)] = G__20421);
+(array34110[(4)] = G__34125);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__7 = (function (self__,G__20422,G__20423,G__20424,G__20425,G__20426,G__20427){
+var G__34336__7 = (function (self__,G__34126,G__34127,G__34128,G__34129,G__34130,G__34131){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(6));
-(array20406[(0)] = G__20422);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(6));
+(array34110[(0)] = G__34126);
 
-(array20406[(1)] = G__20423);
+(array34110[(1)] = G__34127);
 
-(array20406[(2)] = G__20424);
+(array34110[(2)] = G__34128);
 
-(array20406[(3)] = G__20425);
+(array34110[(3)] = G__34129);
 
-(array20406[(4)] = G__20426);
+(array34110[(4)] = G__34130);
 
-(array20406[(5)] = G__20427);
+(array34110[(5)] = G__34131);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__8 = (function (self__,G__20428,G__20429,G__20430,G__20431,G__20432,G__20433,G__20434){
+var G__34336__8 = (function (self__,G__34132,G__34133,G__34134,G__34135,G__34136,G__34137,G__34138){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(7));
-(array20406[(0)] = G__20428);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(7));
+(array34110[(0)] = G__34132);
 
-(array20406[(1)] = G__20429);
+(array34110[(1)] = G__34133);
 
-(array20406[(2)] = G__20430);
+(array34110[(2)] = G__34134);
 
-(array20406[(3)] = G__20431);
+(array34110[(3)] = G__34135);
 
-(array20406[(4)] = G__20432);
+(array34110[(4)] = G__34136);
 
-(array20406[(5)] = G__20433);
+(array34110[(5)] = G__34137);
 
-(array20406[(6)] = G__20434);
+(array34110[(6)] = G__34138);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__9 = (function (self__,G__20435,G__20436,G__20437,G__20438,G__20439,G__20440,G__20441,G__20442){
+var G__34336__9 = (function (self__,G__34139,G__34140,G__34141,G__34142,G__34143,G__34144,G__34145,G__34146){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(8));
-(array20406[(0)] = G__20435);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(8));
+(array34110[(0)] = G__34139);
 
-(array20406[(1)] = G__20436);
+(array34110[(1)] = G__34140);
 
-(array20406[(2)] = G__20437);
+(array34110[(2)] = G__34141);
 
-(array20406[(3)] = G__20438);
+(array34110[(3)] = G__34142);
 
-(array20406[(4)] = G__20439);
+(array34110[(4)] = G__34143);
 
-(array20406[(5)] = G__20440);
+(array34110[(5)] = G__34144);
 
-(array20406[(6)] = G__20441);
+(array34110[(6)] = G__34145);
 
-(array20406[(7)] = G__20442);
+(array34110[(7)] = G__34146);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__10 = (function (self__,G__20443,G__20444,G__20445,G__20446,G__20447,G__20448,G__20449,G__20450,G__20451){
+var G__34336__10 = (function (self__,G__34147,G__34148,G__34149,G__34150,G__34151,G__34152,G__34153,G__34154,G__34155){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(9));
-(array20406[(0)] = G__20443);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(9));
+(array34110[(0)] = G__34147);
 
-(array20406[(1)] = G__20444);
+(array34110[(1)] = G__34148);
 
-(array20406[(2)] = G__20445);
+(array34110[(2)] = G__34149);
 
-(array20406[(3)] = G__20446);
+(array34110[(3)] = G__34150);
 
-(array20406[(4)] = G__20447);
+(array34110[(4)] = G__34151);
 
-(array20406[(5)] = G__20448);
+(array34110[(5)] = G__34152);
 
-(array20406[(6)] = G__20449);
+(array34110[(6)] = G__34153);
 
-(array20406[(7)] = G__20450);
+(array34110[(7)] = G__34154);
 
-(array20406[(8)] = G__20451);
+(array34110[(8)] = G__34155);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__11 = (function (self__,G__20452,G__20453,G__20454,G__20455,G__20456,G__20457,G__20458,G__20459,G__20460,G__20461){
+var G__34336__11 = (function (self__,G__34156,G__34157,G__34158,G__34159,G__34160,G__34161,G__34162,G__34163,G__34164,G__34165){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(10));
-(array20406[(0)] = G__20452);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(10));
+(array34110[(0)] = G__34156);
 
-(array20406[(1)] = G__20453);
+(array34110[(1)] = G__34157);
 
-(array20406[(2)] = G__20454);
+(array34110[(2)] = G__34158);
 
-(array20406[(3)] = G__20455);
+(array34110[(3)] = G__34159);
 
-(array20406[(4)] = G__20456);
+(array34110[(4)] = G__34160);
 
-(array20406[(5)] = G__20457);
+(array34110[(5)] = G__34161);
 
-(array20406[(6)] = G__20458);
+(array34110[(6)] = G__34162);
 
-(array20406[(7)] = G__20459);
+(array34110[(7)] = G__34163);
 
-(array20406[(8)] = G__20460);
+(array34110[(8)] = G__34164);
 
-(array20406[(9)] = G__20461);
+(array34110[(9)] = G__34165);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__12 = (function (self__,G__20462,G__20463,G__20464,G__20465,G__20466,G__20467,G__20468,G__20469,G__20470,G__20471,G__20472){
+var G__34336__12 = (function (self__,G__34166,G__34167,G__34168,G__34169,G__34170,G__34171,G__34172,G__34173,G__34174,G__34175,G__34176){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(11));
-(array20406[(0)] = G__20462);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(11));
+(array34110[(0)] = G__34166);
 
-(array20406[(1)] = G__20463);
+(array34110[(1)] = G__34167);
 
-(array20406[(2)] = G__20464);
+(array34110[(2)] = G__34168);
 
-(array20406[(3)] = G__20465);
+(array34110[(3)] = G__34169);
 
-(array20406[(4)] = G__20466);
+(array34110[(4)] = G__34170);
 
-(array20406[(5)] = G__20467);
+(array34110[(5)] = G__34171);
 
-(array20406[(6)] = G__20468);
+(array34110[(6)] = G__34172);
 
-(array20406[(7)] = G__20469);
+(array34110[(7)] = G__34173);
 
-(array20406[(8)] = G__20470);
+(array34110[(8)] = G__34174);
 
-(array20406[(9)] = G__20471);
+(array34110[(9)] = G__34175);
 
-(array20406[(10)] = G__20472);
+(array34110[(10)] = G__34176);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__13 = (function (self__,G__20473,G__20474,G__20475,G__20476,G__20477,G__20478,G__20479,G__20480,G__20481,G__20482,G__20483,G__20484){
+var G__34336__13 = (function (self__,G__34177,G__34178,G__34179,G__34180,G__34181,G__34182,G__34183,G__34184,G__34185,G__34186,G__34187,G__34188){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(12));
-(array20406[(0)] = G__20473);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(12));
+(array34110[(0)] = G__34177);
 
-(array20406[(1)] = G__20474);
+(array34110[(1)] = G__34178);
 
-(array20406[(2)] = G__20475);
+(array34110[(2)] = G__34179);
 
-(array20406[(3)] = G__20476);
+(array34110[(3)] = G__34180);
 
-(array20406[(4)] = G__20477);
+(array34110[(4)] = G__34181);
 
-(array20406[(5)] = G__20478);
+(array34110[(5)] = G__34182);
 
-(array20406[(6)] = G__20479);
+(array34110[(6)] = G__34183);
 
-(array20406[(7)] = G__20480);
+(array34110[(7)] = G__34184);
 
-(array20406[(8)] = G__20481);
+(array34110[(8)] = G__34185);
 
-(array20406[(9)] = G__20482);
+(array34110[(9)] = G__34186);
 
-(array20406[(10)] = G__20483);
+(array34110[(10)] = G__34187);
 
-(array20406[(11)] = G__20484);
+(array34110[(11)] = G__34188);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__14 = (function (self__,G__20485,G__20486,G__20487,G__20488,G__20489,G__20490,G__20491,G__20492,G__20493,G__20494,G__20495,G__20496,G__20497){
+var G__34336__14 = (function (self__,G__34189,G__34190,G__34191,G__34192,G__34193,G__34194,G__34195,G__34196,G__34197,G__34198,G__34199,G__34200,G__34201){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(13));
-(array20406[(0)] = G__20485);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(13));
+(array34110[(0)] = G__34189);
 
-(array20406[(1)] = G__20486);
+(array34110[(1)] = G__34190);
 
-(array20406[(2)] = G__20487);
+(array34110[(2)] = G__34191);
 
-(array20406[(3)] = G__20488);
+(array34110[(3)] = G__34192);
 
-(array20406[(4)] = G__20489);
+(array34110[(4)] = G__34193);
 
-(array20406[(5)] = G__20490);
+(array34110[(5)] = G__34194);
 
-(array20406[(6)] = G__20491);
+(array34110[(6)] = G__34195);
 
-(array20406[(7)] = G__20492);
+(array34110[(7)] = G__34196);
 
-(array20406[(8)] = G__20493);
+(array34110[(8)] = G__34197);
 
-(array20406[(9)] = G__20494);
+(array34110[(9)] = G__34198);
 
-(array20406[(10)] = G__20495);
+(array34110[(10)] = G__34199);
 
-(array20406[(11)] = G__20496);
+(array34110[(11)] = G__34200);
 
-(array20406[(12)] = G__20497);
+(array34110[(12)] = G__34201);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__15 = (function (self__,G__20498,G__20499,G__20500,G__20501,G__20502,G__20503,G__20504,G__20505,G__20506,G__20507,G__20508,G__20509,G__20510,G__20511){
+var G__34336__15 = (function (self__,G__34202,G__34203,G__34204,G__34205,G__34206,G__34207,G__34208,G__34209,G__34210,G__34211,G__34212,G__34213,G__34214,G__34215){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(14));
-(array20406[(0)] = G__20498);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(14));
+(array34110[(0)] = G__34202);
 
-(array20406[(1)] = G__20499);
+(array34110[(1)] = G__34203);
 
-(array20406[(2)] = G__20500);
+(array34110[(2)] = G__34204);
 
-(array20406[(3)] = G__20501);
+(array34110[(3)] = G__34205);
 
-(array20406[(4)] = G__20502);
+(array34110[(4)] = G__34206);
 
-(array20406[(5)] = G__20503);
+(array34110[(5)] = G__34207);
 
-(array20406[(6)] = G__20504);
+(array34110[(6)] = G__34208);
 
-(array20406[(7)] = G__20505);
+(array34110[(7)] = G__34209);
 
-(array20406[(8)] = G__20506);
+(array34110[(8)] = G__34210);
 
-(array20406[(9)] = G__20507);
+(array34110[(9)] = G__34211);
 
-(array20406[(10)] = G__20508);
+(array34110[(10)] = G__34212);
 
-(array20406[(11)] = G__20509);
+(array34110[(11)] = G__34213);
 
-(array20406[(12)] = G__20510);
+(array34110[(12)] = G__34214);
 
-(array20406[(13)] = G__20511);
+(array34110[(13)] = G__34215);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__16 = (function (self__,G__20512,G__20513,G__20514,G__20515,G__20516,G__20517,G__20518,G__20519,G__20520,G__20521,G__20522,G__20523,G__20524,G__20525,G__20526){
+var G__34336__16 = (function (self__,G__34216,G__34217,G__34218,G__34219,G__34220,G__34221,G__34222,G__34223,G__34224,G__34225,G__34226,G__34227,G__34228,G__34229,G__34230){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(15));
-(array20406[(0)] = G__20512);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(15));
+(array34110[(0)] = G__34216);
 
-(array20406[(1)] = G__20513);
+(array34110[(1)] = G__34217);
 
-(array20406[(2)] = G__20514);
+(array34110[(2)] = G__34218);
 
-(array20406[(3)] = G__20515);
+(array34110[(3)] = G__34219);
 
-(array20406[(4)] = G__20516);
+(array34110[(4)] = G__34220);
 
-(array20406[(5)] = G__20517);
+(array34110[(5)] = G__34221);
 
-(array20406[(6)] = G__20518);
+(array34110[(6)] = G__34222);
 
-(array20406[(7)] = G__20519);
+(array34110[(7)] = G__34223);
 
-(array20406[(8)] = G__20520);
+(array34110[(8)] = G__34224);
 
-(array20406[(9)] = G__20521);
+(array34110[(9)] = G__34225);
 
-(array20406[(10)] = G__20522);
+(array34110[(10)] = G__34226);
 
-(array20406[(11)] = G__20523);
+(array34110[(11)] = G__34227);
 
-(array20406[(12)] = G__20524);
+(array34110[(12)] = G__34228);
 
-(array20406[(13)] = G__20525);
+(array34110[(13)] = G__34229);
 
-(array20406[(14)] = G__20526);
+(array34110[(14)] = G__34230);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__17 = (function (self__,G__20527,G__20528,G__20529,G__20530,G__20531,G__20532,G__20533,G__20534,G__20535,G__20536,G__20537,G__20538,G__20539,G__20540,G__20541,G__20542){
+var G__34336__17 = (function (self__,G__34231,G__34232,G__34233,G__34234,G__34235,G__34236,G__34237,G__34238,G__34239,G__34240,G__34241,G__34242,G__34243,G__34244,G__34245,G__34246){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(16));
-(array20406[(0)] = G__20527);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(16));
+(array34110[(0)] = G__34231);
 
-(array20406[(1)] = G__20528);
+(array34110[(1)] = G__34232);
 
-(array20406[(2)] = G__20529);
+(array34110[(2)] = G__34233);
 
-(array20406[(3)] = G__20530);
+(array34110[(3)] = G__34234);
 
-(array20406[(4)] = G__20531);
+(array34110[(4)] = G__34235);
 
-(array20406[(5)] = G__20532);
+(array34110[(5)] = G__34236);
 
-(array20406[(6)] = G__20533);
+(array34110[(6)] = G__34237);
 
-(array20406[(7)] = G__20534);
+(array34110[(7)] = G__34238);
 
-(array20406[(8)] = G__20535);
+(array34110[(8)] = G__34239);
 
-(array20406[(9)] = G__20536);
+(array34110[(9)] = G__34240);
 
-(array20406[(10)] = G__20537);
+(array34110[(10)] = G__34241);
 
-(array20406[(11)] = G__20538);
+(array34110[(11)] = G__34242);
 
-(array20406[(12)] = G__20539);
+(array34110[(12)] = G__34243);
 
-(array20406[(13)] = G__20540);
+(array34110[(13)] = G__34244);
 
-(array20406[(14)] = G__20541);
+(array34110[(14)] = G__34245);
 
-(array20406[(15)] = G__20542);
+(array34110[(15)] = G__34246);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__18 = (function (self__,G__20543,G__20544,G__20545,G__20546,G__20547,G__20548,G__20549,G__20550,G__20551,G__20552,G__20553,G__20554,G__20555,G__20556,G__20557,G__20558,G__20559){
+var G__34336__18 = (function (self__,G__34247,G__34248,G__34249,G__34250,G__34251,G__34252,G__34253,G__34254,G__34255,G__34256,G__34257,G__34258,G__34259,G__34260,G__34261,G__34262,G__34263){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(17));
-(array20406[(0)] = G__20543);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(17));
+(array34110[(0)] = G__34247);
 
-(array20406[(1)] = G__20544);
+(array34110[(1)] = G__34248);
 
-(array20406[(2)] = G__20545);
+(array34110[(2)] = G__34249);
 
-(array20406[(3)] = G__20546);
+(array34110[(3)] = G__34250);
 
-(array20406[(4)] = G__20547);
+(array34110[(4)] = G__34251);
 
-(array20406[(5)] = G__20548);
+(array34110[(5)] = G__34252);
 
-(array20406[(6)] = G__20549);
+(array34110[(6)] = G__34253);
 
-(array20406[(7)] = G__20550);
+(array34110[(7)] = G__34254);
 
-(array20406[(8)] = G__20551);
+(array34110[(8)] = G__34255);
 
-(array20406[(9)] = G__20552);
+(array34110[(9)] = G__34256);
 
-(array20406[(10)] = G__20553);
+(array34110[(10)] = G__34257);
 
-(array20406[(11)] = G__20554);
+(array34110[(11)] = G__34258);
 
-(array20406[(12)] = G__20555);
+(array34110[(12)] = G__34259);
 
-(array20406[(13)] = G__20556);
+(array34110[(13)] = G__34260);
 
-(array20406[(14)] = G__20557);
+(array34110[(14)] = G__34261);
 
-(array20406[(15)] = G__20558);
+(array34110[(15)] = G__34262);
 
-(array20406[(16)] = G__20559);
+(array34110[(16)] = G__34263);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__19 = (function (self__,G__20560,G__20561,G__20562,G__20563,G__20564,G__20565,G__20566,G__20567,G__20568,G__20569,G__20570,G__20571,G__20572,G__20573,G__20574,G__20575,G__20576,G__20577){
+var G__34336__19 = (function (self__,G__34264,G__34265,G__34266,G__34267,G__34268,G__34269,G__34270,G__34271,G__34272,G__34273,G__34274,G__34275,G__34276,G__34277,G__34278,G__34279,G__34280,G__34281){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(18));
-(array20406[(0)] = G__20560);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(18));
+(array34110[(0)] = G__34264);
 
-(array20406[(1)] = G__20561);
+(array34110[(1)] = G__34265);
 
-(array20406[(2)] = G__20562);
+(array34110[(2)] = G__34266);
 
-(array20406[(3)] = G__20563);
+(array34110[(3)] = G__34267);
 
-(array20406[(4)] = G__20564);
+(array34110[(4)] = G__34268);
 
-(array20406[(5)] = G__20565);
+(array34110[(5)] = G__34269);
 
-(array20406[(6)] = G__20566);
+(array34110[(6)] = G__34270);
 
-(array20406[(7)] = G__20567);
+(array34110[(7)] = G__34271);
 
-(array20406[(8)] = G__20568);
+(array34110[(8)] = G__34272);
 
-(array20406[(9)] = G__20569);
+(array34110[(9)] = G__34273);
 
-(array20406[(10)] = G__20570);
+(array34110[(10)] = G__34274);
 
-(array20406[(11)] = G__20571);
+(array34110[(11)] = G__34275);
 
-(array20406[(12)] = G__20572);
+(array34110[(12)] = G__34276);
 
-(array20406[(13)] = G__20573);
+(array34110[(13)] = G__34277);
 
-(array20406[(14)] = G__20574);
+(array34110[(14)] = G__34278);
 
-(array20406[(15)] = G__20575);
+(array34110[(15)] = G__34279);
 
-(array20406[(16)] = G__20576);
+(array34110[(16)] = G__34280);
 
-(array20406[(17)] = G__20577);
+(array34110[(17)] = G__34281);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__20 = (function (self__,G__20578,G__20579,G__20580,G__20581,G__20582,G__20583,G__20584,G__20585,G__20586,G__20587,G__20588,G__20589,G__20590,G__20591,G__20592,G__20593,G__20594,G__20595,G__20596){
+var G__34336__20 = (function (self__,G__34282,G__34283,G__34284,G__34285,G__34286,G__34287,G__34288,G__34289,G__34290,G__34291,G__34292,G__34293,G__34294,G__34295,G__34296,G__34297,G__34298,G__34299,G__34300){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(19));
-(array20406[(0)] = G__20578);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(19));
+(array34110[(0)] = G__34282);
 
-(array20406[(1)] = G__20579);
+(array34110[(1)] = G__34283);
 
-(array20406[(2)] = G__20580);
+(array34110[(2)] = G__34284);
 
-(array20406[(3)] = G__20581);
+(array34110[(3)] = G__34285);
 
-(array20406[(4)] = G__20582);
+(array34110[(4)] = G__34286);
 
-(array20406[(5)] = G__20583);
+(array34110[(5)] = G__34287);
 
-(array20406[(6)] = G__20584);
+(array34110[(6)] = G__34288);
 
-(array20406[(7)] = G__20585);
+(array34110[(7)] = G__34289);
 
-(array20406[(8)] = G__20586);
+(array34110[(8)] = G__34290);
 
-(array20406[(9)] = G__20587);
+(array34110[(9)] = G__34291);
 
-(array20406[(10)] = G__20588);
+(array34110[(10)] = G__34292);
 
-(array20406[(11)] = G__20589);
+(array34110[(11)] = G__34293);
 
-(array20406[(12)] = G__20590);
+(array34110[(12)] = G__34294);
 
-(array20406[(13)] = G__20591);
+(array34110[(13)] = G__34295);
 
-(array20406[(14)] = G__20592);
+(array34110[(14)] = G__34296);
 
-(array20406[(15)] = G__20593);
+(array34110[(15)] = G__34297);
 
-(array20406[(16)] = G__20594);
+(array34110[(16)] = G__34298);
 
-(array20406[(17)] = G__20595);
+(array34110[(17)] = G__34299);
 
-(array20406[(18)] = G__20596);
+(array34110[(18)] = G__34300);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__21 = (function (self__,G__20597,G__20598,G__20599,G__20600,G__20601,G__20602,G__20603,G__20604,G__20605,G__20606,G__20607,G__20608,G__20609,G__20610,G__20611,G__20612,G__20613,G__20614,G__20615,G__20616){
+var G__34336__21 = (function (self__,G__34301,G__34302,G__34303,G__34304,G__34305,G__34306,G__34307,G__34308,G__34309,G__34310,G__34311,G__34312,G__34313,G__34314,G__34315,G__34316,G__34317,G__34318,G__34319,G__34320){
 var self__ = this;
 var self____$1 = this;
-var this__20324__auto__ = self____$1;
-var array20406 = cljs.core.object_array.call(null,(20));
-(array20406[(0)] = G__20597);
+var this__19860__auto__ = self____$1;
+var array34110 = cljs.core.object_array.call(null,(20));
+(array34110[(0)] = G__34301);
 
-(array20406[(1)] = G__20598);
+(array34110[(1)] = G__34302);
 
-(array20406[(2)] = G__20599);
+(array34110[(2)] = G__34303);
 
-(array20406[(3)] = G__20600);
+(array34110[(3)] = G__34304);
 
-(array20406[(4)] = G__20601);
+(array34110[(4)] = G__34305);
 
-(array20406[(5)] = G__20602);
+(array34110[(5)] = G__34306);
 
-(array20406[(6)] = G__20603);
+(array34110[(6)] = G__34307);
 
-(array20406[(7)] = G__20604);
+(array34110[(7)] = G__34308);
 
-(array20406[(8)] = G__20605);
+(array34110[(8)] = G__34309);
 
-(array20406[(9)] = G__20606);
+(array34110[(9)] = G__34310);
 
-(array20406[(10)] = G__20607);
+(array34110[(10)] = G__34311);
 
-(array20406[(11)] = G__20608);
+(array34110[(11)] = G__34312);
 
-(array20406[(12)] = G__20609);
+(array34110[(12)] = G__34313);
 
-(array20406[(13)] = G__20610);
+(array34110[(13)] = G__34314);
 
-(array20406[(14)] = G__20611);
+(array34110[(14)] = G__34315);
 
-(array20406[(15)] = G__20612);
+(array34110[(15)] = G__34316);
 
-(array20406[(16)] = G__20613);
+(array34110[(16)] = G__34317);
 
-(array20406[(17)] = G__20614);
+(array34110[(17)] = G__34318);
 
-(array20406[(18)] = G__20615);
+(array34110[(18)] = G__34319);
 
-(array20406[(19)] = G__20616);
+(array34110[(19)] = G__34320);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
-var G__20626__22 = (function (self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,rest){
+var G__34336__22 = (function (self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,rest){
 var self__ = this;
 var self____$1 = this;
 var this$ = self____$1;
 var a = cljs.core.object_array.call(null,cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 20, 5, cljs.core.PersistentVector.EMPTY_NODE, [p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20], null),rest));
 return com.rpl.specter.impl.bind_params_STAR_.call(null,this$,a,(0));
 });
-G__20626 = function(self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,rest){
+G__34336 = function(self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,rest){
 switch(arguments.length){
 case 1:
-return G__20626__1.call(this,self__);
+return G__34336__1.call(this,self__);
 case 2:
-return G__20626__2.call(this,self__,p01);
+return G__34336__2.call(this,self__,p01);
 case 3:
-return G__20626__3.call(this,self__,p01,p02);
+return G__34336__3.call(this,self__,p01,p02);
 case 4:
-return G__20626__4.call(this,self__,p01,p02,p03);
+return G__34336__4.call(this,self__,p01,p02,p03);
 case 5:
-return G__20626__5.call(this,self__,p01,p02,p03,p04);
+return G__34336__5.call(this,self__,p01,p02,p03,p04);
 case 6:
-return G__20626__6.call(this,self__,p01,p02,p03,p04,p05);
+return G__34336__6.call(this,self__,p01,p02,p03,p04,p05);
 case 7:
-return G__20626__7.call(this,self__,p01,p02,p03,p04,p05,p06);
+return G__34336__7.call(this,self__,p01,p02,p03,p04,p05,p06);
 case 8:
-return G__20626__8.call(this,self__,p01,p02,p03,p04,p05,p06,p07);
+return G__34336__8.call(this,self__,p01,p02,p03,p04,p05,p06,p07);
 case 9:
-return G__20626__9.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08);
+return G__34336__9.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08);
 case 10:
-return G__20626__10.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09);
+return G__34336__10.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09);
 case 11:
-return G__20626__11.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10);
+return G__34336__11.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10);
 case 12:
-return G__20626__12.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11);
+return G__34336__12.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11);
 case 13:
-return G__20626__13.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12);
+return G__34336__13.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12);
 case 14:
-return G__20626__14.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13);
+return G__34336__14.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13);
 case 15:
-return G__20626__15.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14);
+return G__34336__15.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14);
 case 16:
-return G__20626__16.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15);
+return G__34336__16.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15);
 case 17:
-return G__20626__17.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16);
+return G__34336__17.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16);
 case 18:
-return G__20626__18.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17);
+return G__34336__18.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17);
 case 19:
-return G__20626__19.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18);
+return G__34336__19.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18);
 case 20:
-return G__20626__20.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19);
+return G__34336__20.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19);
 case 21:
-return G__20626__21.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20);
+return G__34336__21.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20);
 case 22:
-return G__20626__22.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,rest);
+return G__34336__22.call(this,self__,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,rest);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__20626.cljs$core$IFn$_invoke$arity$1 = G__20626__1;
-G__20626.cljs$core$IFn$_invoke$arity$2 = G__20626__2;
-G__20626.cljs$core$IFn$_invoke$arity$3 = G__20626__3;
-G__20626.cljs$core$IFn$_invoke$arity$4 = G__20626__4;
-G__20626.cljs$core$IFn$_invoke$arity$5 = G__20626__5;
-G__20626.cljs$core$IFn$_invoke$arity$6 = G__20626__6;
-G__20626.cljs$core$IFn$_invoke$arity$7 = G__20626__7;
-G__20626.cljs$core$IFn$_invoke$arity$8 = G__20626__8;
-G__20626.cljs$core$IFn$_invoke$arity$9 = G__20626__9;
-G__20626.cljs$core$IFn$_invoke$arity$10 = G__20626__10;
-G__20626.cljs$core$IFn$_invoke$arity$11 = G__20626__11;
-G__20626.cljs$core$IFn$_invoke$arity$12 = G__20626__12;
-G__20626.cljs$core$IFn$_invoke$arity$13 = G__20626__13;
-G__20626.cljs$core$IFn$_invoke$arity$14 = G__20626__14;
-G__20626.cljs$core$IFn$_invoke$arity$15 = G__20626__15;
-G__20626.cljs$core$IFn$_invoke$arity$16 = G__20626__16;
-G__20626.cljs$core$IFn$_invoke$arity$17 = G__20626__17;
-G__20626.cljs$core$IFn$_invoke$arity$18 = G__20626__18;
-G__20626.cljs$core$IFn$_invoke$arity$19 = G__20626__19;
-G__20626.cljs$core$IFn$_invoke$arity$20 = G__20626__20;
-G__20626.cljs$core$IFn$_invoke$arity$21 = G__20626__21;
-G__20626.cljs$core$IFn$_invoke$arity$22 = G__20626__22;
-return G__20626;
+G__34336.cljs$core$IFn$_invoke$arity$1 = G__34336__1;
+G__34336.cljs$core$IFn$_invoke$arity$2 = G__34336__2;
+G__34336.cljs$core$IFn$_invoke$arity$3 = G__34336__3;
+G__34336.cljs$core$IFn$_invoke$arity$4 = G__34336__4;
+G__34336.cljs$core$IFn$_invoke$arity$5 = G__34336__5;
+G__34336.cljs$core$IFn$_invoke$arity$6 = G__34336__6;
+G__34336.cljs$core$IFn$_invoke$arity$7 = G__34336__7;
+G__34336.cljs$core$IFn$_invoke$arity$8 = G__34336__8;
+G__34336.cljs$core$IFn$_invoke$arity$9 = G__34336__9;
+G__34336.cljs$core$IFn$_invoke$arity$10 = G__34336__10;
+G__34336.cljs$core$IFn$_invoke$arity$11 = G__34336__11;
+G__34336.cljs$core$IFn$_invoke$arity$12 = G__34336__12;
+G__34336.cljs$core$IFn$_invoke$arity$13 = G__34336__13;
+G__34336.cljs$core$IFn$_invoke$arity$14 = G__34336__14;
+G__34336.cljs$core$IFn$_invoke$arity$15 = G__34336__15;
+G__34336.cljs$core$IFn$_invoke$arity$16 = G__34336__16;
+G__34336.cljs$core$IFn$_invoke$arity$17 = G__34336__17;
+G__34336.cljs$core$IFn$_invoke$arity$18 = G__34336__18;
+G__34336.cljs$core$IFn$_invoke$arity$19 = G__34336__19;
+G__34336.cljs$core$IFn$_invoke$arity$20 = G__34336__20;
+G__34336.cljs$core$IFn$_invoke$arity$21 = G__34336__21;
+G__34336.cljs$core$IFn$_invoke$arity$22 = G__34336__22;
+return G__34336;
 })()
 ;
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.apply = (function (self__,args20620){
+com.rpl.specter.impl.ParamsNeededPath.prototype.apply = (function (self__,args34325){
 var self__ = this;
 var self____$1 = this;
-return self____$1.call.apply(self____$1,[self____$1].concat(cljs.core.aclone.call(null,args20620)));
+return self____$1.call.apply(self____$1,[self____$1].concat(cljs.core.aclone.call(null,args34325)));
 });
 
 com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$0 = (function (){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(0));
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$1 = (function (G__20407){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$1 = (function (G__34111){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(1));
-(array20406[(0)] = G__20407);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(1));
+(array34110[(0)] = G__34111);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$2 = (function (G__20408,G__20409){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$2 = (function (G__34112,G__34113){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(2));
-(array20406[(0)] = G__20408);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(2));
+(array34110[(0)] = G__34112);
 
-(array20406[(1)] = G__20409);
+(array34110[(1)] = G__34113);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$3 = (function (G__20410,G__20411,G__20412){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$3 = (function (G__34114,G__34115,G__34116){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(3));
-(array20406[(0)] = G__20410);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(3));
+(array34110[(0)] = G__34114);
 
-(array20406[(1)] = G__20411);
+(array34110[(1)] = G__34115);
 
-(array20406[(2)] = G__20412);
+(array34110[(2)] = G__34116);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$4 = (function (G__20413,G__20414,G__20415,G__20416){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$4 = (function (G__34117,G__34118,G__34119,G__34120){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(4));
-(array20406[(0)] = G__20413);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(4));
+(array34110[(0)] = G__34117);
 
-(array20406[(1)] = G__20414);
+(array34110[(1)] = G__34118);
 
-(array20406[(2)] = G__20415);
+(array34110[(2)] = G__34119);
 
-(array20406[(3)] = G__20416);
+(array34110[(3)] = G__34120);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$5 = (function (G__20417,G__20418,G__20419,G__20420,G__20421){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$5 = (function (G__34121,G__34122,G__34123,G__34124,G__34125){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(5));
-(array20406[(0)] = G__20417);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(5));
+(array34110[(0)] = G__34121);
 
-(array20406[(1)] = G__20418);
+(array34110[(1)] = G__34122);
 
-(array20406[(2)] = G__20419);
+(array34110[(2)] = G__34123);
 
-(array20406[(3)] = G__20420);
+(array34110[(3)] = G__34124);
 
-(array20406[(4)] = G__20421);
+(array34110[(4)] = G__34125);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$6 = (function (G__20422,G__20423,G__20424,G__20425,G__20426,G__20427){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$6 = (function (G__34126,G__34127,G__34128,G__34129,G__34130,G__34131){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(6));
-(array20406[(0)] = G__20422);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(6));
+(array34110[(0)] = G__34126);
 
-(array20406[(1)] = G__20423);
+(array34110[(1)] = G__34127);
 
-(array20406[(2)] = G__20424);
+(array34110[(2)] = G__34128);
 
-(array20406[(3)] = G__20425);
+(array34110[(3)] = G__34129);
 
-(array20406[(4)] = G__20426);
+(array34110[(4)] = G__34130);
 
-(array20406[(5)] = G__20427);
+(array34110[(5)] = G__34131);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$7 = (function (G__20428,G__20429,G__20430,G__20431,G__20432,G__20433,G__20434){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$7 = (function (G__34132,G__34133,G__34134,G__34135,G__34136,G__34137,G__34138){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(7));
-(array20406[(0)] = G__20428);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(7));
+(array34110[(0)] = G__34132);
 
-(array20406[(1)] = G__20429);
+(array34110[(1)] = G__34133);
 
-(array20406[(2)] = G__20430);
+(array34110[(2)] = G__34134);
 
-(array20406[(3)] = G__20431);
+(array34110[(3)] = G__34135);
 
-(array20406[(4)] = G__20432);
+(array34110[(4)] = G__34136);
 
-(array20406[(5)] = G__20433);
+(array34110[(5)] = G__34137);
 
-(array20406[(6)] = G__20434);
+(array34110[(6)] = G__34138);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$8 = (function (G__20435,G__20436,G__20437,G__20438,G__20439,G__20440,G__20441,G__20442){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$8 = (function (G__34139,G__34140,G__34141,G__34142,G__34143,G__34144,G__34145,G__34146){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(8));
-(array20406[(0)] = G__20435);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(8));
+(array34110[(0)] = G__34139);
 
-(array20406[(1)] = G__20436);
+(array34110[(1)] = G__34140);
 
-(array20406[(2)] = G__20437);
+(array34110[(2)] = G__34141);
 
-(array20406[(3)] = G__20438);
+(array34110[(3)] = G__34142);
 
-(array20406[(4)] = G__20439);
+(array34110[(4)] = G__34143);
 
-(array20406[(5)] = G__20440);
+(array34110[(5)] = G__34144);
 
-(array20406[(6)] = G__20441);
+(array34110[(6)] = G__34145);
 
-(array20406[(7)] = G__20442);
+(array34110[(7)] = G__34146);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$9 = (function (G__20443,G__20444,G__20445,G__20446,G__20447,G__20448,G__20449,G__20450,G__20451){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$9 = (function (G__34147,G__34148,G__34149,G__34150,G__34151,G__34152,G__34153,G__34154,G__34155){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(9));
-(array20406[(0)] = G__20443);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(9));
+(array34110[(0)] = G__34147);
 
-(array20406[(1)] = G__20444);
+(array34110[(1)] = G__34148);
 
-(array20406[(2)] = G__20445);
+(array34110[(2)] = G__34149);
 
-(array20406[(3)] = G__20446);
+(array34110[(3)] = G__34150);
 
-(array20406[(4)] = G__20447);
+(array34110[(4)] = G__34151);
 
-(array20406[(5)] = G__20448);
+(array34110[(5)] = G__34152);
 
-(array20406[(6)] = G__20449);
+(array34110[(6)] = G__34153);
 
-(array20406[(7)] = G__20450);
+(array34110[(7)] = G__34154);
 
-(array20406[(8)] = G__20451);
+(array34110[(8)] = G__34155);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$10 = (function (G__20452,G__20453,G__20454,G__20455,G__20456,G__20457,G__20458,G__20459,G__20460,G__20461){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$10 = (function (G__34156,G__34157,G__34158,G__34159,G__34160,G__34161,G__34162,G__34163,G__34164,G__34165){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(10));
-(array20406[(0)] = G__20452);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(10));
+(array34110[(0)] = G__34156);
 
-(array20406[(1)] = G__20453);
+(array34110[(1)] = G__34157);
 
-(array20406[(2)] = G__20454);
+(array34110[(2)] = G__34158);
 
-(array20406[(3)] = G__20455);
+(array34110[(3)] = G__34159);
 
-(array20406[(4)] = G__20456);
+(array34110[(4)] = G__34160);
 
-(array20406[(5)] = G__20457);
+(array34110[(5)] = G__34161);
 
-(array20406[(6)] = G__20458);
+(array34110[(6)] = G__34162);
 
-(array20406[(7)] = G__20459);
+(array34110[(7)] = G__34163);
 
-(array20406[(8)] = G__20460);
+(array34110[(8)] = G__34164);
 
-(array20406[(9)] = G__20461);
+(array34110[(9)] = G__34165);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$11 = (function (G__20462,G__20463,G__20464,G__20465,G__20466,G__20467,G__20468,G__20469,G__20470,G__20471,G__20472){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$11 = (function (G__34166,G__34167,G__34168,G__34169,G__34170,G__34171,G__34172,G__34173,G__34174,G__34175,G__34176){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(11));
-(array20406[(0)] = G__20462);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(11));
+(array34110[(0)] = G__34166);
 
-(array20406[(1)] = G__20463);
+(array34110[(1)] = G__34167);
 
-(array20406[(2)] = G__20464);
+(array34110[(2)] = G__34168);
 
-(array20406[(3)] = G__20465);
+(array34110[(3)] = G__34169);
 
-(array20406[(4)] = G__20466);
+(array34110[(4)] = G__34170);
 
-(array20406[(5)] = G__20467);
+(array34110[(5)] = G__34171);
 
-(array20406[(6)] = G__20468);
+(array34110[(6)] = G__34172);
 
-(array20406[(7)] = G__20469);
+(array34110[(7)] = G__34173);
 
-(array20406[(8)] = G__20470);
+(array34110[(8)] = G__34174);
 
-(array20406[(9)] = G__20471);
+(array34110[(9)] = G__34175);
 
-(array20406[(10)] = G__20472);
+(array34110[(10)] = G__34176);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$12 = (function (G__20473,G__20474,G__20475,G__20476,G__20477,G__20478,G__20479,G__20480,G__20481,G__20482,G__20483,G__20484){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$12 = (function (G__34177,G__34178,G__34179,G__34180,G__34181,G__34182,G__34183,G__34184,G__34185,G__34186,G__34187,G__34188){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(12));
-(array20406[(0)] = G__20473);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(12));
+(array34110[(0)] = G__34177);
 
-(array20406[(1)] = G__20474);
+(array34110[(1)] = G__34178);
 
-(array20406[(2)] = G__20475);
+(array34110[(2)] = G__34179);
 
-(array20406[(3)] = G__20476);
+(array34110[(3)] = G__34180);
 
-(array20406[(4)] = G__20477);
+(array34110[(4)] = G__34181);
 
-(array20406[(5)] = G__20478);
+(array34110[(5)] = G__34182);
 
-(array20406[(6)] = G__20479);
+(array34110[(6)] = G__34183);
 
-(array20406[(7)] = G__20480);
+(array34110[(7)] = G__34184);
 
-(array20406[(8)] = G__20481);
+(array34110[(8)] = G__34185);
 
-(array20406[(9)] = G__20482);
+(array34110[(9)] = G__34186);
 
-(array20406[(10)] = G__20483);
+(array34110[(10)] = G__34187);
 
-(array20406[(11)] = G__20484);
+(array34110[(11)] = G__34188);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$13 = (function (G__20485,G__20486,G__20487,G__20488,G__20489,G__20490,G__20491,G__20492,G__20493,G__20494,G__20495,G__20496,G__20497){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$13 = (function (G__34189,G__34190,G__34191,G__34192,G__34193,G__34194,G__34195,G__34196,G__34197,G__34198,G__34199,G__34200,G__34201){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(13));
-(array20406[(0)] = G__20485);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(13));
+(array34110[(0)] = G__34189);
 
-(array20406[(1)] = G__20486);
+(array34110[(1)] = G__34190);
 
-(array20406[(2)] = G__20487);
+(array34110[(2)] = G__34191);
 
-(array20406[(3)] = G__20488);
+(array34110[(3)] = G__34192);
 
-(array20406[(4)] = G__20489);
+(array34110[(4)] = G__34193);
 
-(array20406[(5)] = G__20490);
+(array34110[(5)] = G__34194);
 
-(array20406[(6)] = G__20491);
+(array34110[(6)] = G__34195);
 
-(array20406[(7)] = G__20492);
+(array34110[(7)] = G__34196);
 
-(array20406[(8)] = G__20493);
+(array34110[(8)] = G__34197);
 
-(array20406[(9)] = G__20494);
+(array34110[(9)] = G__34198);
 
-(array20406[(10)] = G__20495);
+(array34110[(10)] = G__34199);
 
-(array20406[(11)] = G__20496);
+(array34110[(11)] = G__34200);
 
-(array20406[(12)] = G__20497);
+(array34110[(12)] = G__34201);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$14 = (function (G__20498,G__20499,G__20500,G__20501,G__20502,G__20503,G__20504,G__20505,G__20506,G__20507,G__20508,G__20509,G__20510,G__20511){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$14 = (function (G__34202,G__34203,G__34204,G__34205,G__34206,G__34207,G__34208,G__34209,G__34210,G__34211,G__34212,G__34213,G__34214,G__34215){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(14));
-(array20406[(0)] = G__20498);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(14));
+(array34110[(0)] = G__34202);
 
-(array20406[(1)] = G__20499);
+(array34110[(1)] = G__34203);
 
-(array20406[(2)] = G__20500);
+(array34110[(2)] = G__34204);
 
-(array20406[(3)] = G__20501);
+(array34110[(3)] = G__34205);
 
-(array20406[(4)] = G__20502);
+(array34110[(4)] = G__34206);
 
-(array20406[(5)] = G__20503);
+(array34110[(5)] = G__34207);
 
-(array20406[(6)] = G__20504);
+(array34110[(6)] = G__34208);
 
-(array20406[(7)] = G__20505);
+(array34110[(7)] = G__34209);
 
-(array20406[(8)] = G__20506);
+(array34110[(8)] = G__34210);
 
-(array20406[(9)] = G__20507);
+(array34110[(9)] = G__34211);
 
-(array20406[(10)] = G__20508);
+(array34110[(10)] = G__34212);
 
-(array20406[(11)] = G__20509);
+(array34110[(11)] = G__34213);
 
-(array20406[(12)] = G__20510);
+(array34110[(12)] = G__34214);
 
-(array20406[(13)] = G__20511);
+(array34110[(13)] = G__34215);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$15 = (function (G__20512,G__20513,G__20514,G__20515,G__20516,G__20517,G__20518,G__20519,G__20520,G__20521,G__20522,G__20523,G__20524,G__20525,G__20526){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$15 = (function (G__34216,G__34217,G__34218,G__34219,G__34220,G__34221,G__34222,G__34223,G__34224,G__34225,G__34226,G__34227,G__34228,G__34229,G__34230){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(15));
-(array20406[(0)] = G__20512);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(15));
+(array34110[(0)] = G__34216);
 
-(array20406[(1)] = G__20513);
+(array34110[(1)] = G__34217);
 
-(array20406[(2)] = G__20514);
+(array34110[(2)] = G__34218);
 
-(array20406[(3)] = G__20515);
+(array34110[(3)] = G__34219);
 
-(array20406[(4)] = G__20516);
+(array34110[(4)] = G__34220);
 
-(array20406[(5)] = G__20517);
+(array34110[(5)] = G__34221);
 
-(array20406[(6)] = G__20518);
+(array34110[(6)] = G__34222);
 
-(array20406[(7)] = G__20519);
+(array34110[(7)] = G__34223);
 
-(array20406[(8)] = G__20520);
+(array34110[(8)] = G__34224);
 
-(array20406[(9)] = G__20521);
+(array34110[(9)] = G__34225);
 
-(array20406[(10)] = G__20522);
+(array34110[(10)] = G__34226);
 
-(array20406[(11)] = G__20523);
+(array34110[(11)] = G__34227);
 
-(array20406[(12)] = G__20524);
+(array34110[(12)] = G__34228);
 
-(array20406[(13)] = G__20525);
+(array34110[(13)] = G__34229);
 
-(array20406[(14)] = G__20526);
+(array34110[(14)] = G__34230);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$16 = (function (G__20527,G__20528,G__20529,G__20530,G__20531,G__20532,G__20533,G__20534,G__20535,G__20536,G__20537,G__20538,G__20539,G__20540,G__20541,G__20542){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$16 = (function (G__34231,G__34232,G__34233,G__34234,G__34235,G__34236,G__34237,G__34238,G__34239,G__34240,G__34241,G__34242,G__34243,G__34244,G__34245,G__34246){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(16));
-(array20406[(0)] = G__20527);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(16));
+(array34110[(0)] = G__34231);
 
-(array20406[(1)] = G__20528);
+(array34110[(1)] = G__34232);
 
-(array20406[(2)] = G__20529);
+(array34110[(2)] = G__34233);
 
-(array20406[(3)] = G__20530);
+(array34110[(3)] = G__34234);
 
-(array20406[(4)] = G__20531);
+(array34110[(4)] = G__34235);
 
-(array20406[(5)] = G__20532);
+(array34110[(5)] = G__34236);
 
-(array20406[(6)] = G__20533);
+(array34110[(6)] = G__34237);
 
-(array20406[(7)] = G__20534);
+(array34110[(7)] = G__34238);
 
-(array20406[(8)] = G__20535);
+(array34110[(8)] = G__34239);
 
-(array20406[(9)] = G__20536);
+(array34110[(9)] = G__34240);
 
-(array20406[(10)] = G__20537);
+(array34110[(10)] = G__34241);
 
-(array20406[(11)] = G__20538);
+(array34110[(11)] = G__34242);
 
-(array20406[(12)] = G__20539);
+(array34110[(12)] = G__34243);
 
-(array20406[(13)] = G__20540);
+(array34110[(13)] = G__34244);
 
-(array20406[(14)] = G__20541);
+(array34110[(14)] = G__34245);
 
-(array20406[(15)] = G__20542);
+(array34110[(15)] = G__34246);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$17 = (function (G__20543,G__20544,G__20545,G__20546,G__20547,G__20548,G__20549,G__20550,G__20551,G__20552,G__20553,G__20554,G__20555,G__20556,G__20557,G__20558,G__20559){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$17 = (function (G__34247,G__34248,G__34249,G__34250,G__34251,G__34252,G__34253,G__34254,G__34255,G__34256,G__34257,G__34258,G__34259,G__34260,G__34261,G__34262,G__34263){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(17));
-(array20406[(0)] = G__20543);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(17));
+(array34110[(0)] = G__34247);
 
-(array20406[(1)] = G__20544);
+(array34110[(1)] = G__34248);
 
-(array20406[(2)] = G__20545);
+(array34110[(2)] = G__34249);
 
-(array20406[(3)] = G__20546);
+(array34110[(3)] = G__34250);
 
-(array20406[(4)] = G__20547);
+(array34110[(4)] = G__34251);
 
-(array20406[(5)] = G__20548);
+(array34110[(5)] = G__34252);
 
-(array20406[(6)] = G__20549);
+(array34110[(6)] = G__34253);
 
-(array20406[(7)] = G__20550);
+(array34110[(7)] = G__34254);
 
-(array20406[(8)] = G__20551);
+(array34110[(8)] = G__34255);
 
-(array20406[(9)] = G__20552);
+(array34110[(9)] = G__34256);
 
-(array20406[(10)] = G__20553);
+(array34110[(10)] = G__34257);
 
-(array20406[(11)] = G__20554);
+(array34110[(11)] = G__34258);
 
-(array20406[(12)] = G__20555);
+(array34110[(12)] = G__34259);
 
-(array20406[(13)] = G__20556);
+(array34110[(13)] = G__34260);
 
-(array20406[(14)] = G__20557);
+(array34110[(14)] = G__34261);
 
-(array20406[(15)] = G__20558);
+(array34110[(15)] = G__34262);
 
-(array20406[(16)] = G__20559);
+(array34110[(16)] = G__34263);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$18 = (function (G__20560,G__20561,G__20562,G__20563,G__20564,G__20565,G__20566,G__20567,G__20568,G__20569,G__20570,G__20571,G__20572,G__20573,G__20574,G__20575,G__20576,G__20577){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$18 = (function (G__34264,G__34265,G__34266,G__34267,G__34268,G__34269,G__34270,G__34271,G__34272,G__34273,G__34274,G__34275,G__34276,G__34277,G__34278,G__34279,G__34280,G__34281){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(18));
-(array20406[(0)] = G__20560);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(18));
+(array34110[(0)] = G__34264);
 
-(array20406[(1)] = G__20561);
+(array34110[(1)] = G__34265);
 
-(array20406[(2)] = G__20562);
+(array34110[(2)] = G__34266);
 
-(array20406[(3)] = G__20563);
+(array34110[(3)] = G__34267);
 
-(array20406[(4)] = G__20564);
+(array34110[(4)] = G__34268);
 
-(array20406[(5)] = G__20565);
+(array34110[(5)] = G__34269);
 
-(array20406[(6)] = G__20566);
+(array34110[(6)] = G__34270);
 
-(array20406[(7)] = G__20567);
+(array34110[(7)] = G__34271);
 
-(array20406[(8)] = G__20568);
+(array34110[(8)] = G__34272);
 
-(array20406[(9)] = G__20569);
+(array34110[(9)] = G__34273);
 
-(array20406[(10)] = G__20570);
+(array34110[(10)] = G__34274);
 
-(array20406[(11)] = G__20571);
+(array34110[(11)] = G__34275);
 
-(array20406[(12)] = G__20572);
+(array34110[(12)] = G__34276);
 
-(array20406[(13)] = G__20573);
+(array34110[(13)] = G__34277);
 
-(array20406[(14)] = G__20574);
+(array34110[(14)] = G__34278);
 
-(array20406[(15)] = G__20575);
+(array34110[(15)] = G__34279);
 
-(array20406[(16)] = G__20576);
+(array34110[(16)] = G__34280);
 
-(array20406[(17)] = G__20577);
+(array34110[(17)] = G__34281);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$19 = (function (G__20578,G__20579,G__20580,G__20581,G__20582,G__20583,G__20584,G__20585,G__20586,G__20587,G__20588,G__20589,G__20590,G__20591,G__20592,G__20593,G__20594,G__20595,G__20596){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$19 = (function (G__34282,G__34283,G__34284,G__34285,G__34286,G__34287,G__34288,G__34289,G__34290,G__34291,G__34292,G__34293,G__34294,G__34295,G__34296,G__34297,G__34298,G__34299,G__34300){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(19));
-(array20406[(0)] = G__20578);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(19));
+(array34110[(0)] = G__34282);
 
-(array20406[(1)] = G__20579);
+(array34110[(1)] = G__34283);
 
-(array20406[(2)] = G__20580);
+(array34110[(2)] = G__34284);
 
-(array20406[(3)] = G__20581);
+(array34110[(3)] = G__34285);
 
-(array20406[(4)] = G__20582);
+(array34110[(4)] = G__34286);
 
-(array20406[(5)] = G__20583);
+(array34110[(5)] = G__34287);
 
-(array20406[(6)] = G__20584);
+(array34110[(6)] = G__34288);
 
-(array20406[(7)] = G__20585);
+(array34110[(7)] = G__34289);
 
-(array20406[(8)] = G__20586);
+(array34110[(8)] = G__34290);
 
-(array20406[(9)] = G__20587);
+(array34110[(9)] = G__34291);
 
-(array20406[(10)] = G__20588);
+(array34110[(10)] = G__34292);
 
-(array20406[(11)] = G__20589);
+(array34110[(11)] = G__34293);
 
-(array20406[(12)] = G__20590);
+(array34110[(12)] = G__34294);
 
-(array20406[(13)] = G__20591);
+(array34110[(13)] = G__34295);
 
-(array20406[(14)] = G__20592);
+(array34110[(14)] = G__34296);
 
-(array20406[(15)] = G__20593);
+(array34110[(15)] = G__34297);
 
-(array20406[(16)] = G__20594);
+(array34110[(16)] = G__34298);
 
-(array20406[(17)] = G__20595);
+(array34110[(17)] = G__34299);
 
-(array20406[(18)] = G__20596);
+(array34110[(18)] = G__34300);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$20 = (function (G__20597,G__20598,G__20599,G__20600,G__20601,G__20602,G__20603,G__20604,G__20605,G__20606,G__20607,G__20608,G__20609,G__20610,G__20611,G__20612,G__20613,G__20614,G__20615,G__20616){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$20 = (function (G__34301,G__34302,G__34303,G__34304,G__34305,G__34306,G__34307,G__34308,G__34309,G__34310,G__34311,G__34312,G__34313,G__34314,G__34315,G__34316,G__34317,G__34318,G__34319,G__34320){
 var self__ = this;
-var this__20324__auto__ = this;
-var array20406 = cljs.core.object_array.call(null,(20));
-(array20406[(0)] = G__20597);
+var this__19860__auto__ = this;
+var array34110 = cljs.core.object_array.call(null,(20));
+(array34110[(0)] = G__34301);
 
-(array20406[(1)] = G__20598);
+(array34110[(1)] = G__34302);
 
-(array20406[(2)] = G__20599);
+(array34110[(2)] = G__34303);
 
-(array20406[(3)] = G__20600);
+(array34110[(3)] = G__34304);
 
-(array20406[(4)] = G__20601);
+(array34110[(4)] = G__34305);
 
-(array20406[(5)] = G__20602);
+(array34110[(5)] = G__34306);
 
-(array20406[(6)] = G__20603);
+(array34110[(6)] = G__34307);
 
-(array20406[(7)] = G__20604);
+(array34110[(7)] = G__34308);
 
-(array20406[(8)] = G__20605);
+(array34110[(8)] = G__34309);
 
-(array20406[(9)] = G__20606);
+(array34110[(9)] = G__34310);
 
-(array20406[(10)] = G__20607);
+(array34110[(10)] = G__34311);
 
-(array20406[(11)] = G__20608);
+(array34110[(11)] = G__34312);
 
-(array20406[(12)] = G__20609);
+(array34110[(12)] = G__34313);
 
-(array20406[(13)] = G__20610);
+(array34110[(13)] = G__34314);
 
-(array20406[(14)] = G__20611);
+(array34110[(14)] = G__34315);
 
-(array20406[(15)] = G__20612);
+(array34110[(15)] = G__34316);
 
-(array20406[(16)] = G__20613);
+(array34110[(16)] = G__34317);
 
-(array20406[(17)] = G__20614);
+(array34110[(17)] = G__34318);
 
-(array20406[(18)] = G__20615);
+(array34110[(18)] = G__34319);
 
-(array20406[(19)] = G__20616);
+(array34110[(19)] = G__34320);
 
-return com.rpl.specter.impl.bind_params_STAR_.call(null,this__20324__auto__,array20406,(0));
+return com.rpl.specter.impl.bind_params_STAR_.call(null,this__19860__auto__,array34110,(0));
 });
 
 com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IFn$_invoke$arity$21 = (function (p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,rest){
@@ -1951,18 +1951,18 @@ return (new com.rpl.specter.impl.ParamsNeededPath(self__.transform_fns,self__.nu
 }
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__19347__auto__,k__19348__auto__,G__20617){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__19347__auto__,k__19348__auto__,G__34321){
 var self__ = this;
 var this__19347__auto____$1 = this;
-var pred__20622 = cljs.core.keyword_identical_QMARK_;
-var expr__20623 = k__19348__auto__;
-if(cljs.core.truth_(pred__20622.call(null,new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),expr__20623))){
-return (new com.rpl.specter.impl.ParamsNeededPath(G__20617,self__.num_needed_params,self__.__meta,self__.__extmap,null));
+var pred__34332 = cljs.core.keyword_identical_QMARK_;
+var expr__34333 = k__19348__auto__;
+if(cljs.core.truth_(pred__34332.call(null,new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),expr__34333))){
+return (new com.rpl.specter.impl.ParamsNeededPath(G__34321,self__.num_needed_params,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_(pred__20622.call(null,new cljs.core.Keyword(null,"num-needed-params","num-needed-params",-1219326097),expr__20623))){
-return (new com.rpl.specter.impl.ParamsNeededPath(self__.transform_fns,G__20617,self__.__meta,self__.__extmap,null));
+if(cljs.core.truth_(pred__34332.call(null,new cljs.core.Keyword(null,"num-needed-params","num-needed-params",-1219326097),expr__34333))){
+return (new com.rpl.specter.impl.ParamsNeededPath(self__.transform_fns,G__34321,self__.__meta,self__.__extmap,null));
 } else {
-return (new com.rpl.specter.impl.ParamsNeededPath(self__.transform_fns,self__.num_needed_params,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__19348__auto__,G__20617),null));
+return (new com.rpl.specter.impl.ParamsNeededPath(self__.transform_fns,self__.num_needed_params,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__19348__auto__,G__34321),null));
 }
 }
 });
@@ -1973,10 +1973,10 @@ var this__19352__auto____$1 = this;
 return cljs.core.seq.call(null,cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),self__.transform_fns],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"num-needed-params","num-needed-params",-1219326097),self__.num_needed_params],null))], null),self__.__extmap));
 });
 
-com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__19339__auto__,G__20617){
+com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__19339__auto__,G__34321){
 var self__ = this;
 var this__19339__auto____$1 = this;
-return (new com.rpl.specter.impl.ParamsNeededPath(self__.transform_fns,self__.num_needed_params,G__20617,self__.__extmap,self__.__hash));
+return (new com.rpl.specter.impl.ParamsNeededPath(self__.transform_fns,self__.num_needed_params,G__34321,self__.__extmap,self__.__hash));
 });
 
 com.rpl.specter.impl.ParamsNeededPath.prototype.cljs$core$ICollection$_conj$arity$2 = (function (this__19345__auto__,entry__19346__auto__){
@@ -2007,8 +2007,8 @@ com.rpl.specter.impl.__GT_ParamsNeededPath = (function com$rpl$specter$impl$__GT
 return (new com.rpl.specter.impl.ParamsNeededPath(transform_fns,num_needed_params,null,null,null));
 });
 
-com.rpl.specter.impl.map__GT_ParamsNeededPath = (function com$rpl$specter$impl$map__GT_ParamsNeededPath(G__20619){
-return (new com.rpl.specter.impl.ParamsNeededPath(new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649).cljs$core$IFn$_invoke$arity$1(G__20619),new cljs.core.Keyword(null,"num-needed-params","num-needed-params",-1219326097).cljs$core$IFn$_invoke$arity$1(G__20619),null,cljs.core.dissoc.call(null,G__20619,new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),new cljs.core.Keyword(null,"num-needed-params","num-needed-params",-1219326097)),null));
+com.rpl.specter.impl.map__GT_ParamsNeededPath = (function com$rpl$specter$impl$map__GT_ParamsNeededPath(G__34323){
+return (new com.rpl.specter.impl.ParamsNeededPath(new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649).cljs$core$IFn$_invoke$arity$1(G__34323),new cljs.core.Keyword(null,"num-needed-params","num-needed-params",-1219326097).cljs$core$IFn$_invoke$arity$1(G__34323),null,cljs.core.dissoc.call(null,G__34323,new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),new cljs.core.Keyword(null,"num-needed-params","num-needed-params",-1219326097)),null));
 });
 
 com.rpl.specter.impl.params_needed_path_QMARK_ = (function com$rpl$specter$impl$params_needed_path_QMARK_(o){
@@ -2024,15 +2024,15 @@ com.rpl.specter.impl.no_prot_error_str = (function com$rpl$specter$impl$no_prot_
 return [cljs.core.str("Protocol implementation cannot be found for object.\n        Extending Specter protocols should not be done inline in a deftype definition\n        because that prevents Specter from finding the protocol implementations for\n        optimized performance. Instead, you should extend the protocols via an\n        explicit extend-protocol call. \n"),cljs.core.str(obj)].join('');
 });
 com.rpl.specter.impl.structure_path_impl = (function com$rpl$specter$impl$structure_path_impl(obj){
-return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"select*","select*",-1829914060),((((!((obj == null)))?(((false) || (obj.com$rpl$specter$protocols$StructurePath$))?true:false):false))?(function (G__20642,G__20643,G__20644){
-return com.rpl.specter.protocols.select_STAR_.call(null,G__20642,G__20643,G__20644);
-}):com.rpl.specter.protocols.select_STAR_),new cljs.core.Keyword(null,"transform*","transform*",-1613794522),((((!((obj == null)))?(((false) || (obj.com$rpl$specter$protocols$StructurePath$))?true:false):false))?(function (G__20646,G__20647,G__20648){
-return com.rpl.specter.protocols.transform_STAR_.call(null,G__20646,G__20647,G__20648);
+return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"select*","select*",-1829914060),((((!((obj == null)))?(((false) || (obj.com$rpl$specter$protocols$StructurePath$))?true:false):false))?(function (G__34345,G__34346,G__34347){
+return com.rpl.specter.protocols.select_STAR_.call(null,G__34345,G__34346,G__34347);
+}):com.rpl.specter.protocols.select_STAR_),new cljs.core.Keyword(null,"transform*","transform*",-1613794522),((((!((obj == null)))?(((false) || (obj.com$rpl$specter$protocols$StructurePath$))?true:false):false))?(function (G__34350,G__34351,G__34352){
+return com.rpl.specter.protocols.transform_STAR_.call(null,G__34350,G__34351,G__34352);
 }):com.rpl.specter.protocols.transform_STAR_)], null);
 });
 com.rpl.specter.impl.collector_impl = (function com$rpl$specter$impl$collector_impl(obj){
-return new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"collect-val","collect-val",801894069),((((!((obj == null)))?(((false) || (obj.com$rpl$specter$protocols$Collector$))?true:false):false))?(function (G__20653,G__20654){
-return com.rpl.specter.protocols.collect_val.call(null,G__20653,G__20654);
+return new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"collect-val","collect-val",801894069),((((!((obj == null)))?(((false) || (obj.com$rpl$specter$protocols$Collector$))?true:false):false))?(function (G__34359,G__34360){
+return com.rpl.specter.protocols.collect_val.call(null,G__34359,G__34360);
 }):com.rpl.specter.protocols.collect_val)], null);
 });
 com.rpl.specter.impl.coerce_collector = (function com$rpl$specter$impl$coerce_collector(this$){
@@ -2198,42 +2198,42 @@ com.rpl.specter.impl.extype = (function com$rpl$specter$impl$extype(f){
 var exs = f.executors;
 return exs.type;
 });
-com.rpl.specter.impl.combine_same_types = (function com$rpl$specter$impl$combine_same_types(p__20675){
-var vec__20677 = p__20675;
-var f = cljs.core.nth.call(null,vec__20677,(0),null);
-var _ = cljs.core.nthnext.call(null,vec__20677,(1));
-var all = vec__20677;
+com.rpl.specter.impl.combine_same_types = (function com$rpl$specter$impl$combine_same_types(p__34371){
+var vec__34373 = p__34371;
+var f = cljs.core.nth.call(null,vec__34373,(0),null);
+var _ = cljs.core.nthnext.call(null,vec__34373,(1));
+var all = vec__34373;
 var exs = f.executors;
 var t = exs.type;
-var combiner = ((cljs.core._EQ_.call(null,t,new cljs.core.Keyword(null,"richpath","richpath",-150197948)))?((function (exs,t,vec__20677,f,_,all){
+var combiner = ((cljs.core._EQ_.call(null,t,new cljs.core.Keyword(null,"richpath","richpath",-150197948)))?((function (exs,t,vec__34373,f,_,all){
 return (function (curr,next){
-return ((function (exs,t,vec__20677,f,_,all){
+return ((function (exs,t,vec__34373,f,_,all){
 return (function (params,params_idx,vals,structure,next_fn){
-return curr.call(null,params,params_idx,vals,structure,((function (exs,t,vec__20677,f,_,all){
+return curr.call(null,params,params_idx,vals,structure,((function (exs,t,vec__34373,f,_,all){
 return (function (params_next,params_idx_next,vals_next,structure_next){
 return next.call(null,params_next,params_idx_next,vals_next,structure_next,next_fn);
-});})(exs,t,vec__20677,f,_,all))
+});})(exs,t,vec__34373,f,_,all))
 );
 });
-;})(exs,t,vec__20677,f,_,all))
-});})(exs,t,vec__20677,f,_,all))
-:((function (exs,t,vec__20677,f,_,all){
+;})(exs,t,vec__34373,f,_,all))
+});})(exs,t,vec__34373,f,_,all))
+:((function (exs,t,vec__34373,f,_,all){
 return (function (curr,next){
-return ((function (exs,t,vec__20677,f,_,all){
+return ((function (exs,t,vec__34373,f,_,all){
 return (function (structure,next_fn){
-return curr.call(null,structure,((function (exs,t,vec__20677,f,_,all){
+return curr.call(null,structure,((function (exs,t,vec__34373,f,_,all){
 return (function (structure__$1){
 return next.call(null,structure__$1,next_fn);
-});})(exs,t,vec__20677,f,_,all))
+});})(exs,t,vec__34373,f,_,all))
 );
 });
-;})(exs,t,vec__20677,f,_,all))
-});})(exs,t,vec__20677,f,_,all))
+;})(exs,t,vec__34373,f,_,all))
+});})(exs,t,vec__34373,f,_,all))
 );
-return cljs.core.reduce.call(null,((function (exs,t,combiner,vec__20677,f,_,all){
+return cljs.core.reduce.call(null,((function (exs,t,combiner,vec__34373,f,_,all){
 return (function (curr,next){
 return com.rpl.specter.impl.__GT_TransformFunctions.call(null,exs,combiner.call(null,curr.selector,next.selector),combiner.call(null,curr.transformer,next.transformer));
-});})(exs,t,combiner,vec__20677,f,_,all))
+});})(exs,t,combiner,vec__34373,f,_,all))
 ,all);
 });
 com.rpl.specter.impl.coerce_tfns_rich = (function com$rpl$specter$impl$coerce_tfns_rich(tfns){
@@ -2315,8 +2315,8 @@ var coerced = cljs.core.map.call(null,com.rpl.specter.impl.capture_params_intern
 var combined = cljs.core.map.call(null,com.rpl.specter.impl.combine_same_types,cljs.core.partition_by.call(null,com.rpl.specter.impl.extype,cljs.core.map.call(null,new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),coerced)));
 var result_tfn = ((cljs.core._EQ_.call(null,(1),cljs.core.count.call(null,combined)))?cljs.core.first.call(null,combined):com.rpl.specter.impl.combine_same_types.call(null,cljs.core.map.call(null,com.rpl.specter.impl.coerce_tfns_rich,combined)));
 var needs_params_paths = cljs.core.filter.call(null,((function (coerced,combined,result_tfn,structure_paths__$1){
-return (function (p1__20678_SHARP_){
-return (p1__20678_SHARP_ instanceof com.rpl.specter.impl.ParamsNeededPath);
+return (function (p1__34374_SHARP_){
+return (p1__34374_SHARP_ instanceof com.rpl.specter.impl.ParamsNeededPath);
 });})(coerced,combined,result_tfn,structure_paths__$1))
 ,coerced);
 if(cljs.core.empty_QMARK_.call(null,needs_params_paths)){
@@ -2391,23 +2391,23 @@ return (new com.rpl.specter.impl.MutableCell(q));
 });
 
 com.rpl.specter.impl.mutable_cell = (function com$rpl$specter$impl$mutable_cell(var_args){
-var args20679 = [];
-var len__19784__auto___20682 = arguments.length;
-var i__19785__auto___20683 = (0);
+var args34375 = [];
+var len__19784__auto___34378 = arguments.length;
+var i__19785__auto___34379 = (0);
 while(true){
-if((i__19785__auto___20683 < len__19784__auto___20682)){
-args20679.push((arguments[i__19785__auto___20683]));
+if((i__19785__auto___34379 < len__19784__auto___34378)){
+args34375.push((arguments[i__19785__auto___34379]));
 
-var G__20684 = (i__19785__auto___20683 + (1));
-i__19785__auto___20683 = G__20684;
+var G__34380 = (i__19785__auto___34379 + (1));
+i__19785__auto___34379 = G__34380;
 continue;
 } else {
 }
 break;
 }
 
-var G__20681 = args20679.length;
-switch (G__20681) {
+var G__34377 = args34375.length;
+switch (G__34377) {
 case 0:
 return com.rpl.specter.impl.mutable_cell.cljs$core$IFn$_invoke$arity$0();
 
@@ -2417,7 +2417,7 @@ return com.rpl.specter.impl.mutable_cell.cljs$core$IFn$_invoke$arity$1((argument
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args20679.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args34375.length)].join('')));
 
 }
 });
@@ -2528,17 +2528,17 @@ com.rpl.specter.impl.fn_invocation_QMARK_ = (function com$rpl$specter$impl$fn_in
 return ((f instanceof clojure.lang.Cons)) || ((f instanceof clojure.lang.LazySeq)) || (cljs.core.list_QMARK_.call(null,f));
 });
 com.rpl.specter.impl.codewalk_until = (function com$rpl$specter$impl$codewalk_until(pred,on_match_fn,structure){
-if(cljs.core.truth_(pred.call(null,structure))){
+if(pred.call(null,structure)){
 return on_match_fn.call(null,structure);
 } else {
 var ret = clojure.walk.walk.call(null,cljs.core.partial.call(null,com$rpl$specter$impl$codewalk_until,pred,on_match_fn),cljs.core.identity,structure);
-if(cljs.core.truth_((function (){var and__18714__auto__ = com.rpl.specter.impl.fn_invocation_QMARK_.call(null,structure);
+if((function (){var and__18714__auto__ = com.rpl.specter.impl.fn_invocation_QMARK_.call(null,structure);
 if(cljs.core.truth_(and__18714__auto__)){
 return com.rpl.specter.impl.fn_invocation_QMARK_.call(null,ret);
 } else {
 return and__18714__auto__;
 }
-})())){
+})()){
 return cljs.core.with_meta.call(null,ret,cljs.core.meta.call(null,structure));
 } else {
 return ret;
@@ -2586,8 +2586,8 @@ com.rpl.specter.impl.key_transform = (function com$rpl$specter$impl$key_transfor
 return cljs.core.assoc.call(null,structure,akey,next_fn.call(null,cljs.core.get.call(null,structure,akey)));
 });
 com.rpl.specter.impl.all_select = (function com$rpl$specter$impl$all_select(structure,next_fn){
-return cljs.core.into.call(null,cljs.core.PersistentVector.EMPTY,cljs.core.mapcat.call(null,(function (p1__20703_SHARP_){
-return next_fn.call(null,p1__20703_SHARP_);
+return cljs.core.into.call(null,cljs.core.PersistentVector.EMPTY,cljs.core.mapcat.call(null,(function (p1__34392_SHARP_){
+return next_fn.call(null,p1__34392_SHARP_);
 })),structure);
 });
 com.rpl.specter.impl.queue_QMARK_ = (function com$rpl$specter$impl$queue_QMARK_(coll){
@@ -2599,8 +2599,8 @@ if((cljs.core.list_QMARK_.call(null,empty_structure)) && (cljs.core.not.call(nul
 return cljs.core.doall.call(null,cljs.core.map.call(null,next_fn,structure));
 } else {
 return cljs.core.into.call(null,empty_structure,cljs.core.map.call(null,((function (empty_structure){
-return (function (p1__20708_SHARP_){
-return next_fn.call(null,p1__20708_SHARP_);
+return (function (p1__34397_SHARP_){
+return next_fn.call(null,p1__34397_SHARP_);
 });})(empty_structure))
 ),structure);
 }
@@ -2735,22 +2735,22 @@ return next_fn.call(null,structure);
 return next_fn.call(null,structure);
 }));
 com.rpl.specter.impl.retrieve_cond_selector = (function com$rpl$specter$impl$retrieve_cond_selector(cond_paths,structure){
-return cljs.core.second.call(null,cljs.core.first.call(null,cljs.core.drop_while.call(null,(function (p__20711){
-var vec__20712 = p__20711;
-var c_selector = cljs.core.nth.call(null,vec__20712,(0),null);
-var _ = cljs.core.nth.call(null,vec__20712,(1),null);
+return cljs.core.second.call(null,cljs.core.first.call(null,cljs.core.drop_while.call(null,(function (p__34400){
+var vec__34401 = p__34400;
+var c_selector = cljs.core.nth.call(null,vec__34401,(0),null);
+var _ = cljs.core.nth.call(null,vec__34401,(1),null);
 return cljs.core.empty_QMARK_.call(null,com.rpl.specter.impl.compiled_select_STAR_.call(null,c_selector,structure));
 }),cljs.core.partition.call(null,(2),cond_paths))));
 });
 com.rpl.specter.impl.filter_select = (function com$rpl$specter$impl$filter_select(afn,structure,next_fn){
-if(cljs.core.truth_(afn.call(null,structure))){
+if(afn.call(null,structure)){
 return next_fn.call(null,structure);
 } else {
 return null;
 }
 });
 com.rpl.specter.impl.filter_transform = (function com$rpl$specter$impl$filter_transform(afn,structure,next_fn){
-if(afn.call(null,structure)){
+if(cljs.core.truth_(afn.call(null,structure))){
 return next_fn.call(null,structure);
 } else {
 return structure;

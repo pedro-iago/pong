@@ -7,7 +7,7 @@
    :all-builds          ;; <-- supply your build configs here
    [{:id "dev"
      :figwheel true
-     :source-paths ["src/cljs"]
+     :source-paths ["src/cljs" "src/cljc"]
      :compiler {:main 'pong.core
                 :asset-path "js"
                 :output-to "resources/public/js/app.js"

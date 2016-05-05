@@ -4,7 +4,7 @@
                        [org.clojure/data.avl "0.0.13"]] :verbose false)))
 ;;             ($/load-project)))
 
-(ns pong.system
+(ns pong.systems
   (:require [com.rpl.specter :as s]
             #?(:clj [com.rpl.specter.macros :refer [defpath]])
             [com.rpl.specter.impl :refer [compiled-path? structure-path?]]
@@ -14,20 +14,20 @@
   #?(:cljs (:require-macros [com.rpl.specter.macros :refer [defpath]])))
 
 ;TODO: investigate PAMELA integration https://github.com/dollabs/pamela
-;SERVER-LOGIC todo: move it to cljc https://juxt.pro/blog/posts/course-notes-2.html
 ;TODO: introduce children topology up to one level in om. (parser/scene job)
 
 ;paths namespace
-(defpath ALL [] ;todo: reader conditional (ALL can be s/ALL for clj)
-  (select* [this structure next-fn]
-    (doall (mapcat next-fn structure)))
-  (transform* [this structure next-fn]
-    (let [coerce-fn (if (map? structure)
-                      #(into {} %)
-                      identity)]
-      (coerce-fn (mapv next-fn structure)))))
+#?(:clj (def ALL s/ALL) :cljs
+    (defpath ALL [] ;todo: reader conditional (ALL can be s/ALL for clj)
+      (select* [this structure next-fn]
+        (doall (mapcat next-fn structure)))
+      (transform* [this structure next-fn]
+        (let [coerce-fn (if (map? structure)
+                          #(into {} %)
+                          identity)]
+          (coerce-fn (mapv next-fn structure))))))
 (def KEYS (s/comp-paths [s/ALL s/FIRST]))
-(defpath subgroup [ns-key] ;I can use submap to select by keys
+(defpath subgroup [ns-key]
   (select* [this structure next-fn]
     (let [subgroup (avl/subrange structure >= (keyword ns-key "a") < (keyword ns-key "|"))]
       (next-fn (s/transform KEYS #(-> % name keyword) subgroup))))
@@ -37,12 +37,13 @@
           newgroup (next-fn newkeyed)]
       (merge (reduce dissoc structure (keys subgroup))
              (s/transform KEYS #(keyword ns-key (name %)) newgroup)))))
-(def path? (some-fn compiled-path? #(and (coll? %) (some structure-path? %))))
+(def path? #(or (compiled-path? %) (and (coll? %) (some structure-path? %))))
 (def KEY-VAL (s/comp-paths [ALL (s/collect-one s/FIRST) s/LAST]))
 (def KEY1-KEY2-VAL (s/comp-paths [KEY-VAL KEY-VAL]))
 (def PARAMS-PATHS (s/comp-paths (s/filterer path?)))
 (def FSM-COMPONENTS (s/comp-paths [(subgroup "fsm") KEY1-KEY2-VAL]))
-
+(def CHILDREN-POSITIONS (s/comp-paths [:position (s/filterer s/FIRST namespace) KEY-VAL]))
+;todo use (split-key :|) for performance
 ;util namespace
 (defn switch-path [dom] ;switches from/to dom and ecs
   (reduce-kv #(assoc %1 %2 (apply avl/sorted-map %3)) (avl/sorted-map)
@@ -53,6 +54,7 @@
 ;; (compute list [[:position :triangle/b] [:position :love] 0.4] (switch-path dom))
 ;; (compute reach [[:position :triangle/b] [:position :love] 0.4] (switch-path dom))
 ;; (compute mean [[:position (subgroup "triangle") (s/view vals)]] (switch-path dom))
+;; (compute list [[:position (subgroup "triangle") (s/view vals)]] (switch-path dom))
 ;; (compute vector [[:love :position] [:fear :position]] dom)
 
 ;components namespace
@@ -74,51 +76,52 @@
 (defn avoid [p q k] (as-> (mo/- p q) err (->> err m/magnitude-squared (mo// err) (mo/* k))))
 (defn mean [mtx] (mo// (reduce mo/+ mtx) (count mtx)))
 
-;levels namespace
+;todo: allow animations to be children here (no code here, just client)
+;perharps what could differentiate one from another is the attribute component
+;todo: put these in web workers if cljs (use servant)
+;levels namespace ;todo: interactive it by modyfing a reset! with this
 (def dom ;todo: make a b and c relative to triangle (children) control triangle instead
   (avl/sorted-map
     :love {:id :love
            :position [-1 1 1]
            :geometry (geometry "sphere" 0.5)
            :material (material "#fa2291")
-           :fsm/position (flow reach [[:position :love] [:position :center] 0.1])}
+           :fsm/position (flow reach [[:position :love] [:position :triangle] 1])}
     :fear {:id :fear
            :position [0 0 0]
            :geometry (geometry "sphere" 0.1)
            :material (material "#11f291")
-           :fsm/position (flow avoid [[:position :fear] [:position :center] 1])}
+           :fsm/position (flow avoid [[:position :fear] [:position :triangle] 10])}
     :triangle/a {:id :a
-                 :position [-1 1 3]
+                 :position [0 0 3]
                  :geometry (geometry "sphere" 0.2)
                  :material (material "#c0c32d")
                  :fsm/position (flow [:velocity :triangle/a])
                  :velocity [0 0 0.1]
-                 :fsm/velocity (flow reach [[:position :triangle/a] [:position :love] 0.4])}
+                 :fsm/velocity (flow reach [[:position :triangle/a] [0 0 0] 0.4])}
     :triangle/b {:id :b
-                 :position [-1 3 1]
+                 :position [0 3 0]
                  :geometry (geometry "sphere" 0.2)
                  :material (material "#c0c32d")
                  :fsm/position (flow [:velocity :triangle/b])
                  :velocity [0 0 0.1]
-                 :fsm/velocity (flow reach [[:position :triangle/b] [:position :love] 0.4])}
+                 :fsm/velocity (flow reach [[:position :triangle/b] [0 0 0] 0.4])}
     :triangle/c {:id :c
-                 :position [-3 1 1]
+                 :position [3 0 0]
                  :geometry (geometry "sphere" 0.2)
                  :material (material "#c0c32d")
                  :fsm/position (flow [:velocity :triangle/c])
                  :velocity [0 0 0.1]
-                 :fsm/velocity (flow reach [[:position :triangle/c] [:position :love] 0.4])}
-;;     :triangle {:id :triangle ;todo: make relative entities a-frame
-;;                :position [-1.666 1.666 1.666]
-;;                :fsm/position (flow [:velocity :triangle])
-;;                :velocity [0 0 0.1]
-;;                :fsm/velocity (flow reach [[:position :triangle] [:position :fear]] 0.1)}
-    :center {:id :center
-             :position [-1.666 1.666 1.666]
-             :fsm/position (jump mean [[:position (subgroup "triangle") (s/view vals)]])}))
-
+                 :fsm/velocity (flow reach [[:position :triangle/c] [0 0 0] 0.4])}
+    :triangle {:id :triangle
+               :position [1 1 1]
+               :geometry (geometry "sphere" 0.1)
+               :material (material "#263aae")
+               :fsm/position (flow [:velocity :triangle])
+               :velocity [0 0 0]
+               :fsm/velocity (flow reach [[:position :triangle] [:position :fear] 0.01])}))
 ;systems namespace
-(defn sys-fsm [st dt]
+(defn sys-fsm [st dt] ;compute mode of fsm, stepping the state
   (reduce
     #(let [c (peek %2) nv (compute (:mode c) (:params c) st)]
           (update-in %1 (pop %2)
@@ -126,13 +129,19 @@
                        "jump" nv
                        "flow" (-> nv (mo/* dt) (mo/+ v))))))
     st (s/select FSM-COMPONENTS st)))
+(defn sys-ref-in [st] ;adds parents position (todo: rotate parents rotation)
+  (s/transform CHILDREN-POSITIONS #(mo/- %2 (-> st :position (get (-> %1 namespace keyword)))) st))
+(defn sys-ref-out [st] ;adds parents position (todo: rotate parents rotation)
+  (s/transform CHILDREN-POSITIONS #(mo/+ %2 (-> st :position (get (-> %1 namespace keyword)))) st))
 (defn step-ecs [ecs dt] ;todo: add other systems
   (-> ecs
-     (sys-fsm dt)))
+      (sys-ref-in) ;some math is easier in local referential
+      (sys-fsm dt) ;like the state machine logic. However, global has it's value too
+      (sys-ref-out))) ;like for physics engines or rendering.
 (defn step-dom [dom dt]
   (-> dom
       switch-path
       (step-ecs dt)
       switch-path))
-;; (avl/split-key :| dom)
-;; (-> dom (step-dom 0.1) (step-dom 0.1))
+(def app (atom (switch-path dom)))
+(-> app (swap! step-ecs 0.1) :wdposition)

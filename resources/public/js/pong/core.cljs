@@ -7,7 +7,7 @@
             [pong.ui.scenes :refer [EmptyScene empty-scene]]
             [pong.ui.counters :refer [Counter counter]]
             [pong.ui.spheres :refer [CounterSphere counter-sphere]]
-            [pong.system :as sys]
+            [pong.systems :as sys]
             [clojure.data.avl :as avl]))
 
 (defui App
@@ -29,10 +29,10 @@
   {:entities sys/dom
    :counts [{:id 0 :value 0}
             {:id 1 :value 0}
-            {:id 2 :value 1}]
+            {:id 2 :value 2}]
    :radius [{:id 0 :value 0 :mult 0.186}
             {:id 1 :value 0 :mult 0.186}
-            {:id 2 :value 0 :mult 0.186}]})
+            {:id 2 :value 2 :mult 0.186}]})
 
 (defonce app-state
   (atom (reduce-kv #(assoc %1 %2 %3) (avl/sorted-map) (om/tree->db App init-data true))))
@@ -44,8 +44,12 @@
 
 (om/add-root! reconciler App (gdom/getElement "app"))
 
-(let []
+(defonce rafid (atom nil))
+(defn start-raf []
   (defn loop-sys []
-    (.requestAnimationFrame js/window loop-sys)
+    (reset! rafid (.requestAnimationFrame js/window loop-sys))
     (swap! app-state update :entities sys/step-dom 0.01666))
-  (.requestAnimationFrame js/window loop-sys))
+  (reset! rafid (.requestAnimationFrame js/window loop-sys)))
+(defn end-raf [id] (.cancelAnimationFrame js/window id))
+(end-raf @rafid)
+(start-raf)
