@@ -24,8 +24,8 @@
 
 ;verify serialize fn
 (parser {:state app-state} [:entities])
-(-> @app-state :entities :center a-vr/serialize)
-(-> @app-state :entities :triangle/a a-vr/serialize)
+(-> @app-state :entities :fear a-vr/serialize)
+(-> @app-state :entities :triangle/c a-vr/serialize)
 
 ;reset atom (copy uuid from log)
 (comment
