@@ -23,9 +23,12 @@
       @st (range 0 (-> @st :count/by-id count)))))
 
 ;verify serialize fn
-(parser {:state app-state} [:entities])
-(-> @app-state :entities :fear a-vr/serialize)
-(-> @app-state :entities :triangle/c a-vr/serialize)
+(parser {:state app-state} [:components])
+(def entities (:entities (parser {:state app-state} [:entities])))
+(-> entities :fear a-vr/serialize)
+(-> entities :triangle :on-click)
+(-> entities :triangle :children :c a-vr/serialize)
+(-> entities :fear :children :a a-vr/serialize)
 
 ;reset atom (copy uuid from log)
 (comment
@@ -55,10 +58,3 @@
     (fn [] (.log js/console "Click!")))
   (aset el "onclick"
     (fn [] (.log js/console "On click!"))))
-
-;system updates
-(comment
-  (defn loop-sys []
-    (.requestAnimationFrame js/window loop-sys)
-    (swap! app-state sys/step-dom 0.01666))
-  (.requestAnimationFrame js/window loop-sys))

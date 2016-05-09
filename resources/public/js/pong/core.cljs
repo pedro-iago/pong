@@ -7,8 +7,10 @@
             [pong.ui.scenes :refer [EmptyScene empty-scene]]
             [pong.ui.counters :refer [Counter counter]]
             [pong.ui.spheres :refer [CounterSphere counter-sphere]]
+            [clojure.data.avl :as avl]
             [pong.systems :as sys]
-            [clojure.data.avl :as avl]))
+            [pong.scripts :as script]
+            [pong.utils :as pu]))
 
 (defui App
   static om/IQuery
@@ -26,13 +28,13 @@
           (apply empty-scene (vals entities) (map counter-sphere radius)))))))
 
 (def init-data
-  {:entities sys/dom
+  {:components (pu/switch-path script/weirdom)
    :counts [{:id 0 :value 0}
             {:id 1 :value 0}
-            {:id 2 :value 2}]
+            {:id 2 :value 0}]
    :radius [{:id 0 :value 0 :mult 0.186}
             {:id 1 :value 0 :mult 0.186}
-            {:id 2 :value 2 :mult 0.186}]})
+            {:id 2 :value 0 :mult 0.186}]})
 
 (defonce app-state
   (atom (reduce-kv #(assoc %1 %2 %3) (avl/sorted-map) (om/tree->db App init-data true))))
@@ -44,11 +46,14 @@
 
 (om/add-root! reconciler App (gdom/getElement "app"))
 
+;this needs to be in a level cljs or something (bug)
+(swap! app-state assoc-in [:components :on-click :triangle] #(.log js/console "not working!"))
+
 (defonce rafid (atom nil))
 (defn start-raf []
   (defn loop-sys []
     (reset! rafid (.requestAnimationFrame js/window loop-sys))
-    (swap! app-state update :entities sys/step-dom 0.01666))
+    (swap! app-state update :components sys/step-ecs 0.01666))
   (reset! rafid (.requestAnimationFrame js/window loop-sys)))
 (defn end-raf [id] (.cancelAnimationFrame js/window id))
 (end-raf @rafid)

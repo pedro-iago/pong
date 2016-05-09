@@ -1,16 +1,14 @@
 (ns pong.parser
   (:require [om.next :as om]
             [clojure.data.avl :as avl]
-            [com.rpl.specter :as s]))
+            [com.rpl.specter :as s]
+            [pong.utils :as pu]))
 
 (defn read [{:keys [state query] :as env} key params]
   (let [st @state]
     (case key
       (:entities)
-      {:value
-       (let [[top _ children] (->> st :entities (avl/split-key :|))]
-        (reduce-kv ;rotine that puts chidren on a children key of its parent
-          #(assoc-in %1 [(-> %2 namespace keyword) :children (-> %2 name keyword)] %3) top children))}
+      {:value (-> st :components pu/switch-path pu/fold-children)}
       (:counts :radius)
       {:value (om/db->tree query (get st key) st)}
       (if-let [value (get st key)]

@@ -20,6 +20,7 @@
           :else (assoc %1 str-key %3)))
       {} props)))
 
+;todo: add mixins and assets
 (defui Animation
   Object
   (componentDidMount [this]

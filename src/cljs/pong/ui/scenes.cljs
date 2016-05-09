@@ -3,7 +3,7 @@
             [om.dom :as dom]
             [pong.aframe-react :as a-vr]))
 
-(defn to-a-vr [entity]
+(defn to-a-vr [entity] ;todo: make this recusive (use datomic style :fear.camera/cursor)
   (a-vr/entity (dissoc entity :children)
                (map #(case (:type %)
                       "animation" (a-vr/animation %)
@@ -17,6 +17,10 @@
 ;todo: ask myself if any of this can be done by the parser
 (defui EmptyScene
   Object
+;;   (componentDidMount [this] ;todo: find out why keypress doesn't work with a-frame
+;;     (.addEventListener (dom/node this) "keypress"
+;;                        #(case (aget % "keyCode") 67
+;;                           (om/transact! this '[toggle-camera!]))))
   (render [this]
     (apply a-vr/scene nil
       (a-vr/entity {:react-key "cam" :camera {:active false}
