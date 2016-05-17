@@ -3,18 +3,6 @@
             [om.dom :as dom]
             [pong.aframe-react :as a-vr]))
 
-(defn to-a-vr [entity] ;todo: make this recusive (use datomic style :fear.camera/cursor)
-  (a-vr/entity (dissoc entity :children)
-               (map #(case (:type %)
-                      "animation" (a-vr/animation %)
-                      (a-vr/entity %))
-                    (-> entity :children vals))))
-
-;I should do more logic here, to ensure props is built correctly
-;I need a function that takes the entities values and decides if they are children
-;from who, decide they if they are animation, or mixins, or assets..
-;i need a context-type, that decides which of these the map of components is
-;todo: ask myself if any of this can be done by the parser
 (defui EmptyScene
   Object
 ;;   (componentDidMount [this] ;todo: find out why keypress doesn't work with a-frame
@@ -34,6 +22,6 @@
                            :begin "click"
                            :dur "150" :fill "backwards"
                            :from "0.1 0.1 0.1" :to "2 2 2"})))
-      (map to-a-vr (om/props this))
+      (map a-vr/to-a-vr (om/props this))
       (om/children this))))
 (def empty-scene (om/factory EmptyScene))

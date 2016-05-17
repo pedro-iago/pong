@@ -21,12 +21,6 @@
           (update-in %1 (pop %2) (:step fsm) nv dt))
     st (s/select FSM-COMPONENTS st)))
 
-(defn step-ecs [ecs dt] ;todo: add other systems
+(defn step-ecs [ecs dt] ;todo: add other systems, each with a worker
   (-> ecs
       (sys-fsm dt)))
-
-(defn step-dom [dom dt]
-  (-> dom
-      switch-path
-      (step-ecs dt)
-      switch-path))

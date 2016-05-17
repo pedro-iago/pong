@@ -28,7 +28,7 @@
 ;it tricky to mantain a .cljc implementation, that is, if datomic is fat and bulky.
 (comment ;todo: the input a tick-fn needs is still shady now, should be changed later
   (deftick jump [Y X dt] (peek X)) ;tick has the potential to be a protocol
-  (deftick flow [Y X dt] (-> (peek X) (mo/* dt) (mo/+ (peek Y))))
+  (deftick euler [Y X dt] (-> (peek X) (mo/* dt) (mo/+ (peek Y))))
   (deftick verlet [Y X dt] (...)) ;needs previous v too! datomic? om.next history?
   (deftick wait [Y X dt] (if (peek X) (...) (peek Y)));i can probably put a channel here
   (deftick low-pass [Y X dt] ())) ;i not only need Y and X, but also some coeficients! (cut-frequency
@@ -52,8 +52,51 @@
 ;decide upon that. and also there wouldn't be the overhead of having to specify from wich time on
 ;the path. different systems could be made by different tick functions, having Y and X in previous times.
 
+;reach, avoid, mean, follow, sao funcoes de varias variaveis sem memoria (fn sinais calculam X).
+;flow, jump, low-pass, verlet, euler, sao todos equacoes de diferenca entre dois sinais.
+;(fn sistemas calculam Y = HX). eu quero poder compor funcoes de sistema assim como os transducers.
+;eu tenho que pensar mais sobre o que significa caluclar Y = X2H2 = (X1H1)H2
+
 ;put computations on a math namespace?
 (defn reach [p q k] (->> p (mo/- q) (mo/* k)))
 (defn avoid [p q k] (as-> (mo/- p q) err (->> err m/magnitude-squared (mo// err) (mo/* k))))
 (defn mean [mtx] (mo// (reduce mo/+ mtx) (count mtx)))
 (defn follow [p q k1 k2] (mean (vector (reach p q k1) (avoid p q k2))))
+
+;todo: delete this
+(comment
+  (require '[pong.scripts :refer [weirdom]]
+           '[pong.utils :refer [switch-path compute]]
+           '[pong.paths :refer [FSM-COMPONENTS]])
+  (def ecs (switch-path weirdom))
+
+  (compute reach (-> ecs :fsm/velocity :triangle :params) ecs)
+  (compute reach [[1 1 1] [0 1 0] 0.1] ecs)
+  (compute vector [[:position :triangle] [0 1 0] 0.1] ecs)
+  (compute reach [[:position :triangle] [0 1 0] 0.1] ecs)
+  (compute vector [[:position :triangle] [:position :fear] [:position :love]] ecs)
+
+  ;; (transfer [[dt] [1 -1]] reach [[:position :triangle] [0 1 0] 0.1])
+  ;; (state-var [[?]] ;do I need to query something for the state variables?
+  ;;   reach  [[:position :triangle] [0 1 0] 0.1]
+  ;;   vector [[:position :triangle] [:position :fear] [:position :love]]]
+  ;;   vector [[:velocity :triangle] [:velocity :fear] [:velocity :love]])
+
+  (defn jump [] #(%2 0))
+  (defn euler [dt] #(+ (* dt (%2 0)) (%1 0)))
+  (defn verlet [dt] #(+ (-> (%2 0) (* dt) (* dt))
+                        (* 2 (%1 0)) (* -1 (%1 1))))
+  ;todo: write a helper function that takes H and creates a system function.
+  ;todo: see if I don't want to use a state variable approach.
+  ;that would potentially increase complexity of "transfer" functions
+
+  (def A [[0 0 0] [0 0 0] [0 0 0] [0 0 1] [0 0 1] [0 0 1]])
+  (def P [[0 0 0] [0 0 0] [0 0 0] [0 0 0] [0 0 0] [0 0 0]])
+
+  (defn sys-fsm [st dt] ;compute mode of fsm, stepping to a new state
+    (reduce
+      #(let [fsm (peek %2) nv (compute (:mode fsm) (:params fsm) st)]
+            (update-in %1 (pop %2) (:step fsm) nv dt))
+      st (s/select FSM-COMPONENTS st)))
+
+  (-> ecs (sys-fsm 0.1) (get-in [:position :triangle])))

@@ -34,6 +34,15 @@
       (serialize (om/props this)) nil)))
 (def animation (om/factory Animation))
 
+;todo: what if this was a macro?
+;todo: take a look at declarative events to make this possible
+;a moto keeps coming back when dealing with a-frame: the less I aim it, the more I get
+;which is, by supporting a-event I'll have any event at my will, while selecting events here
+;only makes it overly specific and requires a ui component (ugly on React tools)
+;by using a macro here I make things simpler and perharps faster
+;I actually want to do something very similar to what om did to get their macros from react
+;perharps the only thing I could miss is the :keyfn thing. but still I could add :react-key in
+;the function to-a-vr at pong.ui.scenes.cljs, perharps just copying the value on :id (hacky)
 (defui Entity
   Object
   (componentDidMount [this]
@@ -48,7 +57,7 @@
   (render [this]
     (.createElement js/React "a-entity"
       (serialize (om/props this)) (om/children this))))
-(def entity (om/factory Entity {:keyfn :id})) ;should have uuid as keyfn, put om/next query too
+(def entity (om/factory Entity))
 
 (defui Scene
   Object
@@ -66,3 +75,10 @@
     (.createElement js/React "a-scene"
       (serialize (om/props this)) (om/children this))))
 (def scene (om/factory Scene))
+
+(defn to-a-vr [ent] ;todo: generalize case statement to any type?
+  (let [childs (map to-a-vr (-> ent :children vals)) props (dissoc ent :children)]
+    (case (:type props)
+          "scene" (apply scene props childs)
+          "animation" (apply animation props childs)
+          (apply entity props childs))))

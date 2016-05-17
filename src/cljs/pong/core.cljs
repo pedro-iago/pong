@@ -47,7 +47,7 @@
 (om/add-root! reconciler App (gdom/getElement "app"))
 
 ;this needs to be in a level cljs or something (bug)
-(swap! app-state assoc-in [:components :on-click :triangle] #(.log js/console "not working!"))
+;; (swap! app-state assoc-in [:components :on-click :triangle] #(.log js/console "clicked working!"))
 
 (defonce rafid (atom nil))
 (defn start-raf []

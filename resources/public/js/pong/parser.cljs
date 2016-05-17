@@ -8,7 +8,7 @@
   (let [st @state]
     (case key
       (:entities)
-      {:value (-> st :components pu/switch-path pu/fold-children)}
+      {:value (-> st :components pu/switch-path pu/keyed-dom pu/fold-children)}
       (:counts :radius)
       {:value (om/db->tree query (get st key) st)}
       (if-let [value (get st key)]
