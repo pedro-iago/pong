@@ -52,7 +52,7 @@
 
 ;runtime event listeners
 (let [el (dom/node
-           (om/class->any reconciler a-vr/Entity))]
+           (om/class->any reconciler a-vr/entity))]
   (.log js/console el)
   (.addEventListener el "click"
     (fn [] (.log js/console "Click!")))
