@@ -3,12 +3,12 @@
             [om.dom :as dom]
             [pong.aframe-react :as a-vr]))
 
+;todo: delete this and use (from-data (-> this om/props :scene)) in core.cljs
+;then fold-children could actually become fold-scene, and every other entity is children to one scene
+;with this I am separating the need for om.next, in regards to a-frame.
+;but it will still be useful for other uis
 (defui EmptyScene
   Object
-;;   (componentDidMount [this] ;todo: find out why keypress doesn't work with a-frame
-;;     (.addEventListener (dom/node this) "keypress"
-;;                        #(case (aget % "keyCode") 67
-;;                           (om/transact! this '[toggle-camera!]))))
   (render [this]
     (apply a-vr/scene nil
       (a-vr/entity {:react-key "cam" :camera {:active false}
@@ -22,6 +22,6 @@
                            :begin "click"
                            :dur "150" :fill "backwards"
                            :from "0.1 0.1 0.1" :to "2 2 2"})))
-      (map a-vr/to-a-vr (om/props this))
+      (map a-vr/from-data (om/props this))
       (om/children this))))
 (def empty-scene (om/factory EmptyScene))

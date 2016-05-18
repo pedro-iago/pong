@@ -36,17 +36,6 @@
 (defn ^boolean nil-or-map? [x]
   (or (nil? x) (map? x)))
 
-(defn ^boolean ident?
-  "Returns true if x is an ident."
-  [x]
-  (and (vector? x)
-    (== 2 (count x))
-    (keyword? (nth x 0))))
-
-(defn ^boolean recursion? [x]
-  (or (symbol-identical? '... x)
-      (number? x)))
-
 (defn- expr->key
   "Given a query expression return its key."
   [expr]
@@ -56,7 +45,7 @@
     (seq? expr)     (let [expr' (first expr)]
                       (when (map? expr')
                         (ffirst expr')))
-    (ident? expr)   (cond-> expr (= '_ (second expr)) first)
+    (util/ident? expr)   (cond-> expr (= '_ (second expr)) first)
     :else
     (throw
       (ex-info (str "Invalid query expr " expr)
@@ -86,11 +75,6 @@
         (-> loc zip/down zip/right)
         (recur (zip/right loc))))))
 
-(defn ^boolean union? [expr]
-  (let [expr (cond-> expr (seq? expr) first)]
-    (and (map? expr)
-         (map? (-> expr first second)))))
-
 (defn- query-template
   "Given a query and a path into a query return a zipper focused at the location
    specified by the path. This location can be replaced to customize / alter
@@ -105,8 +89,9 @@
                   (let [[k & ks] path
                         k' (expr->key node)]
                     (if (keyword-identical? k k')
-                      (if (map? node)
-                        (let [loc'  (move-to-key loc k)
+                      (if (or (map? node)
+                              (and (seq? node) (map? (first node))))
+                        (let [loc'  (move-to-key (cond-> loc (seq? node) zip/down) k)
                               node' (zip/node loc')]
                           (if (map? node') ;; UNION
                             (if (seq ks)
@@ -125,29 +110,21 @@
 
 (declare focus-query)
 
-(defn- join-key [expr]
-  (cond
-    (map? expr) (ffirst expr)
-    (seq? expr) (join-key (first expr))
-    :else       expr))
+(defn- focused-join [expr ks full-expr]
+  (let [expr-meta (meta expr)
+        expr' (cond
+                (map? expr)
+                (let [join-value (-> expr first second)
+                      join-value (if (and (util/recursion? join-value)
+                                          (seq ks))
+                                   full-expr
+                                   join-value)]
+                  {(ffirst expr) (focus-query join-value ks)})
 
-(defn- join-entry [expr]
-  (if (seq? expr)
-    (ffirst expr)
-    (first expr)))
-
-(defn- join-value [join]
-  (second (join-entry join)))
-
-(defn- join? [x]
-  (let [x (if (seq? x) (first x) x)]
-    (map? x)))
-
-(defn- focused-join [expr ks]
-  (cond
-    (map? expr) {(ffirst expr) (focus-query (-> expr first second) ks)}
-    (seq? expr) (list (focused-join (first expr) ks) (second expr))
-    :else       expr))
+                (seq? expr) (list (focused-join (first expr) ks) (second expr))
+                :else       expr)]
+    (cond-> expr'
+      (some? expr-meta) (with-meta expr-meta))))
 
 (defn focus-query
   "Given a query, focus it along the specified path.
@@ -163,14 +140,12 @@
     query
     (let [[k & ks] path]
       (letfn [(match [x]
-                (= k (join-key x)))
+                (= k (util/join-key x)))
               (value [x]
-                (focused-join x ks))]
+                (focused-join x ks query))]
         (if (map? query) ;; UNION
           {k (focus-query (get query k) ks)}
           (into [] (comp (filter match) (map value) (take 1)) query))))))
-
-(declare ident?)
 
 ;; this function assumes focus is actually in fact
 ;; already focused!
@@ -189,11 +164,11 @@
    (if (and (or (= bound '*)
                 (and (not= path bound)
                      (< (count path) (count bound))))
-            (some join? focus)
+            (some util/join? focus)
             (== 1 (count focus)))
-     (let [[k focus'] (join-entry (first focus))
-           k (if (ident? k) (first k) k)
-           focus'     (if (recursion? focus')
+     (let [[k focus'] (util/join-entry (first focus))
+           k (if (util/ident? k) (first k) k)
+           focus'     (if (util/recursion? focus')
                         focus
                         focus')]
        (recur focus' bound (conj path k)))
@@ -228,37 +203,48 @@
 (defn- var->keyword [x]
   (keyword (.substring (str x) 1)))
 
+(defn- replace-var [expr params]
+  (if (var? expr)
+    (get params (var->keyword expr) expr)
+    expr))
+
 (defn- bind-query [query params]
-  (letfn [(replace-var [expr]
-            (if (var? expr)
-              (get params (var->keyword expr) expr)
-              expr))]
-    (walk/prewalk replace-var query)))
+  (let [qm (meta query)
+        tr (map #(bind-query % params))
+        ret (cond
+              (seq? query) (apply list (into [] tr query))
+              (coll? query) (into (empty query) tr query)
+              :else (replace-var query params))]
+    (cond-> ret
+      (and qm (satisfies? IMeta ret)) (with-meta qm))))
 
-(declare component? get-reconciler props)
+(declare component? get-reconciler props class-path get-indexer path)
 
-(defn- get-local-query-data [component]
+(defn- component->query-data [component]
   (some-> (get-reconciler component)
     :config :state deref ::queries (get component)))
 
 (defn get-unbound-query
   "Return the unbound query for a component."
   [component]
-  (:query (get-local-query-data component) (query component)))
+  (:query (component->query-data component) (query component)))
 
 (defn get-params
   "Return the query params for a component."
   [component]
-  (:params (get-local-query-data component) (params component)))
+  (:params (component->query-data component) (params component)))
 
-(defn- get-component-query [c]
-  (let [qps (get-local-query-data c)
-        q   (:query qps (query c))
-        c'  (-> q meta :component)]
-    (assert (nil? c') (str "Query violation, " c , " reuses " c' " query"))
-    (with-meta
-      (bind-query q (:params qps (params c)))
-      {:component (type c)})))
+(defn- get-component-query
+  ([component]
+   (get-component-query component (component->query-data component)))
+  ([component query-data]
+   (let [q  (:query query-data (query component))
+         c' (-> q meta :component)]
+     (assert (nil? c')
+       (str "Query violation, " component " reuses " c' " query"))
+     (with-meta
+       (bind-query q (:params query-data (params component)))
+       {:component (type component)}))))
 
 (defn ^boolean iquery? [x]
   (if (implements? IQuery x)
@@ -267,17 +253,47 @@
       (let [x (js/Object.create (. x -prototype))]
         (implements? IQuery x)))))
 
+(defn- get-class-or-instance-query
+  "Return a IQuery/IParams local bound query. Works for component classes
+   and component instances. Does not use the indexer."
+  [x]
+  (if (component? x)
+    (get-component-query x)
+    (let [q (query x)
+          c (-> q meta :component)]
+      (assert (nil? c) (str "Query violation, " x , " reuses " c " query"))
+      (with-meta (bind-query q (params x)) {:component x}))))
+
+(defn- get-indexed-query
+  "Get a component's static query from the indexer. For recursive queries, recurses
+   up the data path. Falls back to `get-class-or-instance-query` if nothing is
+   found in the indexer."
+  [component class-path-query-data data-path]
+  (let [qs (filter #(= data-path (-> % zip/root (focus->path data-path)))
+             class-path-query-data)
+        qs (if (empty? qs) class-path-query-data qs)]
+    (if-not (empty? qs)
+      (let [q (first qs)
+            node (zip/node q)]
+        (if-not (util/recursion? node)
+          node
+          (recur component class-path-query-data (pop data-path))))
+      (get-class-or-instance-query component))))
+
 (defn get-query
   "Return a IQuery/IParams instance bound query. Works for component classes
    and component instances. See also om.next/full-query."
   [x]
   (if (implements? IQuery x)
     (if (component? x)
-      (get-component-query x)
-      (let [q (query x)
-            c (-> q meta :component)]
-        (assert (nil? c) (str "Query violation, " x , " reuses " c " query"))
-        (with-meta (bind-query q (params x)) {:component x})))
+      (if-let [query-data (component->query-data x)]
+        (get-component-query x query-data)
+        (let [cp (class-path x)
+              r (get-reconciler x)
+              data-path (into [] (remove number?) (path x))
+              class-path-query-data (get (:class-path->query @(get-indexer r)) cp)]
+          (get-indexed-query x class-path-query-data data-path)))
+      (get-class-or-instance-query x))
     ;; in advanced, statics will get elided
     (when (goog/isFunction x)
       (let [y (js/Object.create (. x -prototype))]
@@ -339,6 +355,7 @@
          (js/React.createElement class
           #js {:key               key
                :ref               ref
+               :omcljs$reactKey   key
                :omcljs$value      (om-props props t)
                :omcljs$path       (-> props meta :om-path)
                :omcljs$reconciler *reconciler*
@@ -458,7 +475,7 @@
 (defn react-key
   "Returns the components React key."
   [component]
-  (.. component -props -key))
+  (get-prop component "omcljs$reactKey"))
 
 (defn react-type
   "Returns the component type, regardless of whether the component has been
@@ -582,11 +599,14 @@
 (defn get-rendered-state
   "Get the rendered state of component. om.next/get-state always returns the
    up-to-date state."
-  [component]
-  {:pre [(component? component)]}
-  (if (implements? ILocalState component)
-    (-get-rendered-state component)
-    (some-> component .-state (gobj/get "omcljs$state"))))
+  ([component]
+   (get-rendered-state component []))
+  ([component k-or-ks]
+   {:pre [(component? component)]}
+   (let [cst (if (implements? ILocalState component)
+               (-get-rendered-state component)
+               (some-> component .-state (gobj/get "omcljs$state")))]
+     (get-in cst (if (sequential? k-or-ks) k-or-ks [k-or-ks])))))
 
 (defn- merge-pending-state! [c]
   (if (implements? ILocalState c)
@@ -603,7 +623,7 @@
    (react-set-state! component new-state nil))
   ([component new-state cb]
    {:pre [(component? component)]}
-   (.setState component #js {:omcljs$state new-state} nil)))
+   (.setState component #js {:omcljs$state new-state} cb)))
 
 (declare full-query to-env schedule-sends! reconciler? ref->components force)
 
@@ -749,21 +769,32 @@
      #js {:omcljs$value next-props}
      #js {:omcljs$state next-state})))
 
-(defn class-path [c]
-  "Return the component class path associated with a component."
-  {:pre [(component? c)]}
+(defn- raw-class-path [c]
+  "Return the raw component class path associated with a component. Contains
+   duplicates for recursive component trees."
   (loop [c c ret (list (type c))]
     (if-let [p (parent c)]
       (if (iquery? p)
         (recur p (cons (type p) ret))
         (recur p ret))
-      (let [seen (atom #{})]
-        (take-while
-          (fn [x]
-            (when-not (contains? @seen x)
-              (swap! seen conj x)
-              x))
-          ret)))))
+      ret)))
+
+(defn class-path [c]
+  "Return the component class path associated with a component."
+  {:pre [(component? c)]}
+  (let [raw-cp (raw-class-path c)]
+    (loop [cp (seq raw-cp) ret [] seen #{}]
+      (if cp
+        (let [c (first cp)]
+          (if (contains? seen c)
+            (recur (next cp) ret seen)
+            (recur (next cp) (conj ret c) (conj seen c))))
+        (seq ret)))))
+
+(defn- ^boolean recursive-class-path? [c]
+  "Returns true if a component's classpath is recursive"
+  {:pre [(component? c)]}
+  (not (apply distinct? (raw-class-path c))))
 
 (defn subquery
   "Given a class or mounted component x and a ref to an instantiated component
@@ -777,11 +808,13 @@
       (get-query (react-ref x ref))
       (get-query subquery-class))))
 
-(defn get-ident
-  "Given a component return its ident"
-  [component]
-  {:pre [(component? component)]}
-  (ident component (props component)))
+(defn get-ident [x]
+  "Given a mounted component with assigned props, return the ident for the
+   component."
+  {:pre [(component? x)]}
+  (let [m (props x)]
+    (assert (not (nil? m)) "get-ident invoked on component with nil props")
+    (ident x m)))
 
 ;; =============================================================================
 ;; Reconciler API
@@ -868,6 +901,15 @@
       (p/queue-sends! r snds)
       (schedule-sends! r))))
 
+(defn annotate-mutations
+  "Given a query expression annotate all mutations by adding a :mutator -> ident
+   entry to the metadata of each mutation expression in the query."
+  [tx ident]
+  (letfn [(annotate [expr ident]
+            (cond-> expr
+              (util/mutation? expr) (vary-meta assoc :mutator ident)))]
+    (into [] (map #(annotate % ident)) tx)))
+
 (defn transact!
   "Given a reconciler or component run a transaction. tx is a parse expression
    that should include mutations followed by any necessary read. The reads will
@@ -882,20 +924,23 @@
    {:pre [(or (component? x)
               (reconciler? x))
           (vector? tx)]}
-   (if (reconciler? x)
-     (transact* x nil nil tx)
-     (do
-       (assert (iquery? x)
-         (str "transact! invoked by component " x
-              " that does not implement IQuery"))
-       (loop [p (parent x) x x tx tx]
-         (if (nil? p)
-           (let [r (get-reconciler x)]
-             (transact* r x nil (transform-reads r tx)))
-           (let [[x' tx] (if (implements? ITxIntercept p)
-                          [p (tx-intercept p tx)]
-                          [x tx])]
-             (recur (parent p) x' tx)))))))
+   (let [tx (cond-> tx
+              (and (component? x) (satisfies? Ident x))
+              (annotate-mutations (get-ident x)))]
+     (if (reconciler? x)
+       (transact* x nil nil tx)
+       (do
+         (assert (iquery? x)
+           (str "transact! invoked by component " x
+             " that does not implement IQuery"))
+         (loop [p (parent x) x x tx tx]
+           (if (nil? p)
+             (let [r (get-reconciler x)]
+               (transact* r x nil (transform-reads r tx)))
+             (let [[x' tx] (if (implements? ITxIntercept p)
+                             [p (tx-intercept p tx)]
+                             [x tx])]
+               (recur (parent p) x' tx))))))))
   ([r ref tx]
    (transact* r nil ref tx)))
 
@@ -926,6 +971,47 @@
 ;; =============================================================================
 ;; Indexer
 
+(defn- cascade-query
+  "Cascades a query up the classpath. class-path->query is a map of classpaths
+   to their queries. classpath is the classpath where we start cascading (typically
+   the direct parent's classpath of the component changing query). data-path is
+   the data path in the classpath's query to the new query. new-query is the
+   query to be applied to the classpaths. union-keys are any keys into union
+   queries found during index building; they are used to access union queries
+   when cascading the classpath, and to generate the classpaths' rendered-paths,
+   which skip these keys."
+  [class-path->query classpath data-path new-query union-keys]
+  (loop [cp classpath
+         data-path data-path
+         new-query new-query
+         ret {}]
+    (if-not (empty? cp)
+      (let [rendered-data-path (into [] (remove (set union-keys)) data-path)
+            filter-data-path (cond-> rendered-data-path
+                               (not (empty? rendered-data-path)) pop)
+            qs (filter #(= filter-data-path
+                           (-> % zip/root (focus->path filter-data-path)))
+                 (get class-path->query cp))
+            qs' (into #{}
+                  (map (fn [q]
+                         (let [new-query (if (or (map? (zip/node q))
+                                               (some #{(peek data-path)} union-keys))
+                                           (let [union-key (peek data-path)]
+                                             (-> (query-template (zip/root q)
+                                                   rendered-data-path)
+                                                 zip/node
+                                                 (assoc union-key new-query)))
+                                           new-query)]
+                           (-> (zip/root q)
+                             (query-template rendered-data-path)
+                             (replace new-query)
+                             (focus-query filter-data-path)
+                             (query-template filter-data-path)))))
+                  qs)]
+        (recur (pop cp) (pop data-path)
+          (-> qs' first zip/node) (assoc ret cp qs')))
+      ret)))
+
 (defrecord Indexer [indexes extfs]
   IDeref
   (-deref [_] @indexes)
@@ -936,45 +1022,114 @@
           class-path->query (atom {})
           rootq             (get-query x)
           class             (cond-> x (component? x) type)]
-      (letfn [(build-index* [class query path classpath]
+      (letfn [(get-dispatch-key [prop]
+                (cond-> prop
+                  (or (not (util/ident? prop))
+                      (= (second prop) '_))
+                  ((comp :dispatch-key parser/expr->ast))))
+              (build-index* [class query path classpath union-keys]
+                (invariant (or (not (iquery? class))
+                             (and (iquery? class)
+                               (not (empty? query))))
+                  (str "`IQuery` implementation must return a non-empty query."
+                    " Check the `IQuery` implementation of component `"
+                    (if (component? class)
+                      (.. class -constructor -displayName)
+                      (.. class -prototype -constructor -displayName)) "`."))
                 (let [recursive? (some #{class} classpath)
                       classpath  (cond-> classpath
                                    (and (not (nil? class))
                                         (not recursive?))
-                                   (conj class))]
+                                   (conj class))
+                      dp->cs     (get-in @indexes [:data-path->components])]
                   (when class
-                    (swap! class-path->query update-in [classpath]
-                      (fnil conj #{})
-                      (query-template (focus-query rootq path) path)))
-                  (when-not recursive?
+                    (let [focused-query (query-template
+                                          (focus-query rootq path)
+                                          path)
+                          cp-query      (cond-> focused-query
+                                          (and (not= (zip/node focused-query) query)
+                                               (not recursive?))
+                                          (zip/replace query))]
+                      (swap! class-path->query update-in [classpath]
+                        (fnil conj #{}) cp-query)))
+                  (when (or (not recursive?)
+                            (and recursive?
+                                 (some (fn [e]
+                                         (and (util/join? e)
+                                           (not (util/recursion?
+                                                  (util/join-value e)))))
+                                   query)
+                                 (not= (peek path) (peek (pop path)))))
                     (cond
                       (vector? query)
-                      (let [{props false joins true} (group-by join? query)]
-                        (when class
-                          (swap! prop->classes
-                            #(merge-with into %
-                              (zipmap
-                                (map (comp :dispatch-key parser/expr->ast) props)
-                                (repeat #{class})))))
+                      (let [{props false joins true} (group-by util/join? query)]
+                        (swap! prop->classes
+                          #(merge-with into %
+                             (zipmap
+                               (map get-dispatch-key props)
+                               (repeat #{class}))))
                         (doseq [join joins]
-                          (let [[prop query'] (join-entry join)
-                                query'        (if (recursion? query')
-                                                query
-                                                query')]
-                            (when class
-                              (swap! prop->classes
-                                #(merge-with into % {prop #{class}})))
-                            (let [class' (-> query' meta :component)]
-                              (build-index* class' query'
-                                (conj path prop) classpath)))))
+                          (let [[prop query']  (util/join-entry join)
+                                prop-dispatch-key (get-dispatch-key prop)
+                                recursion?     (util/recursion? query')
+                                query'         (if recursion?
+                                                 query
+                                                 query')
+                                path'          (conj path prop)
+                                rendered-path' (into [] (remove (set union-keys) path'))
+                                cs (get dp->cs rendered-path')
+                                cascade-query? (and (= (count cs) 1)
+                                                 (= (-> query' meta :component)
+                                                   (type (first cs)))
+                                                 (not (map? query')))
+                                query''        (if cascade-query?
+                                                 (get-query (first cs))
+                                                 query')]
+                            (swap! prop->classes
+                              #(merge-with into % {prop-dispatch-key #{class}}))
+                            (when (and cascade-query? (not= query' query''))
+                              (let [cp->q' (cascade-query @class-path->query classpath
+                                             path' query'' union-keys)]
+                                (swap! class-path->query merge cp->q')))
+                            (let [class' (-> query'' meta :component)]
+                              (when-not (and recursion? (nil? class'))
+                                (build-index* class' query''
+                                  path' classpath union-keys))))))
 
                       ;; Union query case
                       (map? query)
                       (doseq [[prop query'] query]
-                        (let [class' (-> query' meta :component)]
-                          (build-index* class' query'
-                            (conj path prop) classpath)))))))]
-        (build-index* class rootq [] [])
+                        (let [path'          (conj path prop)
+                              class'         (-> query' meta :component)
+                              cs             (filter #(= class' (type %))
+                                               (get dp->cs path))
+                              cascade-query? (and class' (= (count cs) 1))
+                              query''        (if cascade-query?
+                                               (get-query (first cs))
+                                               query')]
+                          (when (and cascade-query? (not= query' query''))
+                            (let [qs        (get @class-path->query classpath)
+                                  q         (first qs)
+                                  qnode     (zip/node
+                                              (cond-> q
+                                                (nil? class) (query-template path)))
+                                  new-query (assoc qnode
+                                              prop query'')
+                                  q'        (cond-> (zip/replace
+                                                      (query-template (zip/root q) path)
+                                                      new-query)
+                                              (nil? class)
+                                              (-> zip/root
+                                                (focus-query (pop path))
+                                                (query-template (pop path))))
+                                  qs'       (into #{q'} (remove #{q}) qs)
+                                  cp->q'    (merge {classpath qs'}
+                                              (cascade-query @class-path->query
+                                                (pop classpath) path
+                                                (zip/node q') union-keys))]
+                              (swap! class-path->query merge cp->q')))
+                          (build-index* class' query'' path' classpath (conj union-keys prop))))))))]
+        (build-index* class rootq [] [] [])
         (swap! indexes merge
           {:prop->classes     @prop->classes
            :class-path->query @class-path->query}))))
@@ -985,9 +1140,13 @@
         (let [indexes (update-in ((:index-component extfs) indexes c)
                         [:class->components (type c)]
                         (fnil conj #{}) c)
+              data-path (into [] (remove number?) (path c))
+              indexes (update-in ((:index-component extfs) indexes c)
+                        [:data-path->components data-path]
+                        (fnil conj #{}) c)
               ident     (when (implements? Ident c)
                           (let [ident (ident c (props c))]
-                            (invariant (ident? ident)
+                            (invariant (util/ident? ident)
                               (str "malformed Ident. An ident must be a vector of "
                                 "two elements (a keyword and an EDN value). Check "
                                 "the Ident implementation of component `"
@@ -1003,6 +1162,10 @@
       (fn [indexes]
         (let [indexes (update-in ((:drop-component extfs) indexes c)
                         [:class->components (type c)]
+                        disj c)
+              data-path (into [] (remove number?) (path c))
+              indexes (update-in ((:drop-component extfs) indexes c)
+                        [:data-path->components data-path]
                         disj c)
               ident     (when (implements? Ident c)
                         (ident c (props c)))]
@@ -1038,6 +1201,7 @@
    (Indexer.
      (atom
        {:class->components {}
+        :data-path->components {}
         :ref->components   {}})
      extfs)))
 
@@ -1089,7 +1253,9 @@
        (full-query component (get-query component)))))
   ([component query]
    (when (iquery? component)
-     (let [path' (into [] (remove number?) (path component))
+     (let [xf    (cond->> (remove number?)
+                   (recursive-class-path? component) (comp (distinct)))
+           path' (into [] xf (path component))
            cp    (class-path component)
            qs    (get-in @(-> component get-reconciler get-indexer)
                    [:class-path->query cp])]
@@ -1113,9 +1279,6 @@
       (js/Object.create (. class -prototype))
       class)))
 
-(defn- ^boolean unique-ident? [x]
-  (and (ident? x) (= '_ (second x))))
-
 (defn- normalize* [query data refs union-seen]
   (cond
     (= '[*] query) data
@@ -1136,10 +1299,10 @@
     (loop [q (seq query) ret data]
       (if-not (nil? q)
         (let [expr (first q)]
-          (if (join? expr)
-            (let [[k sel] (join-entry expr)
-                  recursive? (recursion? sel)
-                  union-entry (if (union? expr) sel union-seen)
+          (if (util/join? expr)
+            (let [[k sel] (util/join-entry expr)
+                  recursive? (util/recursion? sel)
+                  union-entry (if (util/union? expr) sel union-seen)
                   sel     (if recursive?
                             (if-not (nil? union-seen)
                               union-seen
@@ -1149,7 +1312,7 @@
                   v       (get data k)]
               (cond
                 ;; graph loop: db->tree leaves ident in place
-                (and recursive? (ident? v)) (recur (next q) ret)
+                (and recursive? (util/ident? v)) (recur (next q) ret)
                 ;; normalize one
                 (map? v)
                 (let [x (normalize* sel v refs union-entry)]
@@ -1218,10 +1381,12 @@
 (defn reduce-query-depth
   "Changes a join on key k with depth limit from [:a {:k n}] to [:a {:k (dec n)}]"
   [q k]
-  (let [pos (query-template q [k])
-        node (zip/node pos)
-        node' (cond-> node (number? node) dec)]
-    (replace pos node')))
+  (if-not (empty? (focus-query q [k]))
+    (let [pos (query-template q [k])
+          node (zip/node pos)
+          node' (cond-> node (number? node) dec)]
+      (replace pos node'))
+    q))
 
 (defn- reduce-union-recursion-depth
   "Given a union expression decrement each of the query roots by one if it
@@ -1243,7 +1408,7 @@
   [query data refs map-ident idents-seen union-expr recurse-key]
   {:pre [(map? refs)]}
   ;; support taking ident for data param
-  (let [data (cond-> data (ident? data) (->> map-ident (get-in refs)))]
+  (let [data (cond-> data (util/ident? data) (->> map-ident (get-in refs)))]
     (if (vector? data)
       ;; join
       (let [step (fn [ident]
@@ -1262,35 +1427,50 @@
       ;; map case
       (if (= '[*] query)
         data
-        (let [{props false joins true} (group-by #(or (join? %) (ident? %)) query)
+        (let [{props false joins true} (group-by #(or (util/join? %)
+                                                      (util/ident? %)
+                                                      (and (seq? %)
+                                                           (util/ident? (first %))))
+                                         query)
               props (mapv #(cond-> % (seq? %) first) props)]
           (loop [joins (seq joins) ret {}]
             (if-not (nil? joins)
               (let [join        (first joins)
-                    join        (cond-> join (ident? join) (hash-map '[*]))
-                    [key sel]   (join-entry join)
-                    recurse?    (recursion? sel)
+                    join        (cond-> join
+                                  (seq? join) first)
+                    join        (cond-> join
+                                  (util/ident? join) (hash-map '[*]))
+                    [key sel]   (util/join-entry join)
+                    recurse?    (util/recursion? sel)
                     recurse-key (when recurse? key)
-                    v           (if (ident? key)
+                    v           (if (util/ident? key)
                                   (if (= '_ (second key))
                                     (get refs (first key))
                                     (get-in refs (map-ident key)))
                                   (get data key))
-                    key         (cond-> key (unique-ident? key) first)
-                    v           (if (ident? v) (map-ident v) v)
+                    key         (cond-> key (util/unique-ident? key) first)
+                    v           (if (util/ident? v) (map-ident v) v)
                     limit       (if (number? sel) sel :none)
-                    union-entry (if (union? join) sel union-expr)
+                    union-entry (if (util/union? join) sel union-expr)
                     sel         (cond
-                                  recurse? (if-not (nil? union-expr)
-                                             union-entry
-                                             (reduce-query-depth query key))
-                                  (and (ident? key) (union? join)) (get sel (first key))
-                                  (and (ident? v) (union? join)) (get sel (first v))
+                                  recurse?
+                                  (if-not (nil? union-expr)
+                                    union-entry
+                                    (reduce-query-depth query key))
+
+                                  (and (util/ident? key)
+                                    (util/union? join))
+                                  (get sel (first key))
+
+                                  (and (util/ident? v)
+                                       (util/union? join))
+                                  (get sel (first v))
+
                                   :else sel)
                     graph-loop? (and recurse?
                                   (contains? (set (get idents-seen key)) v)
                                   (= :none limit))
-                    idents-seen (if (and (ident? v) recurse?)
+                    idents-seen (if (and (util/ident? v) recurse?)
                                   (-> idents-seen
                                     (update-in [key] (fnil conj #{}) v)
                                     (assoc-in [:last-ident key] v)) idents-seen)]
@@ -1339,13 +1519,13 @@
   "
   [join result-roots path]
   (letfn [(query-root? [join] (true? (-> join meta :query-root)))]
-    (if (join? join)
+    (if (util/join? join)
       (if (query-root? join)
         (conj result-roots [join path])
         (mapcat
           #(move-roots % result-roots
-            (conj path (join-key join)))
-          (join-value join)))
+            (conj path (util/join-key join)))
+          (util/join-value join)))
       result-roots)))
 
 (defn- merge-joins
@@ -1355,13 +1535,15 @@
             (if (contains? (:elements-seen res) expr)
               res ; eliminate exact duplicates
               (update-in
-                (if (and (join? expr) (not (union? expr)) (not (list? expr)))
-                  (let [jk (join-key expr)
-                        jv (join-value expr)
+                (if (and (util/join? expr)
+                         (not (util/union? expr))
+                         (not (list? expr)))
+                  (let [jk (util/join-key expr)
+                        jv (util/join-value expr)
                         q  (or (-> res :query-by-join (get jk)) [])
                         nq (cond
-                             (recursion? q) q
-                             (recursion? jv) jv
+                             (util/recursion? q) q
+                             (util/recursion? jv) jv
                              :else (merge-joins (into [] (concat q jv))))]
                     (update-in res [:query-by-join] assoc jk nq))
                   (update-in res [:not-mergeable] conj expr))
@@ -1390,7 +1572,7 @@
           (rewrite-map-step [rewrites [expr path]]
             (if (empty? path)
               rewrites
-              (update-in rewrites [(join-key expr)] conj path)))]
+              (update-in rewrites [(util/join-key expr)] conj path)))]
     (let [reroots     (mapcat reroot query)
           query       (merge-joins (mapv first reroots))
           rewrite-map (reduce rewrite-map-step {} reroots)]
@@ -1399,7 +1581,9 @@
 
 (defn- merge-idents [tree config refs query]
   (let [{:keys [merge-ident indexer]} config
-        ident-joins (into {} (filter #(and (join? %) (ident? (join-key %))) query))]
+        ident-joins (into {} (filter #(and (util/join? %)
+                                           (util/ident? (util/join-key %)))
+                               query))]
     (letfn [ (step [tree' [ident props]]
               (if (:normalize config)
                 (let [c-or-q (or (get ident-joins ident) (ref->any indexer ident))
@@ -1438,14 +1622,15 @@
   ([reconciler delta query]
    (let [config (:config reconciler)
          state (:state config)
-         merge (:merge config)
-         {:keys [keys next tempids]} (merge reconciler @state delta query)]
+         merge* (:merge config)
+         {:keys [keys next tempids]} (merge* reconciler @state delta query)]
      (p/queue! reconciler keys)
      (reset! state
        (if-let [migrate (:migrate config)]
-         (migrate next
-           (or query (get-query (:root @(:state reconciler))))
-           tempids (:id-key config))
+         (merge (select-keys next [:om.next/queries])
+           (migrate next
+             (or query (get-query (:root @(:state reconciler))))
+             tempids (:id-key config)))
          next)))))
 
 (defrecord Reconciler [config state]
@@ -1523,10 +1708,12 @@
     (when-let [remove (:remove @state)]
       (remove)))
 
-  (reindex! [_]
+  (reindex! [this]
     (let [root (get @state :root)]
       (when (iquery? root)
-        (p/index-root (:indexer config) root))))
+        (let [indexer (:indexer config)
+              c (first (get-in @indexer [:class->components root]))]
+          (p/index-root indexer (or c root))))))
 
   (queue! [_ ks]
     (swap! state update-in [:queue] into ks))
@@ -1543,7 +1730,7 @@
   (schedule-sends! [_]
     (if-not (:sends-queued @state)
       (do
-        (swap! state assoc [:sends-queued] true)
+        (swap! state assoc :sends-queued true)
         true)
       false))
 
@@ -1658,12 +1845,25 @@
                       (let [expr (first exprs)
                             k    (as-> (expr->key expr) k
                                    (cond-> k
-                                     (unique-ident? k) first))
+                                     (util/unique-ident? k) first))
                             data (get res k)]
                         (cond
-                          (union? expr)
-                          (let [jk     (join-key expr)
-                                jv     (join-value expr)
+                          (util/mutation? expr)
+                          (let [mk   (util/mutation-key expr)
+                                ret' (get res mk)]
+                            (if (has-error? ret')
+                              (let [x (-> expr meta :mutator)]
+                                (swap! errs
+                                  #(update-in % [x]
+                                    (fnil conj #{}) (::error ret')))
+                                (recur (next exprs) ret))
+                              (recur (next exprs)
+                                (when-not (nil? ret)
+                                  (assoc ret mk ret')))))
+
+                          (util/union? expr)
+                          (let [jk     (util/join-key expr)
+                                jv     (util/join-value expr)
                                 class' (-> jv meta :component)]
                             (if (not (vector? data))
                               (let [ret' (extract*
@@ -1679,10 +1879,9 @@
                                   (when-not (nil? ret)
                                     (assoc ret jk ret'))))))
 
-                          ;; need to examine contents
-                          (join? expr)
-                          (let [jk   (join-key expr)
-                                jv   (join-value expr)
+                          (util/join? expr)
+                          (let [jk   (util/join-key expr)
+                                jv   (util/join-value expr)
                                 ret' (extract* jv data errs)]
                             (recur (next exprs)
                               (when-not (nil? ret)
@@ -1792,7 +1991,7 @@
                  (atom {:queue [] :queued false :queued-sends {}
                         :sends-queued false
                         :target nil :root nil :render nil :remove nil
-                        :t 0 :normalized false}))]
+                        :t 0 :normalized norm?}))]
     ret))
 
 (defn ^boolean reconciler?

@@ -4,7 +4,8 @@
             [clojure.test.check.properties :as prop]
             [clojure.core.matrix :as m]
             [clojure.core.matrix.operators :as mo]
-            [clojure.data.avl :as avl])
+            [clojure.data.avl :as avl]
+            [pong.scripts :refer [weirdom]])
   (:use midje.sweet))
 
 ;property check

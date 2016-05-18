@@ -43,11 +43,11 @@ cljs.core.ISeq.prototype.clojure$core$matrix$protocols$PIndexedAccess$ = true;
 
 cljs.core.ISeq.prototype.clojure$core$matrix$protocols$PIndexedAccess$get_1d$arity$2 = (function (m,x){
 var m__$1 = this;
-var x__21106__auto__ = cljs.core.nth.call(null,m__$1,x);
-if(typeof x__21106__auto__ === 'number'){
-return x__21106__auto__;
+var x__19974__auto__ = cljs.core.nth.call(null,m__$1,x);
+if(typeof x__19974__auto__ === 'number'){
+return x__19974__auto__;
 } else {
-return clojure.core.matrix.protocols.get_0d.call(null,x__21106__auto__);
+return clojure.core.matrix.protocols.get_0d.call(null,x__19974__auto__);
 
 }
 });
@@ -145,8 +145,8 @@ if((ldimension < (0))){
 throw cljs.core.ex_info.call(null,[cljs.core.str("Can't get slices of a negative dimension: "),cljs.core.str(dimension)].join(''),cljs.core.PersistentArrayMap.EMPTY);
 } else {
 return cljs.core.mapv.call(null,((function (ldimension,m__$1){
-return (function (p1__35806_SHARP_){
-return clojure.core.matrix.protocols.get_slice.call(null,m__$1,dimension,p1__35806_SHARP_);
+return (function (p1__22429_SHARP_){
+return clojure.core.matrix.protocols.get_slice.call(null,m__$1,dimension,p1__22429_SHARP_);
 });})(ldimension,m__$1))
 ,cljs.core.range.call(null,clojure.core.matrix.protocols.dimension_count.call(null,m__$1,dimension)));
 
@@ -209,34 +209,34 @@ return cljs.core.mapcat.call(null,clojure.core.matrix.protocols.element_seq,m__$
 cljs.core.ISeq.prototype.clojure$core$matrix$protocols$PFunctionalOperations$element_map$arity$2 = (function (m,f){
 var m__$1 = this;
 return cljs.core.mapv.call(null,((function (m__$1){
-return (function (p1__35811_SHARP_){
-return clojure.core.matrix.protocols.element_map.call(null,p1__35811_SHARP_,f);
+return (function (p1__22461_SHARP_){
+return clojure.core.matrix.protocols.element_map.call(null,p1__22461_SHARP_,f);
 });})(m__$1))
 ,m__$1);
 });
 
 cljs.core.ISeq.prototype.clojure$core$matrix$protocols$PFunctionalOperations$element_map$arity$3 = (function (m,f,a){
 var m__$1 = this;
-var vec__35819 = clojure.core.matrix.protocols.broadcast_compatible.call(null,m__$1,a);
-var m__$2 = cljs.core.nth.call(null,vec__35819,(0),null);
-var a__$1 = cljs.core.nth.call(null,vec__35819,(1),null);
-return cljs.core.mapv.call(null,((function (vec__35819,m__$2,a__$1,m__$1){
-return (function (p1__35812_SHARP_,p2__35813_SHARP_){
-return clojure.core.matrix.protocols.element_map.call(null,p1__35812_SHARP_,f,p2__35813_SHARP_);
-});})(vec__35819,m__$2,a__$1,m__$1))
+var vec__22471 = clojure.core.matrix.protocols.broadcast_compatible.call(null,m__$1,a);
+var m__$2 = cljs.core.nth.call(null,vec__22471,(0),null);
+var a__$1 = cljs.core.nth.call(null,vec__22471,(1),null);
+return cljs.core.mapv.call(null,((function (vec__22471,m__$2,a__$1,m__$1){
+return (function (p1__22462_SHARP_,p2__22463_SHARP_){
+return clojure.core.matrix.protocols.element_map.call(null,p1__22462_SHARP_,f,p2__22463_SHARP_);
+});})(vec__22471,m__$2,a__$1,m__$1))
 ,m__$2,clojure.core.matrix.protocols.get_major_slice_seq.call(null,a__$1));
 });
 
 cljs.core.ISeq.prototype.clojure$core$matrix$protocols$PFunctionalOperations$element_map$arity$4 = (function (m,f,a,more){
 var m__$1 = this;
-var vec__35820 = cljs.core.apply.call(null,clojure.core.matrix.protocols.broadcast_compatible,m__$1,a,more);
-var m__$2 = cljs.core.nth.call(null,vec__35820,(0),null);
-var a__$1 = cljs.core.nth.call(null,vec__35820,(1),null);
-var more__$1 = cljs.core.nthnext.call(null,vec__35820,(2));
-return cljs.core.mapv.call(null,((function (vec__35820,m__$2,a__$1,more__$1,m__$1){
-return (function (p1__35815_SHARP_,p2__35816_SHARP_,p3__35817_SHARP_){
-return clojure.core.matrix.protocols.element_map.call(null,p1__35815_SHARP_,f,p2__35816_SHARP_,p3__35817_SHARP_);
-});})(vec__35820,m__$2,a__$1,more__$1,m__$1))
+var vec__22473 = cljs.core.apply.call(null,clojure.core.matrix.protocols.broadcast_compatible,m__$1,a,more);
+var m__$2 = cljs.core.nth.call(null,vec__22473,(0),null);
+var a__$1 = cljs.core.nth.call(null,vec__22473,(1),null);
+var more__$1 = cljs.core.nthnext.call(null,vec__22473,(2));
+return cljs.core.mapv.call(null,((function (vec__22473,m__$2,a__$1,more__$1,m__$1){
+return (function (p1__22464_SHARP_,p2__22465_SHARP_,p3__22466_SHARP_){
+return clojure.core.matrix.protocols.element_map.call(null,p1__22464_SHARP_,f,p2__22465_SHARP_,p3__22466_SHARP_);
+});})(vec__22473,m__$2,a__$1,more__$1,m__$1))
 ,m__$2,clojure.core.matrix.protocols.get_major_slice_seq.call(null,a__$1),cljs.core.map.call(null,clojure.core.matrix.protocols.get_major_slice_seq,more__$1));
 });
 
@@ -272,25 +272,25 @@ return cljs.core.mapv.call(null,((function (ms__$1){
 return (function (i,m){
 return clojure.core.matrix.protocols.element_map_indexed.call(null,m,((function (ms__$1){
 return (function() { 
-var G__35849__delegate = function (p1__35832_SHARP_,rest__35833_SHARP_){
-return cljs.core.apply.call(null,f,cljs.core.cons.call(null,i,p1__35832_SHARP_),rest__35833_SHARP_);
+var G__22519__delegate = function (p1__22482_SHARP_,rest__22484_SHARP_){
+return cljs.core.apply.call(null,f,cljs.core.cons.call(null,i,p1__22482_SHARP_),rest__22484_SHARP_);
 };
-var G__35849 = function (p1__35832_SHARP_,var_args){
-var rest__35833_SHARP_ = null;
+var G__22519 = function (p1__22482_SHARP_,var_args){
+var rest__22484_SHARP_ = null;
 if (arguments.length > 1) {
-var G__35850__i = 0, G__35850__a = new Array(arguments.length -  1);
-while (G__35850__i < G__35850__a.length) {G__35850__a[G__35850__i] = arguments[G__35850__i + 1]; ++G__35850__i;}
-  rest__35833_SHARP_ = new cljs.core.IndexedSeq(G__35850__a,0);
+var G__22521__i = 0, G__22521__a = new Array(arguments.length -  1);
+while (G__22521__i < G__22521__a.length) {G__22521__a[G__22521__i] = arguments[G__22521__i + 1]; ++G__22521__i;}
+  rest__22484_SHARP_ = new cljs.core.IndexedSeq(G__22521__a,0);
 } 
-return G__35849__delegate.call(this,p1__35832_SHARP_,rest__35833_SHARP_);};
-G__35849.cljs$lang$maxFixedArity = 1;
-G__35849.cljs$lang$applyTo = (function (arglist__35851){
-var p1__35832_SHARP_ = cljs.core.first(arglist__35851);
-var rest__35833_SHARP_ = cljs.core.rest(arglist__35851);
-return G__35849__delegate(p1__35832_SHARP_,rest__35833_SHARP_);
+return G__22519__delegate.call(this,p1__22482_SHARP_,rest__22484_SHARP_);};
+G__22519.cljs$lang$maxFixedArity = 1;
+G__22519.cljs$lang$applyTo = (function (arglist__22522){
+var p1__22482_SHARP_ = cljs.core.first(arglist__22522);
+var rest__22484_SHARP_ = cljs.core.rest(arglist__22522);
+return G__22519__delegate(p1__22482_SHARP_,rest__22484_SHARP_);
 });
-G__35849.cljs$core$IFn$_invoke$arity$variadic = G__35849__delegate;
-return G__35849;
+G__22519.cljs$core$IFn$_invoke$arity$variadic = G__22519__delegate;
+return G__22519;
 })()
 ;})(ms__$1))
 );
@@ -300,95 +300,95 @@ return G__35849;
 
 cljs.core.ISeq.prototype.clojure$core$matrix$protocols$PMapIndexed$element_map_indexed$arity$3 = (function (ms,f,as){
 var ms__$1 = this;
-var vec__35845 = clojure.core.matrix.protocols.broadcast_compatible.call(null,ms__$1,as);
-var ms__$2 = cljs.core.nth.call(null,vec__35845,(0),null);
-var as__$1 = cljs.core.nth.call(null,vec__35845,(1),null);
-return cljs.core.mapv.call(null,((function (vec__35845,ms__$2,as__$1,ms__$1){
+var vec__22513 = clojure.core.matrix.protocols.broadcast_compatible.call(null,ms__$1,as);
+var ms__$2 = cljs.core.nth.call(null,vec__22513,(0),null);
+var as__$1 = cljs.core.nth.call(null,vec__22513,(1),null);
+return cljs.core.mapv.call(null,((function (vec__22513,ms__$2,as__$1,ms__$1){
 return (function (i,m,a){
-return clojure.core.matrix.protocols.element_map_indexed.call(null,m,((function (vec__35845,ms__$2,as__$1,ms__$1){
+return clojure.core.matrix.protocols.element_map_indexed.call(null,m,((function (vec__22513,ms__$2,as__$1,ms__$1){
 return (function() { 
-var G__35852__delegate = function (p1__35834_SHARP_,rest__35835_SHARP_){
-return cljs.core.apply.call(null,f,cljs.core.cons.call(null,i,p1__35834_SHARP_),rest__35835_SHARP_);
+var G__22527__delegate = function (p1__22486_SHARP_,rest__22487_SHARP_){
+return cljs.core.apply.call(null,f,cljs.core.cons.call(null,i,p1__22486_SHARP_),rest__22487_SHARP_);
 };
-var G__35852 = function (p1__35834_SHARP_,var_args){
-var rest__35835_SHARP_ = null;
+var G__22527 = function (p1__22486_SHARP_,var_args){
+var rest__22487_SHARP_ = null;
 if (arguments.length > 1) {
-var G__35853__i = 0, G__35853__a = new Array(arguments.length -  1);
-while (G__35853__i < G__35853__a.length) {G__35853__a[G__35853__i] = arguments[G__35853__i + 1]; ++G__35853__i;}
-  rest__35835_SHARP_ = new cljs.core.IndexedSeq(G__35853__a,0);
+var G__22529__i = 0, G__22529__a = new Array(arguments.length -  1);
+while (G__22529__i < G__22529__a.length) {G__22529__a[G__22529__i] = arguments[G__22529__i + 1]; ++G__22529__i;}
+  rest__22487_SHARP_ = new cljs.core.IndexedSeq(G__22529__a,0);
 } 
-return G__35852__delegate.call(this,p1__35834_SHARP_,rest__35835_SHARP_);};
-G__35852.cljs$lang$maxFixedArity = 1;
-G__35852.cljs$lang$applyTo = (function (arglist__35854){
-var p1__35834_SHARP_ = cljs.core.first(arglist__35854);
-var rest__35835_SHARP_ = cljs.core.rest(arglist__35854);
-return G__35852__delegate(p1__35834_SHARP_,rest__35835_SHARP_);
+return G__22527__delegate.call(this,p1__22486_SHARP_,rest__22487_SHARP_);};
+G__22527.cljs$lang$maxFixedArity = 1;
+G__22527.cljs$lang$applyTo = (function (arglist__22530){
+var p1__22486_SHARP_ = cljs.core.first(arglist__22530);
+var rest__22487_SHARP_ = cljs.core.rest(arglist__22530);
+return G__22527__delegate(p1__22486_SHARP_,rest__22487_SHARP_);
 });
-G__35852.cljs$core$IFn$_invoke$arity$variadic = G__35852__delegate;
-return G__35852;
+G__22527.cljs$core$IFn$_invoke$arity$variadic = G__22527__delegate;
+return G__22527;
 })()
-;})(vec__35845,ms__$2,as__$1,ms__$1))
+;})(vec__22513,ms__$2,as__$1,ms__$1))
 ,a);
-});})(vec__35845,ms__$2,as__$1,ms__$1))
+});})(vec__22513,ms__$2,as__$1,ms__$1))
 ,cljs.core.range.call(null,cljs.core.count.call(null,ms__$2)),ms__$2,clojure.core.matrix.protocols.get_major_slice_seq.call(null,as__$1));
 });
 
 cljs.core.ISeq.prototype.clojure$core$matrix$protocols$PMapIndexed$element_map_indexed$arity$4 = (function (ms,f,as,more){
 var ms__$1 = this;
-var vec__35847 = cljs.core.apply.call(null,clojure.core.matrix.protocols.broadcast_compatible,ms__$1,as,more);
-var ms__$2 = cljs.core.nth.call(null,vec__35847,(0),null);
-var as__$1 = cljs.core.nth.call(null,vec__35847,(1),null);
-var more__$1 = cljs.core.nthnext.call(null,vec__35847,(2));
-return cljs.core.mapv.call(null,((function (vec__35847,ms__$2,as__$1,more__$1,ms__$1){
+var vec__22516 = cljs.core.apply.call(null,clojure.core.matrix.protocols.broadcast_compatible,ms__$1,as,more);
+var ms__$2 = cljs.core.nth.call(null,vec__22516,(0),null);
+var as__$1 = cljs.core.nth.call(null,vec__22516,(1),null);
+var more__$1 = cljs.core.nthnext.call(null,vec__22516,(2));
+return cljs.core.mapv.call(null,((function (vec__22516,ms__$2,as__$1,more__$1,ms__$1){
 return (function() { 
-var G__35857__delegate = function (i,m,a,mr){
-return clojure.core.matrix.protocols.element_map_indexed.call(null,m,((function (vec__35847,ms__$2,as__$1,more__$1,ms__$1){
+var G__22533__delegate = function (i,m,a,mr){
+return clojure.core.matrix.protocols.element_map_indexed.call(null,m,((function (vec__22516,ms__$2,as__$1,more__$1,ms__$1){
 return (function() { 
-var G__35861__delegate = function (p1__35836_SHARP_,rest__35837_SHARP_){
-return cljs.core.apply.call(null,f,cljs.core.cons.call(null,i,p1__35836_SHARP_),rest__35837_SHARP_);
+var G__22534__delegate = function (p1__22489_SHARP_,rest__22490_SHARP_){
+return cljs.core.apply.call(null,f,cljs.core.cons.call(null,i,p1__22489_SHARP_),rest__22490_SHARP_);
 };
-var G__35861 = function (p1__35836_SHARP_,var_args){
-var rest__35837_SHARP_ = null;
+var G__22534 = function (p1__22489_SHARP_,var_args){
+var rest__22490_SHARP_ = null;
 if (arguments.length > 1) {
-var G__35863__i = 0, G__35863__a = new Array(arguments.length -  1);
-while (G__35863__i < G__35863__a.length) {G__35863__a[G__35863__i] = arguments[G__35863__i + 1]; ++G__35863__i;}
-  rest__35837_SHARP_ = new cljs.core.IndexedSeq(G__35863__a,0);
+var G__22549__i = 0, G__22549__a = new Array(arguments.length -  1);
+while (G__22549__i < G__22549__a.length) {G__22549__a[G__22549__i] = arguments[G__22549__i + 1]; ++G__22549__i;}
+  rest__22490_SHARP_ = new cljs.core.IndexedSeq(G__22549__a,0);
 } 
-return G__35861__delegate.call(this,p1__35836_SHARP_,rest__35837_SHARP_);};
-G__35861.cljs$lang$maxFixedArity = 1;
-G__35861.cljs$lang$applyTo = (function (arglist__35864){
-var p1__35836_SHARP_ = cljs.core.first(arglist__35864);
-var rest__35837_SHARP_ = cljs.core.rest(arglist__35864);
-return G__35861__delegate(p1__35836_SHARP_,rest__35837_SHARP_);
+return G__22534__delegate.call(this,p1__22489_SHARP_,rest__22490_SHARP_);};
+G__22534.cljs$lang$maxFixedArity = 1;
+G__22534.cljs$lang$applyTo = (function (arglist__22550){
+var p1__22489_SHARP_ = cljs.core.first(arglist__22550);
+var rest__22490_SHARP_ = cljs.core.rest(arglist__22550);
+return G__22534__delegate(p1__22489_SHARP_,rest__22490_SHARP_);
 });
-G__35861.cljs$core$IFn$_invoke$arity$variadic = G__35861__delegate;
-return G__35861;
+G__22534.cljs$core$IFn$_invoke$arity$variadic = G__22534__delegate;
+return G__22534;
 })()
-;})(vec__35847,ms__$2,as__$1,more__$1,ms__$1))
+;})(vec__22516,ms__$2,as__$1,more__$1,ms__$1))
 ,a,mr);
 };
-var G__35857 = function (i,m,a,var_args){
+var G__22533 = function (i,m,a,var_args){
 var mr = null;
 if (arguments.length > 3) {
-var G__35866__i = 0, G__35866__a = new Array(arguments.length -  3);
-while (G__35866__i < G__35866__a.length) {G__35866__a[G__35866__i] = arguments[G__35866__i + 3]; ++G__35866__i;}
-  mr = new cljs.core.IndexedSeq(G__35866__a,0);
+var G__22552__i = 0, G__22552__a = new Array(arguments.length -  3);
+while (G__22552__i < G__22552__a.length) {G__22552__a[G__22552__i] = arguments[G__22552__i + 3]; ++G__22552__i;}
+  mr = new cljs.core.IndexedSeq(G__22552__a,0);
 } 
-return G__35857__delegate.call(this,i,m,a,mr);};
-G__35857.cljs$lang$maxFixedArity = 3;
-G__35857.cljs$lang$applyTo = (function (arglist__35870){
-var i = cljs.core.first(arglist__35870);
-arglist__35870 = cljs.core.next(arglist__35870);
-var m = cljs.core.first(arglist__35870);
-arglist__35870 = cljs.core.next(arglist__35870);
-var a = cljs.core.first(arglist__35870);
-var mr = cljs.core.rest(arglist__35870);
-return G__35857__delegate(i,m,a,mr);
+return G__22533__delegate.call(this,i,m,a,mr);};
+G__22533.cljs$lang$maxFixedArity = 3;
+G__22533.cljs$lang$applyTo = (function (arglist__22554){
+var i = cljs.core.first(arglist__22554);
+arglist__22554 = cljs.core.next(arglist__22554);
+var m = cljs.core.first(arglist__22554);
+arglist__22554 = cljs.core.next(arglist__22554);
+var a = cljs.core.first(arglist__22554);
+var mr = cljs.core.rest(arglist__22554);
+return G__22533__delegate(i,m,a,mr);
 });
-G__35857.cljs$core$IFn$_invoke$arity$variadic = G__35857__delegate;
-return G__35857;
+G__22533.cljs$core$IFn$_invoke$arity$variadic = G__22533__delegate;
+return G__22533;
 })()
-;})(vec__35847,ms__$2,as__$1,more__$1,ms__$1))
+;})(vec__22516,ms__$2,as__$1,more__$1,ms__$1))
 ,cljs.core.range.call(null,cljs.core.count.call(null,ms__$2)),ms__$2,clojure.core.matrix.protocols.get_major_slice_seq.call(null,as__$1),cljs.core.map.call(null,clojure.core.matrix.protocols.get_major_slice_seq,more__$1));
 });
 

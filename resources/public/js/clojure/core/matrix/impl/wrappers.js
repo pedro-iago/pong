@@ -556,10 +556,10 @@ var self__ = this;
 var m__$1 = this;
 var ix = clojure.core.matrix.utils.copy_long_array.call(null,self__.source_position);
 var im = (self__.index_maps[(0)]);
-var i36444_36473 = (0);
-var tdim__28084__auto___36474 = (self__.dim_map[i36444_36473]);
-if((tdim__28084__auto___36474 >= (0))){
-(ix[tdim__28084__auto___36474] = ((self__.index_maps[i36444_36473])[row]));
+var i29683_29691 = (0);
+var tdim__29597__auto___29692 = (self__.dim_map[i29683_29691]);
+if((tdim__29597__auto___29692 >= (0))){
+(ix[tdim__29597__auto___29692] = ((self__.index_maps[i29683_29691])[row]));
 } else {
 }
 
@@ -570,17 +570,17 @@ clojure.core.matrix.impl.wrappers.NDWrapper.prototype.clojure$core$matrix$protoc
 var self__ = this;
 var m__$1 = this;
 var ix = clojure.core.matrix.utils.copy_long_array.call(null,self__.source_position);
-var i36445_36475 = (0);
-var tdim__28084__auto___36476 = (self__.dim_map[i36445_36475]);
-if((tdim__28084__auto___36476 >= (0))){
-(ix[tdim__28084__auto___36476] = ((self__.index_maps[i36445_36475])[row]));
+var i29684_29693 = (0);
+var tdim__29597__auto___29694 = (self__.dim_map[i29684_29693]);
+if((tdim__29597__auto___29694 >= (0))){
+(ix[tdim__29597__auto___29694] = ((self__.index_maps[i29684_29693])[row]));
 } else {
 }
 
-var i36446_36477 = (1);
-var tdim__28084__auto___36478 = (self__.dim_map[i36446_36477]);
-if((tdim__28084__auto___36478 >= (0))){
-(ix[tdim__28084__auto___36478] = ((self__.index_maps[i36446_36477])[column]));
+var i29685_29695 = (1);
+var tdim__29597__auto___29696 = (self__.dim_map[i29685_29695]);
+if((tdim__29597__auto___29696 >= (0))){
+(ix[tdim__29597__auto___29696] = ((self__.index_maps[i29685_29695])[column]));
 } else {
 }
 
@@ -597,19 +597,19 @@ throw cljs.core.ex_info.call(null,[cljs.core.str("set-nd! called with index "),c
 } else {
 }
 
-var n__19629__auto___36479 = self__.shape.length;
-var i_36480 = (0);
+var n__19629__auto___29697 = self__.shape.length;
+var i_29698 = (0);
 while(true){
-if((i_36480 < n__19629__auto___36479)){
-var i36448_36481 = i_36480;
-var tdim__28084__auto___36482 = (self__.dim_map[i36448_36481]);
-if((tdim__28084__auto___36482 >= (0))){
-(ix[tdim__28084__auto___36482] = ((self__.index_maps[i36448_36481])[cljs.core.nth.call(null,indexes,i_36480)]));
+if((i_29698 < n__19629__auto___29697)){
+var i29686_29699 = i_29698;
+var tdim__29597__auto___29700 = (self__.dim_map[i29686_29699]);
+if((tdim__29597__auto___29700 >= (0))){
+(ix[tdim__29597__auto___29700] = ((self__.index_maps[i29686_29699])[cljs.core.nth.call(null,indexes,i_29698)]));
 } else {
 }
 
-var G__36483 = (i_36480 + (1));
-i_36480 = G__36483;
+var G__29701 = (i_29698 + (1));
+i_29698 = G__29701;
 continue;
 } else {
 }
@@ -645,14 +645,14 @@ throw cljs.core.ex_info.call(null,[cljs.core.str("End index out of bounds: "),cl
 } else {
 }
 
-var n__19629__auto___36486 = length__$1;
-var i_36487 = (0);
+var n__19629__auto___29702 = length__$1;
+var i_29703 = (0);
 while(true){
-if((i_36487 < n__19629__auto___36486)){
-(new_index_map[i_36487] = (old_index_map[(start__$1 + i_36487)]));
+if((i_29703 < n__19629__auto___29702)){
+(new_index_map[i_29703] = (old_index_map[(start__$1 + i_29703)]));
 
-var G__36488 = (i_36487 + (1));
-i_36487 = G__36488;
+var G__29704 = (i_29703 + (1));
+i_29703 = G__29704;
 continue;
 } else {
 }
@@ -669,10 +669,10 @@ var self__ = this;
 var m__$1 = this;
 var ix = clojure.core.matrix.utils.copy_long_array.call(null,self__.source_position);
 var im = (self__.index_maps[(0)]);
-var i36449_36489 = (0);
-var tdim__28084__auto___36490 = (self__.dim_map[i36449_36489]);
-if((tdim__28084__auto___36490 >= (0))){
-(ix[tdim__28084__auto___36490] = ((self__.index_maps[i36449_36489])[row]));
+var i29687_29705 = (0);
+var tdim__29597__auto___29706 = (self__.dim_map[i29687_29705]);
+if((tdim__29597__auto___29706 >= (0))){
+(ix[tdim__29597__auto___29706] = ((self__.index_maps[i29687_29705])[row]));
 } else {
 }
 
@@ -683,17 +683,17 @@ clojure.core.matrix.impl.wrappers.NDWrapper.prototype.clojure$core$matrix$protoc
 var self__ = this;
 var m__$1 = this;
 var ix = clojure.core.matrix.utils.copy_long_array.call(null,self__.source_position);
-var i36450_36491 = (0);
-var tdim__28084__auto___36492 = (self__.dim_map[i36450_36491]);
-if((tdim__28084__auto___36492 >= (0))){
-(ix[tdim__28084__auto___36492] = ((self__.index_maps[i36450_36491])[row]));
+var i29688_29707 = (0);
+var tdim__29597__auto___29708 = (self__.dim_map[i29688_29707]);
+if((tdim__29597__auto___29708 >= (0))){
+(ix[tdim__29597__auto___29708] = ((self__.index_maps[i29688_29707])[row]));
 } else {
 }
 
-var i36451_36493 = (1);
-var tdim__28084__auto___36494 = (self__.dim_map[i36451_36493]);
-if((tdim__28084__auto___36494 >= (0))){
-(ix[tdim__28084__auto___36494] = ((self__.index_maps[i36451_36493])[column]));
+var i29689_29709 = (1);
+var tdim__29597__auto___29710 = (self__.dim_map[i29689_29709]);
+if((tdim__29597__auto___29710 >= (0))){
+(ix[tdim__29597__auto___29710] = ((self__.index_maps[i29689_29709])[column]));
 } else {
 }
 
@@ -704,19 +704,19 @@ clojure.core.matrix.impl.wrappers.NDWrapper.prototype.clojure$core$matrix$protoc
 var self__ = this;
 var m__$1 = this;
 var ix = clojure.core.matrix.utils.copy_long_array.call(null,self__.source_position);
-var n__19629__auto___36497 = self__.shape.length;
-var i_36498 = (0);
+var n__19629__auto___29711 = self__.shape.length;
+var i_29712 = (0);
 while(true){
-if((i_36498 < n__19629__auto___36497)){
-var i36453_36499 = i_36498;
-var tdim__28084__auto___36500 = (self__.dim_map[i36453_36499]);
-if((tdim__28084__auto___36500 >= (0))){
-(ix[tdim__28084__auto___36500] = ((self__.index_maps[i36453_36499])[cljs.core.nth.call(null,indexes,i_36498)]));
+if((i_29712 < n__19629__auto___29711)){
+var i29690_29713 = i_29712;
+var tdim__29597__auto___29714 = (self__.dim_map[i29690_29713]);
+if((tdim__29597__auto___29714 >= (0))){
+(ix[tdim__29597__auto___29714] = ((self__.index_maps[i29690_29713])[cljs.core.nth.call(null,indexes,i_29712)]));
 } else {
 }
 
-var G__36501 = (i_36498 + (1));
-i_36498 = G__36501;
+var G__29715 = (i_29712 + (1));
+i_29712 = G__29715;
 continue;
 } else {
 }
@@ -737,16 +737,16 @@ var nsp = clojure.core.matrix.utils.copy_long_array.call(null,self__.source_posi
 var sdim = cljs.core.long$.call(null,(self__.dim_map[dim__$1]));
 (nsp[sdim] = i__$1);
 
-return (new clojure.core.matrix.impl.wrappers.NDWrapper(self__.array,(function (){var n__21135__auto__ = self__.shape.length;
-var length__21136__auto__ = ((n__21135__auto__ - (1)) | (0));
-var new_xs__21137__auto__ = self__.shape.slice((0),length__21136__auto__);
-var j__21138__auto___36502 = (dim__$1 | (0));
+return (new clojure.core.matrix.impl.wrappers.NDWrapper(self__.array,(function (){var n__22391__auto__ = self__.shape.length;
+var length__22392__auto__ = ((n__22391__auto__ - (1)) | (0));
+var new_xs__22393__auto__ = self__.shape.slice((0),length__22392__auto__);
+var j__22394__auto___29716 = (dim__$1 | (0));
 while(true){
-if((j__21138__auto___36502 < (n__21135__auto__ - (1)))){
-(new_xs__21137__auto__[(j__21138__auto___36502 | (0))] = (self__.shape[((j__21138__auto___36502 + (1)) | (0))]));
+if((j__22394__auto___29716 < (n__22391__auto__ - (1)))){
+(new_xs__22393__auto__[(j__22394__auto___29716 | (0))] = (self__.shape[((j__22394__auto___29716 + (1)) | (0))]));
 
-var G__36503 = (j__21138__auto___36502 + (1));
-j__21138__auto___36502 = G__36503;
+var G__29717 = (j__22394__auto___29716 + (1));
+j__22394__auto___29716 = G__29717;
 continue;
 } else {
 }
@@ -754,17 +754,17 @@ break;
 }
 
 
-return new_xs__21137__auto__;
-})(),(function (){var n__21135__auto__ = self__.dim_map.length;
-var length__21136__auto__ = ((n__21135__auto__ - (1)) | (0));
-var new_xs__21137__auto__ = self__.dim_map.slice((0),length__21136__auto__);
-var j__21138__auto___36504 = (dim__$1 | (0));
+return new_xs__22393__auto__;
+})(),(function (){var n__22391__auto__ = self__.dim_map.length;
+var length__22392__auto__ = ((n__22391__auto__ - (1)) | (0));
+var new_xs__22393__auto__ = self__.dim_map.slice((0),length__22392__auto__);
+var j__22394__auto___29718 = (dim__$1 | (0));
 while(true){
-if((j__21138__auto___36504 < (n__21135__auto__ - (1)))){
-(new_xs__21137__auto__[(j__21138__auto___36504 | (0))] = (self__.dim_map[((j__21138__auto___36504 + (1)) | (0))]));
+if((j__22394__auto___29718 < (n__22391__auto__ - (1)))){
+(new_xs__22393__auto__[(j__22394__auto___29718 | (0))] = (self__.dim_map[((j__22394__auto___29718 + (1)) | (0))]));
 
-var G__36505 = (j__21138__auto___36504 + (1));
-j__21138__auto___36504 = G__36505;
+var G__29719 = (j__22394__auto___29718 + (1));
+j__22394__auto___29718 = G__29719;
 continue;
 } else {
 }
@@ -772,17 +772,17 @@ break;
 }
 
 
-return new_xs__21137__auto__;
-})(),(function (){var n__21135__auto__ = self__.index_maps.length;
-var length__21136__auto__ = ((n__21135__auto__ - (1)) | (0));
-var new_xs__21137__auto__ = self__.index_maps.slice((0),length__21136__auto__);
-var j__21138__auto___36506 = (dim__$1 | (0));
+return new_xs__22393__auto__;
+})(),(function (){var n__22391__auto__ = self__.index_maps.length;
+var length__22392__auto__ = ((n__22391__auto__ - (1)) | (0));
+var new_xs__22393__auto__ = self__.index_maps.slice((0),length__22392__auto__);
+var j__22394__auto___29720 = (dim__$1 | (0));
 while(true){
-if((j__21138__auto___36506 < (n__21135__auto__ - (1)))){
-(new_xs__21137__auto__[(j__21138__auto___36506 | (0))] = (self__.index_maps[((j__21138__auto___36506 + (1)) | (0))]));
+if((j__22394__auto___29720 < (n__22391__auto__ - (1)))){
+(new_xs__22393__auto__[(j__22394__auto___29720 | (0))] = (self__.index_maps[((j__22394__auto___29720 + (1)) | (0))]));
 
-var G__36510 = (j__21138__auto___36506 + (1));
-j__21138__auto___36506 = G__36510;
+var G__29721 = (j__22394__auto___29720 + (1));
+j__22394__auto___29720 = G__29721;
 continue;
 } else {
 }
@@ -790,7 +790,7 @@ break;
 }
 
 
-return new_xs__21137__auto__;
+return new_xs__22393__auto__;
 })(),nsp));
 });
 
@@ -905,8 +905,8 @@ clojure.core.matrix.impl.wrappers.wrap_nd = (function clojure$core$matrix$impl$w
 var shp = cljs.core.long_array.call(null,clojure.core.matrix.protocols.get_shape.call(null,m));
 var dims = shp.length;
 return (new clojure.core.matrix.impl.wrappers.NDWrapper(m,shp,clojure.core.matrix.utils.long_range.call(null,dims),cljs.core.object_array.call(null,cljs.core.map.call(null,((function (shp,dims){
-return (function (p1__36528_SHARP_){
-return clojure.core.matrix.utils.long_range.call(null,clojure.core.matrix.protocols.dimension_count.call(null,m,p1__36528_SHARP_));
+return (function (p1__29722_SHARP_){
+return clojure.core.matrix.utils.long_range.call(null,clojure.core.matrix.protocols.dimension_count.call(null,m,p1__29722_SHARP_));
 });})(shp,dims))
 ,cljs.core.range.call(null,dims))),cljs.core.long_array.call(null,dims)));
 });
@@ -935,18 +935,18 @@ return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMP
 });})(shp,dims,_))
 ,dim_ranges,shp);
 var new_shape = cljs.core.long_array.call(null,cljs.core.map.call(null,((function (shp,dims,_,dim_ranges__$1){
-return (function (p__36542){
-var vec__36543 = p__36542;
-var start = cljs.core.nth.call(null,vec__36543,(0),null);
-var len = cljs.core.nth.call(null,vec__36543,(1),null);
+return (function (p__29727){
+var vec__29728 = p__29727;
+var start = cljs.core.nth.call(null,vec__29728,(0),null);
+var len = cljs.core.nth.call(null,vec__29728,(1),null);
 return len;
 });})(shp,dims,_,dim_ranges__$1))
 ,dim_ranges__$1));
 return (new clojure.core.matrix.impl.wrappers.NDWrapper(m,new_shape,cljs.core.long_array.call(null,cljs.core.range.call(null,cljs.core.count.call(null,shp))),cljs.core.object_array.call(null,cljs.core.map.call(null,((function (shp,dims,_,dim_ranges__$1,new_shape){
-return (function (p__36544){
-var vec__36545 = p__36544;
-var start = cljs.core.nth.call(null,vec__36545,(0),null);
-var len = cljs.core.nth.call(null,vec__36545,(1),null);
+return (function (p__29729){
+var vec__29730 = p__29729;
+var start = cljs.core.nth.call(null,vec__29730,(0),null);
+var len = cljs.core.nth.call(null,vec__29730,(1),null);
 return cljs.core.long_array.call(null,cljs.core.range.call(null,start,(start + len)));
 });})(shp,dims,_,dim_ranges__$1,new_shape))
 ,dim_ranges__$1)),cljs.core.long_array.call(null,cljs.core.repeat.call(null,dims,(0)))));
@@ -961,39 +961,39 @@ var mshape = cljs.core.long_array.call(null,clojure.core.matrix.protocols.get_sh
 var mdims = mshape.length;
 var dim_map = cljs.core.long_array.call(null,cljs.core.concat.call(null,cljs.core.repeat.call(null,(tdims - mdims),(-1)),cljs.core.range.call(null,mdims)));
 return (new clojure.core.matrix.impl.wrappers.NDWrapper(m,tshape,dim_map,cljs.core.object_array.call(null,(function (){var iter__19498__auto__ = ((function (tshape,tdims,mshape,mdims,dim_map){
-return (function clojure$core$matrix$impl$wrappers$wrap_broadcast_$_iter__36554(s__36555){
+return (function clojure$core$matrix$impl$wrappers$wrap_broadcast_$_iter__29735(s__29736){
 return (new cljs.core.LazySeq(null,((function (tshape,tdims,mshape,mdims,dim_map){
 return (function (){
-var s__36555__$1 = s__36555;
+var s__29736__$1 = s__29736;
 while(true){
-var temp__4657__auto__ = cljs.core.seq.call(null,s__36555__$1);
+var temp__4657__auto__ = cljs.core.seq.call(null,s__29736__$1);
 if(temp__4657__auto__){
-var s__36555__$2 = temp__4657__auto__;
-if(cljs.core.chunked_seq_QMARK_.call(null,s__36555__$2)){
-var c__19496__auto__ = cljs.core.chunk_first.call(null,s__36555__$2);
+var s__29736__$2 = temp__4657__auto__;
+if(cljs.core.chunked_seq_QMARK_.call(null,s__29736__$2)){
+var c__19496__auto__ = cljs.core.chunk_first.call(null,s__29736__$2);
 var size__19497__auto__ = cljs.core.count.call(null,c__19496__auto__);
-var b__36557 = cljs.core.chunk_buffer.call(null,size__19497__auto__);
-if((function (){var i__36556 = (0);
+var b__29738 = cljs.core.chunk_buffer.call(null,size__19497__auto__);
+if((function (){var i__29737 = (0);
 while(true){
-if((i__36556 < size__19497__auto__)){
-var i = cljs.core._nth.call(null,c__19496__auto__,i__36556);
-cljs.core.chunk_append.call(null,b__36557,(function (){var i__$1 = cljs.core.long$.call(null,i);
+if((i__29737 < size__19497__auto__)){
+var i = cljs.core._nth.call(null,c__19496__auto__,i__29737);
+cljs.core.chunk_append.call(null,b__29738,(function (){var i__$1 = cljs.core.long$.call(null,i);
 var arr = cljs.core.long_array.call(null,(tshape[i__$1]));
 var mdim = (i__$1 - (tdims - mdims));
 if((mdim >= (0))){
-var mdc_36566 = (mshape[mdim]);
-var tdc_36567 = (tshape[i__$1]);
-if((mdc_36566 === (1))){
+var mdc_29739 = (mshape[mdim]);
+var tdc_29740 = (tshape[i__$1]);
+if((mdc_29739 === (1))){
 } else {
-if((mdc_36566 === tdc_36567)){
-var n__19629__auto___36573 = mdc_36566;
-var i_36574__$2 = (0);
+if((mdc_29739 === tdc_29740)){
+var n__19629__auto___29741 = mdc_29739;
+var i_29742__$2 = (0);
 while(true){
-if((i_36574__$2 < n__19629__auto___36573)){
-(arr[i_36574__$2] = i_36574__$2);
+if((i_29742__$2 < n__19629__auto___29741)){
+(arr[i_29742__$2] = i_29742__$2);
 
-var G__36575 = (i_36574__$2 + (1));
-i_36574__$2 = G__36575;
+var G__29743 = (i_29742__$2 + (1));
+i_29742__$2 = G__29743;
 continue;
 } else {
 }
@@ -1010,8 +1010,8 @@ throw cljs.core.ex_info.call(null,[cljs.core.str("Can't broadcast shape "),cljs.
 return arr;
 })());
 
-var G__36577 = (i__36556 + (1));
-i__36556 = G__36577;
+var G__29744 = (i__29737 + (1));
+i__29737 = G__29744;
 continue;
 } else {
 return true;
@@ -1019,29 +1019,29 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__36557),clojure$core$matrix$impl$wrappers$wrap_broadcast_$_iter__36554.call(null,cljs.core.chunk_rest.call(null,s__36555__$2)));
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__29738),clojure$core$matrix$impl$wrappers$wrap_broadcast_$_iter__29735.call(null,cljs.core.chunk_rest.call(null,s__29736__$2)));
 } else {
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__36557),null);
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__29738),null);
 }
 } else {
-var i = cljs.core.first.call(null,s__36555__$2);
+var i = cljs.core.first.call(null,s__29736__$2);
 return cljs.core.cons.call(null,(function (){var i__$1 = cljs.core.long$.call(null,i);
 var arr = cljs.core.long_array.call(null,(tshape[i__$1]));
 var mdim = (i__$1 - (tdims - mdims));
 if((mdim >= (0))){
-var mdc_36578 = (mshape[mdim]);
-var tdc_36579 = (tshape[i__$1]);
-if((mdc_36578 === (1))){
+var mdc_29745 = (mshape[mdim]);
+var tdc_29746 = (tshape[i__$1]);
+if((mdc_29745 === (1))){
 } else {
-if((mdc_36578 === tdc_36579)){
-var n__19629__auto___36580 = mdc_36578;
-var i_36581__$2 = (0);
+if((mdc_29745 === tdc_29746)){
+var n__19629__auto___29747 = mdc_29745;
+var i_29748__$2 = (0);
 while(true){
-if((i_36581__$2 < n__19629__auto___36580)){
-(arr[i_36581__$2] = i_36581__$2);
+if((i_29748__$2 < n__19629__auto___29747)){
+(arr[i_29748__$2] = i_29748__$2);
 
-var G__36582 = (i_36581__$2 + (1));
-i_36581__$2 = G__36582;
+var G__29749 = (i_29748__$2 + (1));
+i_29748__$2 = G__29749;
 continue;
 } else {
 }
@@ -1056,7 +1056,7 @@ throw cljs.core.ex_info.call(null,[cljs.core.str("Can't broadcast shape "),cljs.
 }
 
 return arr;
-})(),clojure$core$matrix$impl$wrappers$wrap_broadcast_$_iter__36554.call(null,cljs.core.rest.call(null,s__36555__$2)));
+})(),clojure$core$matrix$impl$wrappers$wrap_broadcast_$_iter__29735.call(null,cljs.core.rest.call(null,s__29736__$2)));
 }
 } else {
 return null;

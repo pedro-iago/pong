@@ -6,7 +6,7 @@
 
 ;todo: think if these can have bad performance
 (defn keyed-dom "adds :id and :react-key with entities global and local keys, respectively" [dom]
-  (s/transform KEY-VAL #(-> %2 (assoc :react-key (name %1)) (assoc :id (-> %1 str (subs 1)))) dom))
+  (s/transform KEY-VAL #(-> %2 (assoc :key (name %1)) (assoc :id (-> %1 str (subs 1)))) dom))
 
 (defn fold-children "moves values of namespaced keywords to parent's :children" [dom]
   (let [[top _ children] (avl/split-key :| dom)]

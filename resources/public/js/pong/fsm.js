@@ -10,23 +10,23 @@ goog.require('pong.paths');
  * builts a finite-state-machine from function and its parameters
  */
 pong.fsm.fsm = (function pong$fsm$fsm(var_args){
-var args33605 = [];
-var len__19784__auto___33608 = arguments.length;
-var i__19785__auto___33609 = (0);
+var args44837 = [];
+var len__19784__auto___44840 = arguments.length;
+var i__19785__auto___44841 = (0);
 while(true){
-if((i__19785__auto___33609 < len__19784__auto___33608)){
-args33605.push((arguments[i__19785__auto___33609]));
+if((i__19785__auto___44841 < len__19784__auto___44840)){
+args44837.push((arguments[i__19785__auto___44841]));
 
-var G__33610 = (i__19785__auto___33609 + (1));
-i__19785__auto___33609 = G__33610;
+var G__44842 = (i__19785__auto___44841 + (1));
+i__19785__auto___44841 = G__44842;
 continue;
 } else {
 }
 break;
 }
 
-var G__33607 = args33605.length;
-switch (G__33607) {
+var G__44839 = args44837.length;
+switch (G__44839) {
 case 1:
 return pong.fsm.fsm.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -36,7 +36,7 @@ return pong.fsm.fsm.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args33605.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args44837.length)].join('')));
 
 }
 });
@@ -46,23 +46,23 @@ return pong.fsm.fsm.call(null,cljs.core.identity,new cljs.core.PersistentVector(
 });
 
 pong.fsm.fsm.cljs$core$IFn$_invoke$arity$2 = (function (md,params){
-return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"mode","mode",654403691),cljs.core.memoize.call(null,md),new cljs.core.Keyword(null,"params","params",710516235),com.rpl.specter.transform.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [com.rpl.specter.ALL,pong.paths.path_QMARK_], null),com.rpl.specter.comp_paths,params)], null);
+return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"mode","mode",654403691),md,new cljs.core.Keyword(null,"params","params",710516235),com.rpl.specter.transform.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [com.rpl.specter.ALL,pong.paths.path_QMARK_], null),com.rpl.specter.comp_paths,params)], null);
 });
 
 pong.fsm.fsm.cljs$lang$maxFixedArity = 2;
 /**
  * fsm: set to value on tick
  */
-pong.fsm.jump = cljs.core.comp.call(null,(function (p1__33612_SHARP_){
-return cljs.core.assoc.call(null,p1__33612_SHARP_,new cljs.core.Keyword(null,"step","step",1288888124),(function (v,nv,dt){
+pong.fsm.jump = cljs.core.comp.call(null,(function (p1__44850_SHARP_){
+return cljs.core.assoc.call(null,p1__44850_SHARP_,new cljs.core.Keyword(null,"step","step",1288888124),(function (v,nv,dt){
 return nv;
 }));
 }),pong.fsm.fsm);
 /**
  * fsm: set rate of change on tick (euler)
  */
-pong.fsm.flow = cljs.core.comp.call(null,(function (p1__33613_SHARP_){
-return cljs.core.assoc.call(null,p1__33613_SHARP_,new cljs.core.Keyword(null,"step","step",1288888124),(function (v,nv,dt){
+pong.fsm.flow = cljs.core.comp.call(null,(function (p1__44857_SHARP_){
+return cljs.core.assoc.call(null,p1__44857_SHARP_,new cljs.core.Keyword(null,"step","step",1288888124),(function (v,nv,dt){
 return clojure.core.matrix.operators._PLUS_.call(null,clojure.core.matrix.operators._STAR_.call(null,nv,dt),v);
 }));
 }),pong.fsm.fsm);

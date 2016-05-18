@@ -4,39 +4,44 @@
             #?(:cljs [om.util :as util]))
   #?(:cljs (:require-macros [pong.aframe-react :as a-vr])))
 
+(def tags
+  ["entity"
+   "animation"
+   "scene"
+   "event"
+   "assets"
+   "cubemap"
+   "mixin"
+   "node"
+   "register-element"])
+
 #?(:clj
     (do
-      (def tags
-        '[entity
-          animation
-          scene
-          event])
-
-      (defn ^:private gen-tags-inline-fn [tag]
-        `(defmacro ~tag [opts# & children#]
-           `(~'~(symbol "js" (str "React.createElement")) ~'~(str "a-" (name tag)) (serialize ~opts#)
+      (defn ^:private gen-tag-inline-fn [tag] ;macros are fine, but they can't be passed around as fns
+        `(defmacro ~(symbol tag) [opts# & children#]
+           `(~'~(symbol "js" (str "React.createElement")) ~'~(str "a-" tag) (serialize ~opts#)
               ~@(clojure.core/map (fn [x#] `(om.util/force-children ~x#)) children#))))
 
       (defmacro ^:private gen-tags-inline-fns []
         `(do
-           ~@(clojure.core/map gen-tags-inline-fn tags)))
+           ~@(clojure.core/map gen-tag-inline-fn tags)))
 
       (gen-tags-inline-fns)
 
-      (defn ^:private gen-tags-fn [tag]
-        `(defn ~tag [opts# & children#]
-           (.apply ~(symbol "js" (str "React.createElement")) nil
-             (cljs.core/into-array
-               (conj (cljs.core/map om.util/force-children children#)
-                     (serialize opts#) '~(str "a-" (name tag)))))))
+      (defn ^:private gen-tag-fn [tag] ;with fns, props could carry their type (bad for .cljc files)
+        `(defn ~(symbol tag) [opts# & children#]
+          (->> (cljs.core/map om.util/force-children children#)
+               (cons (serialize opts#)) (cons ~(str "a-" tag))
+               (cljs.core/into-array)
+               (.apply ~(symbol "js" (str "React.createElement")) nil))))
 
       (defmacro ^:private gen-tags-fns []
         `(do
-           ~@(clojure.core/map gen-tags-fn tags)))))
+           ~@(clojure.core/map gen-tag-fn tags)))))
 
 #?(:cljs
     (do
-      (defn serialize "serializes cljs entity map into a-frame.js format" [props]
+      (defn serialize "serializes cljs map into a-frame tag format" [props]
         (clj->js
           (reduce-kv
             #(as-> (subs (str %2) 1) str-key
@@ -54,9 +59,12 @@
 
       (a-vr/gen-tags-fns)
 
-      (defn to-a-vr [ent] ;todo: generalize case statement to any type?
-        (let [childs (map to-a-vr (-> ent :children vals)) props (dissoc ent :children)]
-          (case (:type props)
-                "scene" (apply scene props childs)
-                "animation" (apply animation props childs)
-                (apply entity props childs))))))
+      (defn el [tag opts & children] ;incredible! I've done the same thing 3 times!!!
+        (->> (map util/force-children children)
+             (cons (serialize opts)) (cons (str "a-" tag))
+             (into-array) (.apply js/React.createElement nil)))
+
+      ;todo: check wether (:type props) is one of tags?
+      (defn from-data "turns cljs map into an element of tag :type (defaults to entity)" [ent]
+        (let [childs (map from-data (-> ent :children vals)) props (dissoc ent :children)]
+          (-> (:type props) (or "entity") (el props childs))))))

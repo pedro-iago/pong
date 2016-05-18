@@ -11,7 +11,7 @@
 ;a PAMELA model and use it as my entity but to which deegre is still shady to me...
 (defn fsm "builts a finite-state-machine from function and its parameters"
   ([pth] (fsm identity [pth])) ;todo: is memoize a good idea?
-  ([md params] {:mode (memoize md) :params (s/transform [s/ALL path?] s/comp-paths params)}))
+  ([md params] {:mode md :params (s/transform [s/ALL path?] s/comp-paths params)}))
 
 (def ^{:doc "fsm: set to value on tick"} jump
   (comp #(assoc % :step (fn [v nv dt] nv)) fsm))

@@ -12,8 +12,7 @@
   Object
   (render [this]
     (let [{:keys [id value] :as props} (om/props this)]
-      (dom/div nil
-        (dom/span nil (str "Counter " id ": " value))
+      (dom/div nil (str "Counter " id ": " value)
         (dom/button
           #js {:onClick
                (fn [e] (om/transact! this `[(~'increment! {:id ~id})]))}

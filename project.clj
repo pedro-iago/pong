@@ -17,7 +17,7 @@
                  [midje "1.8.3"]
 
                  [figwheel-sidecar "0.5.0-2" :scope "test"]
-                 [org.omcljs/om "1.0.0-alpha30"]]
+                 [org.omcljs/om "1.0.0-alpha35"]]
 
   :plugins [[lein-midje "3.1.3"]
             [lein-cooper "1.2.2"]]

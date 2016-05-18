@@ -39,7 +39,8 @@
 
    :query and :params may or may not appear. :type :call is only for
    mutations."}
-  om.next.impl.parser)
+  om.next.impl.parser
+  (:require [om.util :as util]))
 
 (declare expr->ast)
 
@@ -85,13 +86,16 @@
         {:component component}))))
 
 (defn join->ast [join]
-  (let [[k v] (first join)
+  (let [query-root? (-> join meta :query-root)
+        [k v] (first join)
         ast (expr->ast k)
         component (-> v meta :component)]
     (merge ast
       {:type :join :query v}
       (when-not (nil? component)
         {:component component})
+      (when query-root?
+        {:query-root true})
       (when-not (or (number? v) (= '... v))
         (cond
           (vector? v) {:children (into [] (map expr->ast) v)}
@@ -156,14 +160,69 @@
                {key query})
              key)))))))
 
-(defn path-meta [x path]
-  (let [x' (cond->> x
-             (map? x) (into {} (map (fn [[k v]] [k (path-meta v (conj path k))])))
-             (vector? x) (into [] (map-indexed #(path-meta %2 (conj path %1)))))]
-    (cond-> x'
-      #?(:clj  (instance? clojure.lang.IObj x')
-         :cljs (satisfies? IWithMeta x'))
-      (vary-meta assoc :om-path path))))
+(defn path-meta
+  "Add path metadata to a data structure. data is the data to be worked on.
+   path is the current path into the data. query is the query used to
+   walk the data. union-expr tracks the last seen union query to be used
+   when it finds a recursive union."
+  ([data path query]
+   (path-meta data path query nil))
+  ([data path query union-expr]
+   (let [{props false joins true} (group-by #(or (util/join? %)
+                                                 (util/ident? %))
+                                    query)]
+     (cond
+       (nil? query)
+       (cond-> data
+         #?(:clj  (instance? clojure.lang.IObj data)
+            :cljs (satisfies? IWithMeta data))
+         (vary-meta assoc :om-path path))
+
+       (sequential? data)
+       (-> (into []
+             (map-indexed
+               (fn [idx v]
+                 (path-meta v (conj path idx) query union-expr))) data)
+         (vary-meta assoc :om-path path))
+
+       (vector? query)
+       (loop [joins (seq joins) ret data]
+         (if-not (nil? joins)
+           (let [join        (first joins)
+                 join        (cond-> join (util/ident? join) (hash-map '[*]))
+                 [key sel]   (util/join-entry join)
+                 union-entry (if (util/union? join) sel union-expr)
+                 sel         (if (util/recursion? sel)
+                               (if-not (nil? union-expr)
+                                 union-entry
+                                 query)
+                               sel)
+                 key         (cond-> key (util/unique-ident? key) first)
+                 v           (get ret key)]
+             (recur (next joins)
+               (cond-> ret
+                 (contains? ret key)
+                 (assoc key
+                   (path-meta v (conj path key) sel union-entry)))))
+           (cond-> ret
+             #?(:clj  (instance? clojure.lang.IObj ret)
+                :cljs (satisfies? IWithMeta ret))
+             (vary-meta assoc :om-path path))))
+
+       :else
+       ;; UNION
+       (if (map? data)
+         (let [dispatch-key (comp :dispatch-key expr->ast)
+               branches     (vals query)
+               props (map dispatch-key (keys data))
+               query (some (fn [q]
+                             (let [query-props (map dispatch-key q)]
+                               (when (= (set props)
+                                       (set query-props))
+                                 q)))
+                       branches)]
+           (path-meta data path query union-expr))
+         data)))))
 
 (defn rethrow? [x]
   (and (instance? #?(:clj clojure.lang.ExceptionInfo :cljs ExceptionInfo) x)
@@ -222,6 +281,6 @@
                              @mut-ret (assoc-in [key :result] @mut-ret)
                              @error (assoc key {:om.next/error @error}))))))))]
          (cond-> (reduce step (if (nil? target) {} []) query)
-           (not (or (not (nil? target)) elide-paths?)) (path-meta path)))))))
+           (not (or (not (nil? target)) elide-paths?)) (path-meta path query)))))))
 
 (defn dispatch [_ k _] k)

@@ -4,6 +4,7 @@
             [clojure.data.avl :as avl]
             [pong.fsm :refer [fsm jump flow reach follow avoid mean]]))
 
+;todo: interactively change scenes (which is, merge scene and change root ns of all entities)
 ;todo: interactive-it by modyfing a reset! with this
 (def ^{:doc "a weird string of spheres moving to eternal sadness"} weirdom
   (avl/sorted-map

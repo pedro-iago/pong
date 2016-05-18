@@ -10,7 +10,7 @@
                   :geometry {:primitive 'sphere
                              :radius (-> this om/props :radius)}
                   :material {:color "#268299"}
-                  :on-click (-> this om/props :on-click)})))
+                  :on-click (-> this om/props :on-click)}))) ;no more :on-click! now it's by a-vr/event!
 (def random-sphere (om/factory RandomSphere))
 
 (defui CounterSphere
