@@ -4,34 +4,33 @@ goog.require('cljs.core');
 goog.require('clojure.string');
 goog.require('cljsjs.react');
 goog.require('om.util');
-goog.require('cljs.analyzer');
 pong.aframe_react.tags = new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, ["entity","animation","scene","event","assets","cubemap","mixin","node","register-element"], null);
 /**
  * serializes cljs map into a-frame tag format
  */
 pong.aframe_react.serialize = (function pong$aframe_react$serialize(props){
-return cljs.core.clj__GT_js.call(null,cljs.core.reduce_kv.call(null,(function (p1__35939_SHARP_,p2__35938_SHARP_,p3__35940_SHARP_){
-var str_key = cljs.core.subs.call(null,[cljs.core.str(p2__35938_SHARP_)].join(''),(1));
-if(cljs.core.truth_(cljs.core.namespace.call(null,p2__35938_SHARP_))){
-return p1__35939_SHARP_;
+return cljs.core.clj__GT_js.call(null,cljs.core.reduce_kv.call(null,(function (p1__21994_SHARP_,p2__21993_SHARP_,p3__21995_SHARP_){
+var str_key = cljs.core.subs.call(null,[cljs.core.str(p2__21993_SHARP_)].join(''),(1));
+if(cljs.core.truth_(cljs.core.namespace.call(null,p2__21993_SHARP_))){
+return p1__21994_SHARP_;
 } else {
-if(cljs.core.fn_QMARK_.call(null,p3__35940_SHARP_)){
-return p1__35939_SHARP_;
+if(cljs.core.fn_QMARK_.call(null,p3__21995_SHARP_)){
+return p1__21994_SHARP_;
 } else {
-if(cljs.core.map_QMARK_.call(null,p3__35940_SHARP_)){
-return cljs.core.assoc.call(null,p1__35939_SHARP_,str_key,clojure.string.join.call(null,"; ",cljs.core.map.call(null,((function (str_key){
-return (function (p__35943){
-var vec__35944 = p__35943;
-var k = cljs.core.nth.call(null,vec__35944,(0),null);
-var v = cljs.core.nth.call(null,vec__35944,(1),null);
+if(cljs.core.map_QMARK_.call(null,p3__21995_SHARP_)){
+return cljs.core.assoc.call(null,p1__21994_SHARP_,str_key,clojure.string.join.call(null,"; ",cljs.core.map.call(null,((function (str_key){
+return (function (p__22001){
+var vec__22002 = p__22001;
+var k = cljs.core.nth.call(null,vec__22002,(0),null);
+var v = cljs.core.nth.call(null,vec__22002,(1),null);
 return clojure.string.join.call(null,": ",new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.name.call(null,k),v], null));
 });})(str_key))
-,p3__35940_SHARP_)));
+,p3__21995_SHARP_)));
 } else {
-if((cljs.core.seq_QMARK_.call(null,p3__35940_SHARP_)) || (cljs.core.vector_QMARK_.call(null,p3__35940_SHARP_))){
-return cljs.core.assoc.call(null,p1__35939_SHARP_,str_key,clojure.string.join.call(null," ",p3__35940_SHARP_));
+if((cljs.core.seq_QMARK_.call(null,p3__21995_SHARP_)) || (cljs.core.vector_QMARK_.call(null,p3__21995_SHARP_))){
+return cljs.core.assoc.call(null,p1__21994_SHARP_,str_key,clojure.string.join.call(null," ",p3__21995_SHARP_));
 } else {
-return cljs.core.assoc.call(null,p1__35939_SHARP_,str_key,p3__35940_SHARP_);
+return cljs.core.assoc.call(null,p1__21994_SHARP_,str_key,p3__21995_SHARP_);
 
 }
 }
@@ -42,14 +41,14 @@ return cljs.core.assoc.call(null,p1__35939_SHARP_,str_key,p3__35940_SHARP_);
 
 pong.aframe_react.entity = (function pong$aframe_react$entity(var_args){
 var args__19791__auto__ = [];
-var len__19784__auto___35966 = arguments.length;
-var i__19785__auto___35967 = (0);
+var len__19784__auto___22048 = arguments.length;
+var i__19785__auto___22049 = (0);
 while(true){
-if((i__19785__auto___35967 < len__19784__auto___35966)){
-args__19791__auto__.push((arguments[i__19785__auto___35967]));
+if((i__19785__auto___22049 < len__19784__auto___22048)){
+args__19791__auto__.push((arguments[i__19785__auto___22049]));
 
-var G__35968 = (i__19785__auto___35967 + (1));
-i__19785__auto___35967 = G__35968;
+var G__22050 = (i__19785__auto___22049 + (1));
+i__19785__auto___22049 = G__22050;
 continue;
 } else {
 }
@@ -60,28 +59,28 @@ var argseq__19792__auto__ = ((((1) < args__19791__auto__.length))?(new cljs.core
 return pong.aframe_react.entity.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__19792__auto__);
 });
 
-pong.aframe_react.entity.cljs$core$IFn$_invoke$arity$variadic = (function (opts__35851__auto__,children__35852__auto__){
-return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-entity",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__35851__auto__),cljs.core.map.call(null,om.util.force_children,children__35852__auto__)))));
+pong.aframe_react.entity.cljs$core$IFn$_invoke$arity$variadic = (function (opts__21874__auto__,children__21875__auto__){
+return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-entity",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__21874__auto__),cljs.core.map.call(null,om.util.force_children,children__21875__auto__)))));
 });
 
 pong.aframe_react.entity.cljs$lang$maxFixedArity = (1);
 
-pong.aframe_react.entity.cljs$lang$applyTo = (function (seq35945){
-var G__35946 = cljs.core.first.call(null,seq35945);
-var seq35945__$1 = cljs.core.next.call(null,seq35945);
-return pong.aframe_react.entity.cljs$core$IFn$_invoke$arity$variadic(G__35946,seq35945__$1);
+pong.aframe_react.entity.cljs$lang$applyTo = (function (seq22003){
+var G__22004 = cljs.core.first.call(null,seq22003);
+var seq22003__$1 = cljs.core.next.call(null,seq22003);
+return pong.aframe_react.entity.cljs$core$IFn$_invoke$arity$variadic(G__22004,seq22003__$1);
 });
 
 pong.aframe_react.animation = (function pong$aframe_react$animation(var_args){
 var args__19791__auto__ = [];
-var len__19784__auto___35969 = arguments.length;
-var i__19785__auto___35970 = (0);
+var len__19784__auto___22051 = arguments.length;
+var i__19785__auto___22052 = (0);
 while(true){
-if((i__19785__auto___35970 < len__19784__auto___35969)){
-args__19791__auto__.push((arguments[i__19785__auto___35970]));
+if((i__19785__auto___22052 < len__19784__auto___22051)){
+args__19791__auto__.push((arguments[i__19785__auto___22052]));
 
-var G__35971 = (i__19785__auto___35970 + (1));
-i__19785__auto___35970 = G__35971;
+var G__22053 = (i__19785__auto___22052 + (1));
+i__19785__auto___22052 = G__22053;
 continue;
 } else {
 }
@@ -92,28 +91,28 @@ var argseq__19792__auto__ = ((((1) < args__19791__auto__.length))?(new cljs.core
 return pong.aframe_react.animation.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__19792__auto__);
 });
 
-pong.aframe_react.animation.cljs$core$IFn$_invoke$arity$variadic = (function (opts__35851__auto__,children__35852__auto__){
-return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-animation",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__35851__auto__),cljs.core.map.call(null,om.util.force_children,children__35852__auto__)))));
+pong.aframe_react.animation.cljs$core$IFn$_invoke$arity$variadic = (function (opts__21874__auto__,children__21875__auto__){
+return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-animation",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__21874__auto__),cljs.core.map.call(null,om.util.force_children,children__21875__auto__)))));
 });
 
 pong.aframe_react.animation.cljs$lang$maxFixedArity = (1);
 
-pong.aframe_react.animation.cljs$lang$applyTo = (function (seq35947){
-var G__35948 = cljs.core.first.call(null,seq35947);
-var seq35947__$1 = cljs.core.next.call(null,seq35947);
-return pong.aframe_react.animation.cljs$core$IFn$_invoke$arity$variadic(G__35948,seq35947__$1);
+pong.aframe_react.animation.cljs$lang$applyTo = (function (seq22005){
+var G__22006 = cljs.core.first.call(null,seq22005);
+var seq22005__$1 = cljs.core.next.call(null,seq22005);
+return pong.aframe_react.animation.cljs$core$IFn$_invoke$arity$variadic(G__22006,seq22005__$1);
 });
 
 pong.aframe_react.scene = (function pong$aframe_react$scene(var_args){
 var args__19791__auto__ = [];
-var len__19784__auto___35972 = arguments.length;
-var i__19785__auto___35973 = (0);
+var len__19784__auto___22054 = arguments.length;
+var i__19785__auto___22055 = (0);
 while(true){
-if((i__19785__auto___35973 < len__19784__auto___35972)){
-args__19791__auto__.push((arguments[i__19785__auto___35973]));
+if((i__19785__auto___22055 < len__19784__auto___22054)){
+args__19791__auto__.push((arguments[i__19785__auto___22055]));
 
-var G__35974 = (i__19785__auto___35973 + (1));
-i__19785__auto___35973 = G__35974;
+var G__22056 = (i__19785__auto___22055 + (1));
+i__19785__auto___22055 = G__22056;
 continue;
 } else {
 }
@@ -124,28 +123,28 @@ var argseq__19792__auto__ = ((((1) < args__19791__auto__.length))?(new cljs.core
 return pong.aframe_react.scene.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__19792__auto__);
 });
 
-pong.aframe_react.scene.cljs$core$IFn$_invoke$arity$variadic = (function (opts__35851__auto__,children__35852__auto__){
-return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-scene",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__35851__auto__),cljs.core.map.call(null,om.util.force_children,children__35852__auto__)))));
+pong.aframe_react.scene.cljs$core$IFn$_invoke$arity$variadic = (function (opts__21874__auto__,children__21875__auto__){
+return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-scene",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__21874__auto__),cljs.core.map.call(null,om.util.force_children,children__21875__auto__)))));
 });
 
 pong.aframe_react.scene.cljs$lang$maxFixedArity = (1);
 
-pong.aframe_react.scene.cljs$lang$applyTo = (function (seq35949){
-var G__35950 = cljs.core.first.call(null,seq35949);
-var seq35949__$1 = cljs.core.next.call(null,seq35949);
-return pong.aframe_react.scene.cljs$core$IFn$_invoke$arity$variadic(G__35950,seq35949__$1);
+pong.aframe_react.scene.cljs$lang$applyTo = (function (seq22007){
+var G__22008 = cljs.core.first.call(null,seq22007);
+var seq22007__$1 = cljs.core.next.call(null,seq22007);
+return pong.aframe_react.scene.cljs$core$IFn$_invoke$arity$variadic(G__22008,seq22007__$1);
 });
 
 pong.aframe_react.event = (function pong$aframe_react$event(var_args){
 var args__19791__auto__ = [];
-var len__19784__auto___35975 = arguments.length;
-var i__19785__auto___35976 = (0);
+var len__19784__auto___22057 = arguments.length;
+var i__19785__auto___22058 = (0);
 while(true){
-if((i__19785__auto___35976 < len__19784__auto___35975)){
-args__19791__auto__.push((arguments[i__19785__auto___35976]));
+if((i__19785__auto___22058 < len__19784__auto___22057)){
+args__19791__auto__.push((arguments[i__19785__auto___22058]));
 
-var G__35977 = (i__19785__auto___35976 + (1));
-i__19785__auto___35976 = G__35977;
+var G__22059 = (i__19785__auto___22058 + (1));
+i__19785__auto___22058 = G__22059;
 continue;
 } else {
 }
@@ -156,28 +155,28 @@ var argseq__19792__auto__ = ((((1) < args__19791__auto__.length))?(new cljs.core
 return pong.aframe_react.event.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__19792__auto__);
 });
 
-pong.aframe_react.event.cljs$core$IFn$_invoke$arity$variadic = (function (opts__35851__auto__,children__35852__auto__){
-return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-event",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__35851__auto__),cljs.core.map.call(null,om.util.force_children,children__35852__auto__)))));
+pong.aframe_react.event.cljs$core$IFn$_invoke$arity$variadic = (function (opts__21874__auto__,children__21875__auto__){
+return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-event",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__21874__auto__),cljs.core.map.call(null,om.util.force_children,children__21875__auto__)))));
 });
 
 pong.aframe_react.event.cljs$lang$maxFixedArity = (1);
 
-pong.aframe_react.event.cljs$lang$applyTo = (function (seq35951){
-var G__35952 = cljs.core.first.call(null,seq35951);
-var seq35951__$1 = cljs.core.next.call(null,seq35951);
-return pong.aframe_react.event.cljs$core$IFn$_invoke$arity$variadic(G__35952,seq35951__$1);
+pong.aframe_react.event.cljs$lang$applyTo = (function (seq22009){
+var G__22010 = cljs.core.first.call(null,seq22009);
+var seq22009__$1 = cljs.core.next.call(null,seq22009);
+return pong.aframe_react.event.cljs$core$IFn$_invoke$arity$variadic(G__22010,seq22009__$1);
 });
 
 pong.aframe_react.assets = (function pong$aframe_react$assets(var_args){
 var args__19791__auto__ = [];
-var len__19784__auto___35978 = arguments.length;
-var i__19785__auto___35979 = (0);
+var len__19784__auto___22060 = arguments.length;
+var i__19785__auto___22061 = (0);
 while(true){
-if((i__19785__auto___35979 < len__19784__auto___35978)){
-args__19791__auto__.push((arguments[i__19785__auto___35979]));
+if((i__19785__auto___22061 < len__19784__auto___22060)){
+args__19791__auto__.push((arguments[i__19785__auto___22061]));
 
-var G__35980 = (i__19785__auto___35979 + (1));
-i__19785__auto___35979 = G__35980;
+var G__22062 = (i__19785__auto___22061 + (1));
+i__19785__auto___22061 = G__22062;
 continue;
 } else {
 }
@@ -188,28 +187,28 @@ var argseq__19792__auto__ = ((((1) < args__19791__auto__.length))?(new cljs.core
 return pong.aframe_react.assets.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__19792__auto__);
 });
 
-pong.aframe_react.assets.cljs$core$IFn$_invoke$arity$variadic = (function (opts__35851__auto__,children__35852__auto__){
-return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-assets",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__35851__auto__),cljs.core.map.call(null,om.util.force_children,children__35852__auto__)))));
+pong.aframe_react.assets.cljs$core$IFn$_invoke$arity$variadic = (function (opts__21874__auto__,children__21875__auto__){
+return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-assets",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__21874__auto__),cljs.core.map.call(null,om.util.force_children,children__21875__auto__)))));
 });
 
 pong.aframe_react.assets.cljs$lang$maxFixedArity = (1);
 
-pong.aframe_react.assets.cljs$lang$applyTo = (function (seq35953){
-var G__35954 = cljs.core.first.call(null,seq35953);
-var seq35953__$1 = cljs.core.next.call(null,seq35953);
-return pong.aframe_react.assets.cljs$core$IFn$_invoke$arity$variadic(G__35954,seq35953__$1);
+pong.aframe_react.assets.cljs$lang$applyTo = (function (seq22011){
+var G__22012 = cljs.core.first.call(null,seq22011);
+var seq22011__$1 = cljs.core.next.call(null,seq22011);
+return pong.aframe_react.assets.cljs$core$IFn$_invoke$arity$variadic(G__22012,seq22011__$1);
 });
 
 pong.aframe_react.cubemap = (function pong$aframe_react$cubemap(var_args){
 var args__19791__auto__ = [];
-var len__19784__auto___35981 = arguments.length;
-var i__19785__auto___35982 = (0);
+var len__19784__auto___22063 = arguments.length;
+var i__19785__auto___22064 = (0);
 while(true){
-if((i__19785__auto___35982 < len__19784__auto___35981)){
-args__19791__auto__.push((arguments[i__19785__auto___35982]));
+if((i__19785__auto___22064 < len__19784__auto___22063)){
+args__19791__auto__.push((arguments[i__19785__auto___22064]));
 
-var G__35983 = (i__19785__auto___35982 + (1));
-i__19785__auto___35982 = G__35983;
+var G__22065 = (i__19785__auto___22064 + (1));
+i__19785__auto___22064 = G__22065;
 continue;
 } else {
 }
@@ -220,28 +219,28 @@ var argseq__19792__auto__ = ((((1) < args__19791__auto__.length))?(new cljs.core
 return pong.aframe_react.cubemap.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__19792__auto__);
 });
 
-pong.aframe_react.cubemap.cljs$core$IFn$_invoke$arity$variadic = (function (opts__35851__auto__,children__35852__auto__){
-return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-cubemap",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__35851__auto__),cljs.core.map.call(null,om.util.force_children,children__35852__auto__)))));
+pong.aframe_react.cubemap.cljs$core$IFn$_invoke$arity$variadic = (function (opts__21874__auto__,children__21875__auto__){
+return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-cubemap",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__21874__auto__),cljs.core.map.call(null,om.util.force_children,children__21875__auto__)))));
 });
 
 pong.aframe_react.cubemap.cljs$lang$maxFixedArity = (1);
 
-pong.aframe_react.cubemap.cljs$lang$applyTo = (function (seq35955){
-var G__35956 = cljs.core.first.call(null,seq35955);
-var seq35955__$1 = cljs.core.next.call(null,seq35955);
-return pong.aframe_react.cubemap.cljs$core$IFn$_invoke$arity$variadic(G__35956,seq35955__$1);
+pong.aframe_react.cubemap.cljs$lang$applyTo = (function (seq22013){
+var G__22014 = cljs.core.first.call(null,seq22013);
+var seq22013__$1 = cljs.core.next.call(null,seq22013);
+return pong.aframe_react.cubemap.cljs$core$IFn$_invoke$arity$variadic(G__22014,seq22013__$1);
 });
 
 pong.aframe_react.mixin = (function pong$aframe_react$mixin(var_args){
 var args__19791__auto__ = [];
-var len__19784__auto___35984 = arguments.length;
-var i__19785__auto___35985 = (0);
+var len__19784__auto___22066 = arguments.length;
+var i__19785__auto___22067 = (0);
 while(true){
-if((i__19785__auto___35985 < len__19784__auto___35984)){
-args__19791__auto__.push((arguments[i__19785__auto___35985]));
+if((i__19785__auto___22067 < len__19784__auto___22066)){
+args__19791__auto__.push((arguments[i__19785__auto___22067]));
 
-var G__35986 = (i__19785__auto___35985 + (1));
-i__19785__auto___35985 = G__35986;
+var G__22068 = (i__19785__auto___22067 + (1));
+i__19785__auto___22067 = G__22068;
 continue;
 } else {
 }
@@ -252,28 +251,28 @@ var argseq__19792__auto__ = ((((1) < args__19791__auto__.length))?(new cljs.core
 return pong.aframe_react.mixin.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__19792__auto__);
 });
 
-pong.aframe_react.mixin.cljs$core$IFn$_invoke$arity$variadic = (function (opts__35851__auto__,children__35852__auto__){
-return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-mixin",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__35851__auto__),cljs.core.map.call(null,om.util.force_children,children__35852__auto__)))));
+pong.aframe_react.mixin.cljs$core$IFn$_invoke$arity$variadic = (function (opts__21874__auto__,children__21875__auto__){
+return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-mixin",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__21874__auto__),cljs.core.map.call(null,om.util.force_children,children__21875__auto__)))));
 });
 
 pong.aframe_react.mixin.cljs$lang$maxFixedArity = (1);
 
-pong.aframe_react.mixin.cljs$lang$applyTo = (function (seq35957){
-var G__35958 = cljs.core.first.call(null,seq35957);
-var seq35957__$1 = cljs.core.next.call(null,seq35957);
-return pong.aframe_react.mixin.cljs$core$IFn$_invoke$arity$variadic(G__35958,seq35957__$1);
+pong.aframe_react.mixin.cljs$lang$applyTo = (function (seq22023){
+var G__22024 = cljs.core.first.call(null,seq22023);
+var seq22023__$1 = cljs.core.next.call(null,seq22023);
+return pong.aframe_react.mixin.cljs$core$IFn$_invoke$arity$variadic(G__22024,seq22023__$1);
 });
 
 pong.aframe_react.node = (function pong$aframe_react$node(var_args){
 var args__19791__auto__ = [];
-var len__19784__auto___35987 = arguments.length;
-var i__19785__auto___35988 = (0);
+var len__19784__auto___22069 = arguments.length;
+var i__19785__auto___22070 = (0);
 while(true){
-if((i__19785__auto___35988 < len__19784__auto___35987)){
-args__19791__auto__.push((arguments[i__19785__auto___35988]));
+if((i__19785__auto___22070 < len__19784__auto___22069)){
+args__19791__auto__.push((arguments[i__19785__auto___22070]));
 
-var G__35989 = (i__19785__auto___35988 + (1));
-i__19785__auto___35988 = G__35989;
+var G__22071 = (i__19785__auto___22070 + (1));
+i__19785__auto___22070 = G__22071;
 continue;
 } else {
 }
@@ -284,28 +283,28 @@ var argseq__19792__auto__ = ((((1) < args__19791__auto__.length))?(new cljs.core
 return pong.aframe_react.node.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__19792__auto__);
 });
 
-pong.aframe_react.node.cljs$core$IFn$_invoke$arity$variadic = (function (opts__35851__auto__,children__35852__auto__){
-return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-node",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__35851__auto__),cljs.core.map.call(null,om.util.force_children,children__35852__auto__)))));
+pong.aframe_react.node.cljs$core$IFn$_invoke$arity$variadic = (function (opts__21874__auto__,children__21875__auto__){
+return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-node",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__21874__auto__),cljs.core.map.call(null,om.util.force_children,children__21875__auto__)))));
 });
 
 pong.aframe_react.node.cljs$lang$maxFixedArity = (1);
 
-pong.aframe_react.node.cljs$lang$applyTo = (function (seq35959){
-var G__35960 = cljs.core.first.call(null,seq35959);
-var seq35959__$1 = cljs.core.next.call(null,seq35959);
-return pong.aframe_react.node.cljs$core$IFn$_invoke$arity$variadic(G__35960,seq35959__$1);
+pong.aframe_react.node.cljs$lang$applyTo = (function (seq22028){
+var G__22029 = cljs.core.first.call(null,seq22028);
+var seq22028__$1 = cljs.core.next.call(null,seq22028);
+return pong.aframe_react.node.cljs$core$IFn$_invoke$arity$variadic(G__22029,seq22028__$1);
 });
 
 pong.aframe_react.register_element = (function pong$aframe_react$register_element(var_args){
 var args__19791__auto__ = [];
-var len__19784__auto___35990 = arguments.length;
-var i__19785__auto___35991 = (0);
+var len__19784__auto___22072 = arguments.length;
+var i__19785__auto___22073 = (0);
 while(true){
-if((i__19785__auto___35991 < len__19784__auto___35990)){
-args__19791__auto__.push((arguments[i__19785__auto___35991]));
+if((i__19785__auto___22073 < len__19784__auto___22072)){
+args__19791__auto__.push((arguments[i__19785__auto___22073]));
 
-var G__35992 = (i__19785__auto___35991 + (1));
-i__19785__auto___35991 = G__35992;
+var G__22074 = (i__19785__auto___22073 + (1));
+i__19785__auto___22073 = G__22074;
 continue;
 } else {
 }
@@ -316,28 +315,28 @@ var argseq__19792__auto__ = ((((1) < args__19791__auto__.length))?(new cljs.core
 return pong.aframe_react.register_element.cljs$core$IFn$_invoke$arity$variadic((arguments[(0)]),argseq__19792__auto__);
 });
 
-pong.aframe_react.register_element.cljs$core$IFn$_invoke$arity$variadic = (function (opts__35851__auto__,children__35852__auto__){
-return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-register-element",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__35851__auto__),cljs.core.map.call(null,om.util.force_children,children__35852__auto__)))));
+pong.aframe_react.register_element.cljs$core$IFn$_invoke$arity$variadic = (function (opts__21874__auto__,children__21875__auto__){
+return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.cons.call(null,"a-register-element",cljs.core.cons.call(null,pong.aframe_react.serialize.call(null,opts__21874__auto__),cljs.core.map.call(null,om.util.force_children,children__21875__auto__)))));
 });
 
 pong.aframe_react.register_element.cljs$lang$maxFixedArity = (1);
 
-pong.aframe_react.register_element.cljs$lang$applyTo = (function (seq35961){
-var G__35962 = cljs.core.first.call(null,seq35961);
-var seq35961__$1 = cljs.core.next.call(null,seq35961);
-return pong.aframe_react.register_element.cljs$core$IFn$_invoke$arity$variadic(G__35962,seq35961__$1);
+pong.aframe_react.register_element.cljs$lang$applyTo = (function (seq22030){
+var G__22031 = cljs.core.first.call(null,seq22030);
+var seq22030__$1 = cljs.core.next.call(null,seq22030);
+return pong.aframe_react.register_element.cljs$core$IFn$_invoke$arity$variadic(G__22031,seq22030__$1);
 });
 
 pong.aframe_react.el = (function pong$aframe_react$el(var_args){
 var args__19791__auto__ = [];
-var len__19784__auto___35993 = arguments.length;
-var i__19785__auto___35994 = (0);
+var len__19784__auto___22075 = arguments.length;
+var i__19785__auto___22076 = (0);
 while(true){
-if((i__19785__auto___35994 < len__19784__auto___35993)){
-args__19791__auto__.push((arguments[i__19785__auto___35994]));
+if((i__19785__auto___22076 < len__19784__auto___22075)){
+args__19791__auto__.push((arguments[i__19785__auto___22076]));
 
-var G__35995 = (i__19785__auto___35994 + (1));
-i__19785__auto___35994 = G__35995;
+var G__22077 = (i__19785__auto___22076 + (1));
+i__19785__auto___22076 = G__22077;
 continue;
 } else {
 }
@@ -354,12 +353,12 @@ return React.createElement.apply(null,cljs.core.into_array.call(null,cljs.core.c
 
 pong.aframe_react.el.cljs$lang$maxFixedArity = (2);
 
-pong.aframe_react.el.cljs$lang$applyTo = (function (seq35963){
-var G__35964 = cljs.core.first.call(null,seq35963);
-var seq35963__$1 = cljs.core.next.call(null,seq35963);
-var G__35965 = cljs.core.first.call(null,seq35963__$1);
-var seq35963__$2 = cljs.core.next.call(null,seq35963__$1);
-return pong.aframe_react.el.cljs$core$IFn$_invoke$arity$variadic(G__35964,G__35965,seq35963__$2);
+pong.aframe_react.el.cljs$lang$applyTo = (function (seq22034){
+var G__22035 = cljs.core.first.call(null,seq22034);
+var seq22034__$1 = cljs.core.next.call(null,seq22034);
+var G__22036 = cljs.core.first.call(null,seq22034__$1);
+var seq22034__$2 = cljs.core.next.call(null,seq22034__$1);
+return pong.aframe_react.el.cljs$core$IFn$_invoke$arity$variadic(G__22035,G__22036,seq22034__$2);
 });
 
 /**

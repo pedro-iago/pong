@@ -15,6 +15,13 @@
 ;todo: investigate PAMELA integration https://github.com/dollabs/pamela
 ;todo: put these in web workers if cljs (use servant)
 ;todo: think of which other systems are good
+;what about a system that refreshes a-frame js components with cljs components?
+;this can be useful when some animation or event changes some property for example
+;this system however needs to know about om.next and three.js in order to do that
+;this is actually a valid idea since a web component can only change what is internal to it
+;which is, it can't change the react props that describe it. only it's own state
+;in order to refresh I could take advantage of the indexer somehow.
+
 (defn sys-fsm [st dt] ;compute mode of fsm, stepping to a new state
   (reduce
     #(let [fsm (peek %2) nv (compute (:mode fsm) (:params fsm) st)]

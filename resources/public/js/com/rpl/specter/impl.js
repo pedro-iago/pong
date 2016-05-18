@@ -207,8 +207,8 @@ return cljs.core._lookup.call(null,this__19340__auto____$1,k__19341__auto__,null
 com.rpl.specter.impl.TransformFunctions.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__19342__auto__,k20384,else__19343__auto__){
 var self__ = this;
 var this__19342__auto____$1 = this;
-var G__20389 = (((k20384 instanceof cljs.core.Keyword))?k20384.fqn:null);
-switch (G__20389) {
+var G__20386 = (((k20384 instanceof cljs.core.Keyword))?k20384.fqn:null);
+switch (G__20386) {
 case "executors":
 return self__.executors;
 
@@ -312,15 +312,15 @@ return (new com.rpl.specter.impl.TransformFunctions(self__.executors,self__.sele
 com.rpl.specter.impl.TransformFunctions.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__19347__auto__,k__19348__auto__,G__20383){
 var self__ = this;
 var this__19347__auto____$1 = this;
-var pred__20394 = cljs.core.keyword_identical_QMARK_;
-var expr__20395 = k__19348__auto__;
-if(cljs.core.truth_(pred__20394.call(null,new cljs.core.Keyword(null,"executors","executors",-331073403),expr__20395))){
+var pred__20387 = cljs.core.keyword_identical_QMARK_;
+var expr__20388 = k__19348__auto__;
+if(cljs.core.truth_(pred__20387.call(null,new cljs.core.Keyword(null,"executors","executors",-331073403),expr__20388))){
 return (new com.rpl.specter.impl.TransformFunctions(G__20383,self__.selector,self__.transformer,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_(pred__20394.call(null,new cljs.core.Keyword(null,"selector","selector",762528866),expr__20395))){
+if(cljs.core.truth_(pred__20387.call(null,new cljs.core.Keyword(null,"selector","selector",762528866),expr__20388))){
 return (new com.rpl.specter.impl.TransformFunctions(self__.executors,G__20383,self__.transformer,self__.__meta,self__.__extmap,null));
 } else {
-if(cljs.core.truth_(pred__20394.call(null,new cljs.core.Keyword(null,"transformer","transformer",-1493470620),expr__20395))){
+if(cljs.core.truth_(pred__20387.call(null,new cljs.core.Keyword(null,"transformer","transformer",-1493470620),expr__20388))){
 return (new com.rpl.specter.impl.TransformFunctions(self__.executors,self__.selector,G__20383,self__.__meta,self__.__extmap,null));
 } else {
 return (new com.rpl.specter.impl.TransformFunctions(self__.executors,self__.selector,self__.transformer,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__19348__auto__,G__20383),null));
@@ -407,11 +407,11 @@ var this__19340__auto____$1 = this;
 return cljs.core._lookup.call(null,this__19340__auto____$1,k__19341__auto__,null);
 });
 
-com.rpl.specter.impl.CompiledPath.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__19342__auto__,k20399,else__19343__auto__){
+com.rpl.specter.impl.CompiledPath.prototype.cljs$core$ILookup$_lookup$arity$3 = (function (this__19342__auto__,k20392,else__19343__auto__){
 var self__ = this;
 var this__19342__auto____$1 = this;
-var G__20401 = (((k20399 instanceof cljs.core.Keyword))?k20399.fqn:null);
-switch (G__20401) {
+var G__20394 = (((k20392 instanceof cljs.core.Keyword))?k20392.fqn:null);
+switch (G__20394) {
 case "transform-fns":
 return self__.transform_fns;
 
@@ -425,7 +425,7 @@ return self__.params_idx;
 
 break;
 default:
-return cljs.core.get.call(null,self__.__extmap,k20399,else__19343__auto__);
+return cljs.core.get.call(null,self__.__extmap,k20392,else__19343__auto__);
 
 }
 });
@@ -443,10 +443,10 @@ return cljs.core.pr_sequential_writer.call(null,writer__19355__auto__,pr_pair__1
 
 com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IIterable$ = true;
 
-com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__20398){
+com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IIterable$_iterator$arity$1 = (function (G__20391){
 var self__ = this;
-var G__20398__$1 = this;
-return (new cljs.core.RecordIter((0),G__20398__$1,3,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),new cljs.core.Keyword(null,"params","params",710516235),new cljs.core.Keyword(null,"params-idx","params-idx",340984624)], null),cljs.core._iterator.call(null,self__.__extmap)));
+var G__20391__$1 = this;
+return (new cljs.core.RecordIter((0),G__20391__$1,3,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),new cljs.core.Keyword(null,"params","params",710516235),new cljs.core.Keyword(null,"params-idx","params-idx",340984624)], null),cljs.core._iterator.call(null,self__.__extmap)));
 });
 
 com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IMeta$_meta$arity$1 = (function (this__19338__auto__){
@@ -484,8 +484,8 @@ return h__19161__auto____$1;
 com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IEquiv$_equiv$arity$2 = (function (this__19336__auto__,other__19337__auto__){
 var self__ = this;
 var this__19336__auto____$1 = this;
-if((function (){var and__18714__auto__ = other__19337__auto__;
-if(and__18714__auto__){
+if(cljs.core.truth_((function (){var and__18714__auto__ = other__19337__auto__;
+if(cljs.core.truth_(and__18714__auto__)){
 var and__18714__auto____$1 = (this__19336__auto____$1.constructor === other__19337__auto__.constructor);
 if(and__18714__auto____$1){
 return cljs.core.equiv_map.call(null,this__19336__auto____$1,other__19337__auto__);
@@ -495,7 +495,7 @@ return and__18714__auto____$1;
 } else {
 return and__18714__auto__;
 }
-})()){
+})())){
 return true;
 } else {
 return false;
@@ -512,21 +512,21 @@ return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,self__.params
 }
 });
 
-com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__19347__auto__,k__19348__auto__,G__20398){
+com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IAssociative$_assoc$arity$3 = (function (this__19347__auto__,k__19348__auto__,G__20391){
 var self__ = this;
 var this__19347__auto____$1 = this;
-var pred__20402 = cljs.core.keyword_identical_QMARK_;
-var expr__20403 = k__19348__auto__;
-if(pred__20402.call(null,new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),expr__20403)){
-return (new com.rpl.specter.impl.CompiledPath(G__20398,self__.params,self__.params_idx,self__.__meta,self__.__extmap,null));
+var pred__20395 = cljs.core.keyword_identical_QMARK_;
+var expr__20396 = k__19348__auto__;
+if(pred__20395.call(null,new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),expr__20396)){
+return (new com.rpl.specter.impl.CompiledPath(G__20391,self__.params,self__.params_idx,self__.__meta,self__.__extmap,null));
 } else {
-if(pred__20402.call(null,new cljs.core.Keyword(null,"params","params",710516235),expr__20403)){
-return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,G__20398,self__.params_idx,self__.__meta,self__.__extmap,null));
+if(pred__20395.call(null,new cljs.core.Keyword(null,"params","params",710516235),expr__20396)){
+return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,G__20391,self__.params_idx,self__.__meta,self__.__extmap,null));
 } else {
-if(pred__20402.call(null,new cljs.core.Keyword(null,"params-idx","params-idx",340984624),expr__20403)){
-return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,self__.params,G__20398,self__.__meta,self__.__extmap,null));
+if(pred__20395.call(null,new cljs.core.Keyword(null,"params-idx","params-idx",340984624),expr__20396)){
+return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,self__.params,G__20391,self__.__meta,self__.__extmap,null));
 } else {
-return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,self__.params,self__.params_idx,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__19348__auto__,G__20398),null));
+return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,self__.params,self__.params_idx,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__19348__auto__,G__20391),null));
 }
 }
 }
@@ -538,10 +538,10 @@ var this__19352__auto____$1 = this;
 return cljs.core.seq.call(null,cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),self__.transform_fns],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"params","params",710516235),self__.params],null)),(new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[new cljs.core.Keyword(null,"params-idx","params-idx",340984624),self__.params_idx],null))], null),self__.__extmap));
 });
 
-com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__19339__auto__,G__20398){
+com.rpl.specter.impl.CompiledPath.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = (function (this__19339__auto__,G__20391){
 var self__ = this;
 var this__19339__auto____$1 = this;
-return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,self__.params,self__.params_idx,G__20398,self__.__extmap,self__.__hash));
+return (new com.rpl.specter.impl.CompiledPath(self__.transform_fns,self__.params,self__.params_idx,G__20391,self__.__extmap,self__.__hash));
 });
 
 com.rpl.specter.impl.CompiledPath.prototype.cljs$core$ICollection$_conj$arity$2 = (function (this__19345__auto__,entry__19346__auto__){
@@ -572,8 +572,8 @@ com.rpl.specter.impl.__GT_CompiledPath = (function com$rpl$specter$impl$__GT_Com
 return (new com.rpl.specter.impl.CompiledPath(transform_fns,params,params_idx,null,null,null));
 });
 
-com.rpl.specter.impl.map__GT_CompiledPath = (function com$rpl$specter$impl$map__GT_CompiledPath(G__20400){
-return (new com.rpl.specter.impl.CompiledPath(new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649).cljs$core$IFn$_invoke$arity$1(G__20400),new cljs.core.Keyword(null,"params","params",710516235).cljs$core$IFn$_invoke$arity$1(G__20400),new cljs.core.Keyword(null,"params-idx","params-idx",340984624).cljs$core$IFn$_invoke$arity$1(G__20400),null,cljs.core.dissoc.call(null,G__20400,new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),new cljs.core.Keyword(null,"params","params",710516235),new cljs.core.Keyword(null,"params-idx","params-idx",340984624)),null));
+com.rpl.specter.impl.map__GT_CompiledPath = (function com$rpl$specter$impl$map__GT_CompiledPath(G__20393){
+return (new com.rpl.specter.impl.CompiledPath(new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649).cljs$core$IFn$_invoke$arity$1(G__20393),new cljs.core.Keyword(null,"params","params",710516235).cljs$core$IFn$_invoke$arity$1(G__20393),new cljs.core.Keyword(null,"params-idx","params-idx",340984624).cljs$core$IFn$_invoke$arity$1(G__20393),null,cljs.core.dissoc.call(null,G__20393,new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),new cljs.core.Keyword(null,"params","params",710516235),new cljs.core.Keyword(null,"params-idx","params-idx",340984624)),null));
 });
 
 com.rpl.specter.impl.compiled_path_QMARK_ = (function com$rpl$specter$impl$compiled_path_QMARK_(o){
@@ -1956,10 +1956,10 @@ var self__ = this;
 var this__19347__auto____$1 = this;
 var pred__20622 = cljs.core.keyword_identical_QMARK_;
 var expr__20623 = k__19348__auto__;
-if(pred__20622.call(null,new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),expr__20623)){
+if(cljs.core.truth_(pred__20622.call(null,new cljs.core.Keyword(null,"transform-fns","transform-fns",669042649),expr__20623))){
 return (new com.rpl.specter.impl.ParamsNeededPath(G__20617,self__.num_needed_params,self__.__meta,self__.__extmap,null));
 } else {
-if(pred__20622.call(null,new cljs.core.Keyword(null,"num-needed-params","num-needed-params",-1219326097),expr__20623)){
+if(cljs.core.truth_(pred__20622.call(null,new cljs.core.Keyword(null,"num-needed-params","num-needed-params",-1219326097),expr__20623))){
 return (new com.rpl.specter.impl.ParamsNeededPath(self__.transform_fns,G__20617,self__.__meta,self__.__extmap,null));
 } else {
 return (new com.rpl.specter.impl.ParamsNeededPath(self__.transform_fns,self__.num_needed_params,self__.__meta,cljs.core.assoc.call(null,self__.__extmap,k__19348__auto__,G__20617),null));
@@ -2391,23 +2391,23 @@ return (new com.rpl.specter.impl.MutableCell(q));
 });
 
 com.rpl.specter.impl.mutable_cell = (function com$rpl$specter$impl$mutable_cell(var_args){
-var args20675 = [];
-var len__19784__auto___20678 = arguments.length;
-var i__19785__auto___20681 = (0);
+var args20665 = [];
+var len__19784__auto___20668 = arguments.length;
+var i__19785__auto___20669 = (0);
 while(true){
-if((i__19785__auto___20681 < len__19784__auto___20678)){
-args20675.push((arguments[i__19785__auto___20681]));
+if((i__19785__auto___20669 < len__19784__auto___20668)){
+args20665.push((arguments[i__19785__auto___20669]));
 
-var G__20683 = (i__19785__auto___20681 + (1));
-i__19785__auto___20681 = G__20683;
+var G__20670 = (i__19785__auto___20669 + (1));
+i__19785__auto___20669 = G__20670;
 continue;
 } else {
 }
 break;
 }
 
-var G__20677 = args20675.length;
-switch (G__20677) {
+var G__20667 = args20665.length;
+switch (G__20667) {
 case 0:
 return com.rpl.specter.impl.mutable_cell.cljs$core$IFn$_invoke$arity$0();
 
@@ -2417,7 +2417,7 @@ return com.rpl.specter.impl.mutable_cell.cljs$core$IFn$_invoke$arity$1((argument
 
 break;
 default:
-throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args20675.length)].join('')));
+throw (new Error([cljs.core.str("Invalid arity: "),cljs.core.str(args20665.length)].join('')));
 
 }
 });
@@ -2518,7 +2518,7 @@ return com.rpl.specter.impl.set_first_list.call(null,l,val);
 return com.rpl.specter.impl.set_last_list.call(null,l,val);
 }));
 com.rpl.specter.impl.walk_until = (function com$rpl$specter$impl$walk_until(pred,on_match_fn,structure){
-if(cljs.core.truth_(pred.call(null,structure))){
+if(pred.call(null,structure)){
 return on_match_fn.call(null,structure);
 } else {
 return clojure.walk.walk.call(null,cljs.core.partial.call(null,com$rpl$specter$impl$walk_until,pred,on_match_fn),cljs.core.identity,structure);
@@ -2528,17 +2528,17 @@ com.rpl.specter.impl.fn_invocation_QMARK_ = (function com$rpl$specter$impl$fn_in
 return ((f instanceof clojure.lang.Cons)) || ((f instanceof clojure.lang.LazySeq)) || (cljs.core.list_QMARK_.call(null,f));
 });
 com.rpl.specter.impl.codewalk_until = (function com$rpl$specter$impl$codewalk_until(pred,on_match_fn,structure){
-if(pred.call(null,structure)){
+if(cljs.core.truth_(pred.call(null,structure))){
 return on_match_fn.call(null,structure);
 } else {
 var ret = clojure.walk.walk.call(null,cljs.core.partial.call(null,com$rpl$specter$impl$codewalk_until,pred,on_match_fn),cljs.core.identity,structure);
-if((function (){var and__18714__auto__ = com.rpl.specter.impl.fn_invocation_QMARK_.call(null,structure);
-if(and__18714__auto__){
+if(cljs.core.truth_((function (){var and__18714__auto__ = com.rpl.specter.impl.fn_invocation_QMARK_.call(null,structure);
+if(cljs.core.truth_(and__18714__auto__)){
 return com.rpl.specter.impl.fn_invocation_QMARK_.call(null,ret);
 } else {
 return and__18714__auto__;
 }
-})()){
+})())){
 return cljs.core.with_meta.call(null,ret,cljs.core.meta.call(null,structure));
 } else {
 return ret;
@@ -2568,7 +2568,7 @@ com.rpl.specter.impl.walk_select = (function com$rpl$specter$impl$walk_select(pr
 var ret = com.rpl.specter.impl.mutable_cell.call(null,cljs.core.PersistentVector.EMPTY);
 var walker = ((function (ret){
 return (function com$rpl$specter$impl$walk_select_$_this(structure__$1){
-if(cljs.core.truth_(pred.call(null,structure__$1))){
+if(pred.call(null,structure__$1)){
 return com.rpl.specter.impl.conj_all_BANG_.call(null,ret,continue_fn.call(null,structure__$1));
 } else {
 return clojure.walk.walk.call(null,com$rpl$specter$impl$walk_select_$_this,cljs.core.identity,structure__$1);

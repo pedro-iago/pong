@@ -8,8 +8,8 @@ while(true){
 if((cnt < len)){
 (dest[(dest_start + cnt)] = (src[(src_start + cnt)]));
 
-var G__20859 = (cnt + (1));
-cnt = G__20859;
+var G__20857 = (cnt + (1));
+cnt = G__20857;
 continue;
 } else {
 return null;
@@ -113,14 +113,14 @@ var n__19629__auto__ = self__.length;
 var x = (0);
 while(true){
 if((x < n__19629__auto__)){
-var v_20870 = this$.pop();
-if(keep_QMARK_.call(null,v_20870)){
-this$.unshift(v_20870);
+var v_20893 = this$.pop();
+if(keep_QMARK_.call(null,v_20893)){
+this$.unshift(v_20893);
 } else {
 }
 
-var G__20871 = (x + (1));
-x = G__20871;
+var G__20895 = (x + (1));
+x = G__20895;
 continue;
 } else {
 return null;
@@ -400,7 +400,7 @@ return self__.val;
 cljs.core.async.impl.buffers.PromiseBuffer.prototype.cljs$core$async$impl$protocols$Buffer$add_BANG__STAR_$arity$2 = (function (this$,itm){
 var self__ = this;
 var this$__$1 = this;
-if(cljs.core.async.impl.buffers.undelivered_QMARK_.call(null,self__.val)){
+if(cljs.core.truth_(cljs.core.async.impl.buffers.undelivered_QMARK_.call(null,self__.val))){
 self__.val = itm;
 } else {
 }
@@ -411,7 +411,7 @@ return this$__$1;
 cljs.core.async.impl.buffers.PromiseBuffer.prototype.cljs$core$async$impl$protocols$Buffer$close_buf_BANG_$arity$1 = (function (_){
 var self__ = this;
 var ___$1 = this;
-if(cljs.core.async.impl.buffers.undelivered_QMARK_.call(null,self__.val)){
+if(cljs.core.truth_(cljs.core.async.impl.buffers.undelivered_QMARK_.call(null,self__.val))){
 return self__.val = null;
 } else {
 return null;
@@ -421,7 +421,7 @@ return null;
 cljs.core.async.impl.buffers.PromiseBuffer.prototype.cljs$core$ICounted$_count$arity$1 = (function (_){
 var self__ = this;
 var ___$1 = this;
-if(cljs.core.async.impl.buffers.undelivered_QMARK_.call(null,self__.val)){
+if(cljs.core.truth_(cljs.core.async.impl.buffers.undelivered_QMARK_.call(null,self__.val))){
 return (0);
 } else {
 return (1);

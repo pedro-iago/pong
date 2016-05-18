@@ -7,32 +7,32 @@ goog.require('clojure.data.avl');
 /**
  * navigates to a view of keywords namespaced by string
  */
-pong.paths.subgroup = com.rpl.specter.impl.__GT_ParamsNeededPath.call(null,com.rpl.specter.impl.__GT_TransformFunctions.call(null,com.rpl.specter.impl.RichPathExecutor,(function (params21733,params_idx21734,vals__21735__auto__,structure,next_fn__21736__auto__){
-var next_fn = (function (structure__21737__auto__){
-return next_fn__21736__auto__.call(null,params21733,(params_idx21734 + 1),vals__21735__auto__,structure__21737__auto__);
+pong.paths.subgroup = com.rpl.specter.impl.__GT_ParamsNeededPath.call(null,com.rpl.specter.impl.__GT_TransformFunctions.call(null,com.rpl.specter.impl.RichPathExecutor,(function (params21737,params_idx21738,vals__21739__auto__,structure,next_fn__21740__auto__){
+var next_fn = (function (structure__21741__auto__){
+return next_fn__21740__auto__.call(null,params21737,(params_idx21738 + 1),vals__21739__auto__,structure__21741__auto__);
 });
-var ns_key = (params21733[(params_idx21734 + (0))]);
+var ns_key = (params21737[(params_idx21738 + (0))]);
 var subgroup = clojure.data.avl.subrange.call(null,structure,cljs.core._GT__EQ_,cljs.core.keyword.call(null,ns_key,"a"),cljs.core._LT_,cljs.core.keyword.call(null,ns_key,"|"));
 return next_fn.call(null,com.rpl.specter.transform.call(null,pong.paths.KEYS,((function (subgroup,next_fn,ns_key){
-return (function (p1__29385_SHARP_){
-return cljs.core.keyword.call(null,cljs.core.name.call(null,p1__29385_SHARP_));
+return (function (p1__29392_SHARP_){
+return cljs.core.keyword.call(null,cljs.core.name.call(null,p1__29392_SHARP_));
 });})(subgroup,next_fn,ns_key))
 ,subgroup));
-}),(function (params21733,params_idx21734,vals__21735__auto__,structure,next_fn__21736__auto__){
-var next_fn = (function (structure__21737__auto__){
-return next_fn__21736__auto__.call(null,params21733,(params_idx21734 + 1),vals__21735__auto__,structure__21737__auto__);
+}),(function (params21737,params_idx21738,vals__21739__auto__,structure,next_fn__21740__auto__){
+var next_fn = (function (structure__21741__auto__){
+return next_fn__21740__auto__.call(null,params21737,(params_idx21738 + 1),vals__21739__auto__,structure__21741__auto__);
 });
-var ns_key = (params21733[(params_idx21734 + (0))]);
+var ns_key = (params21737[(params_idx21738 + (0))]);
 var subgroup = clojure.data.avl.subrange.call(null,structure,cljs.core._GT__EQ_,cljs.core.keyword.call(null,ns_key,"a"),cljs.core._LT_,cljs.core.keyword.call(null,ns_key,"|"));
 var newkeyed = com.rpl.specter.transform.call(null,pong.paths.KEYS,((function (subgroup,next_fn,ns_key){
-return (function (p1__29386_SHARP_){
-return cljs.core.keyword.call(null,cljs.core.name.call(null,p1__29386_SHARP_));
+return (function (p1__29393_SHARP_){
+return cljs.core.keyword.call(null,cljs.core.name.call(null,p1__29393_SHARP_));
 });})(subgroup,next_fn,ns_key))
 ,subgroup);
 var newgroup = next_fn.call(null,newkeyed);
 return cljs.core.merge.call(null,cljs.core.reduce.call(null,cljs.core.dissoc,structure,cljs.core.keys.call(null,subgroup)),com.rpl.specter.transform.call(null,pong.paths.KEYS,((function (subgroup,newkeyed,newgroup,next_fn,ns_key){
-return (function (p1__29387_SHARP_){
-return cljs.core.keyword.call(null,ns_key,cljs.core.name.call(null,p1__29387_SHARP_));
+return (function (p1__29394_SHARP_){
+return cljs.core.keyword.call(null,ns_key,cljs.core.name.call(null,p1__29394_SHARP_));
 });})(subgroup,newkeyed,newgroup,next_fn,ns_key))
 ,newgroup));
 })),1);

@@ -1,8 +1,7 @@
 (ns pong.aframe-react
   (:require [clojure.string :as str]
             #?(:cljs [cljsjs.react])
-            #?(:cljs [om.util :as util])
-            #?(:cljs [cljs.analyzer :as analyser]))
+            #?(:cljs [om.util :as util]))
   #?(:cljs (:require-macros [pong.aframe-react :as a-vr])))
 
 (def tags
